@@ -1,2 +1,2 @@
 # nathan.tutchton.rocks
-My personal portfolio site, deployed from the `master` branch webhook
+My personal portfolio site.  CI/CD deploys from a `master` branch webhook.
