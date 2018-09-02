@@ -1,2 +1,2 @@
 # nathan.tutchton.rocks
-personal portfolio deploy endpoint
+My personal portfolio site, deployed from the `master` branch webhook
