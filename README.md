@@ -1,2 +1,2 @@
 # nathan.tutchton.rocks
-personal portfolio deploy endpoint
+My personal portfolio site.  CI/CD deploys from a `master` branch webhook.
