@@ -3,8 +3,12 @@ version: 0.1
 phases:
   build:
     commands:
-        - echo Nothing to do yet
-
+        - npm install
+        - npm run build
 artifacts:
   files:
-      - index.html
+        - build/*
+        # - build/media/*
+        # - build/css/*
+        # - build/js/*
+        # - build/index.html
