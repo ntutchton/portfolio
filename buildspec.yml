@@ -16,5 +16,5 @@ artifacts:
         # - build/static/media/*
         # - build/static/css/*
         # - build/static/js/*
-        - build/*
+        - **/*
   base-directory: build
