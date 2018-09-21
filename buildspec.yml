@@ -7,11 +7,14 @@ phases:
         - npm run build
 artifacts:
   files:
-        - build/asset-manifest.json
-        - build/favicon.ico
-        - build/index.html
-        - build/manifest.json
-        - build/service-worker.js
-        - build/static/media/*
-        - build/static/css/*
-        - build/static/js/*
+        # NOTE:  boto3 rmimetypes didnt properly guess content type header through directories, so all files are explictly linked at the moment
+        # - build/asset-manifest.json
+        # - build/favicon.ico
+        # - build/index.html
+        # - build/manifest.json
+        # - build/service-worker.js
+        # - build/static/media/*
+        # - build/static/css/*
+        # - build/static/js/*
+        - build/**/*
+  base-directory: build
