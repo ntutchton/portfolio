@@ -7,8 +7,11 @@ phases:
         - npm run build
 artifacts:
   files:
-        - build/*
-        # - build/media/*
-        # - build/css/*
-        # - build/js/*
-        # - build/index.html
+        - build/asset-manifest.json
+        - build/favicon.ico
+        - build/index.html
+        - build/manifest.json
+        - build/service-worker.js
+        - build/static/media/*
+        - build/static/css/*
+        - build/static/js/*
