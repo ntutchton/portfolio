@@ -11,20 +11,23 @@ const styles = theme => ({
 
 class EmailForm extends React.Component{
   state = {
-
+    reCaptchaResponse: null
   };
 
   onCaptcha = (value) => {
     console.log("Captcha value:", value);
+    this.setState({
+      reCaptchaResponse: value
+    })
   }
 
   render(){
     const { classes } = this.props
+
     return(
       <div>
         <ReCAPTCHA
           theme={this.props.currentTheme}
-          data-theme={this.props.currentTheme}
           sitekey="6Le8FnwUAAAAAKeQ11z970K2piq3pHosN-_bXXl9"
           onChange={this.onCaptcha}
         />
