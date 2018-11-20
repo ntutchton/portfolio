@@ -6,9 +6,8 @@ function Icon(props) {
   switch (props.type) {
     case 'ReturnTop':
       return (<ReturnTop size={props.size} type={props.type} color={props.color}/>)
-      break;
     default:
-
+      return null
   }
 }
 

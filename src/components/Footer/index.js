@@ -41,6 +41,9 @@ const styles = (theme) => ({
     minWidth: '0',
     height: '100%',
     display: 'flex',
+  },
+  emojiPadding:{
+    padding: '0 2px 0 7px',
   }
 })
 
@@ -49,7 +52,7 @@ const Footer = (props) => {
   const { classes } = props;
 
   function scrollToTop() {
-    console.log('TODO');
+    window.scrollTo(0, 0)
   }
 
   return (
@@ -59,7 +62,7 @@ const Footer = (props) => {
       </div>
       <div className={classes.tagline}>
         <Typography variant="body2" style={{color:"#fafafa"}}>
-          Created with ❤️ and  ☕  by Nathan Tutchton.
+          <span>Created with<span role="img" aria-label="heart" className={classes.emojiPadding}>❤️</span>and<span role="img" aria-label="covefe" className={classes.emojiPadding}>☕</span>by Nathan Tutchton.</span>
         </Typography>
       </div>
       <div className={classes.return}>
