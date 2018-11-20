@@ -85,7 +85,10 @@ class App extends Component {
                 <Switch>
                   <Route exact path="/" component={Main} />
                   <Route exact path="/content" component={Content} />
-                  <Route exact path="/contact" component={Contact} />
+                  <Route exact path="/contact"
+                    component={()=>(
+                      <Contact currentTheme={this.state.currentTheme}/>
+                    )}/>
                   <Route component={ ()=>(<Redirect to="/" />) } />
                 </Switch>
                 <Footer updateActiveUrlHash={this.updateActiveUrlHash}/>

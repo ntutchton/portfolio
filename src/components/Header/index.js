@@ -15,7 +15,7 @@ import { red } from '@material-ui/core/colors/';
 import SvgLogo from '../Logo'
 import ThemeToggle from './ThemeToggle'
 
-const styles = (theme) => ({
+const styles = theme => ({
   container: {
     width: '100%',
     display: 'grid',

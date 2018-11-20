@@ -1,6 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
+import EmailForm from '../EmailForm'
 
 const styles = (theme) => ({
   root: {
@@ -14,6 +16,15 @@ const styles = (theme) => ({
     [theme.breakpoints.down('sm')]: {
       width: '95%',
     },
+  },
+  formContainer: {
+    margin: '5em 20%',
+    [theme.breakpoints.down('md')]: {
+      margin: '5em 10%',
+    },
+    [theme.breakpoints.down('sm')]: {
+      margin: '5em 5%',
+    },
   }
 })
 
@@ -24,12 +35,15 @@ function Contact(props) {
       <Typography variant="h3">
         Get in Touch.
       </Typography>
+      <div className={classes.formContainer}>
+        <EmailForm currentTheme={props.currentTheme}/>
+      </div>
     </div>
   );
 }
 
-// LogoDark.propTypes = {
-//   size: PropTypes.number.isRequired,
-// };
+Contact.propTypes = {
+  currentTheme: PropTypes.string.isRequired,
+};
 
 export default withStyles(styles)(Contact);
