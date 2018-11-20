@@ -18,6 +18,7 @@ class App extends Component {
 
   state = {
     currentTheme: 'light',
+    activeUrlHash: window.location.hash
   }
 
   componentWillMount = () => {
@@ -59,6 +60,13 @@ class App extends Component {
     }
   }
 
+  updateActiveUrlHash = newValue => {
+    this.setState({
+      activeUrlHash: newValue
+    })
+  }
+
+
   render() {
     return (
       <Router>
@@ -69,14 +77,18 @@ class App extends Component {
                 (this.state.currentTheme === 'dark')
                   ? 'App dark-app'
                   : 'App light-app'}>
-                <Header currentTheme={this.state.currentTheme} changeTheme={this.switchTheme}/>
+                <Header
+                  updateActiveUrlHash={this.updateActiveUrlHash}
+                  activeUrlHash={this.state.activeUrlHash}
+                  currentTheme={this.state.currentTheme}
+                  changeTheme={this.switchTheme}/>
                 <Switch>
                   <Route exact path="/" component={Main} />
                   <Route exact path="/content" component={Content} />
                   <Route exact path="/contact" component={Contact} />
                   <Route component={ ()=>(<Redirect to="/" />) } />
                 </Switch>
-                <Footer />
+                <Footer updateActiveUrlHash={this.updateActiveUrlHash}/>
               </div>
           </MuiThemeProvider>
         </React.Fragment>

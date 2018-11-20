@@ -53,6 +53,8 @@ const Footer = (props) => {
 
   function scrollToTop() {
     window.scroll({ top: 0, left: 0, behavior: 'smooth' });
+    window.history.pushState('', '/', window.location.pathname);
+    props.updateActiveUrlHash(window.location.hash)
   }
 
   return (
@@ -66,7 +68,7 @@ const Footer = (props) => {
         </Typography>
       </div>
       <div className={classes.return}>
-        <Button className={classes.returnWrapperButton} onClick={scrollToTop}>
+        <Button className={classes.returnWrapperButton} onClick={()=> {scrollToTop()}}>
           <Icon type="ReturnTop" size={18} color="#fff"/>
         </Button>
       </div>

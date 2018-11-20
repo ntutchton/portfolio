@@ -7,7 +7,6 @@ const styles = (theme) => ({
     margin: '0 auto',
     paddingTop: '3em',
     width: '70%',
-    minHeight: '500vh',
     flex:'1',
     [theme.breakpoints.down('md')]: {
       width: '80%',
