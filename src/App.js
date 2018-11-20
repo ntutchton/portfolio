@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-
-import Typography from '@material-ui/core/Typography';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import darkTheme from './themes/dark.theme.js';
 import lightTheme from './themes/light.theme.js';
-import logo from './logo.svg';
 import './App.css';
 
-import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
-
 import Header from './components/Header';
+import Main from './components/Main'
+import Contact from './components/Contact'
 
 
 class App extends Component {
@@ -57,16 +54,28 @@ class App extends Component {
 
   render() {
     return (
-      <React.Fragment>
-        <CssBaseline />
-        <MuiThemeProvider theme={this.getThemeObject(this.state.currentTheme)}>
-            <div className="App">
-              <Header currentTheme={this.state.currentTheme} changeTheme={this.switchTheme}/>
-            </div>
-        </MuiThemeProvider>
-      </React.Fragment>
+      <Router>
+        <React.Fragment>
+          <CssBaseline />
+          <MuiThemeProvider theme={this.getThemeObject(this.state.currentTheme)}>
+              <div className={
+                (this.state.currentTheme === 'dark')
+                  ? 'App dark-app'
+                  : 'App light-app'}>
+                <Header currentTheme={this.state.currentTheme} changeTheme={this.switchTheme}/>
+                  <Switch>
+                    <Route exact path="/" component={Main} />
+                    <Route exact path="/contact" component={Contact} />
+                    <Route component={ ()=>(<Redirect to="/" />) } />
+                  </Switch>
+              </div>
+          </MuiThemeProvider>
+        </React.Fragment>
+      </Router>
     );
   }
 }
+
+//<Route exact path="/content" component={Content} />
 
 export default App;

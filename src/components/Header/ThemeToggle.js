@@ -32,7 +32,7 @@ class ThemeToggle extends React.Component {
         </div>
         <div className={ classes.column }>
           <Switch
-            checked={ this.props.currentTheme == 'light' }
+            checked={ this.props.currentTheme === 'light' }
             onChange={ () => {this.handleChange()} }
             color="primary"
           />

@@ -8,7 +8,6 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors/';
 import SvgLogo from '../Logo'
 import ThemeToggle from './ThemeToggle'
@@ -75,7 +74,7 @@ class Header extends React.Component{
   //returns active link color style object if link is active
   isActive = (linkName) => {
     // TEMP:
-    if (linkName == 'work') { return { color: red[500] } }
+    if (linkName === 'work') { return { color: red[500] } }
   }
 
   handleBurgerMenuClick = event => {
