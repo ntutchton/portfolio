@@ -8,6 +8,7 @@ import './App.css';
 
 import Header from './components/Header';
 import Main from './components/Main'
+import Content from './components/Content'
 import Contact from './components/Contact'
 
 
@@ -65,6 +66,7 @@ class App extends Component {
                 <Header currentTheme={this.state.currentTheme} changeTheme={this.switchTheme}/>
                   <Switch>
                     <Route exact path="/" component={Main} />
+                    <Route exact path="/content" component={Content} />
                     <Route exact path="/contact" component={Contact} />
                     <Route component={ ()=>(<Redirect to="/" />) } />
                   </Switch>
@@ -76,6 +78,5 @@ class App extends Component {
   }
 }
 
-//<Route exact path="/content" component={Content} />
 
 export default App;

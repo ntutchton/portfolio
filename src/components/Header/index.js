@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -49,6 +50,10 @@ const styles = (theme) => ({
       display: 'none',
     },
   },
+  link: {
+    textDecoration: 'none',
+    outline: 'none',
+  },
   burgerMenu: {
     gridColumnStart:12,
     display: 'flex',
@@ -71,10 +76,10 @@ class Header extends React.Component{
     if (this.props.currentTheme === 'light'){ return 'dark' }
   }
 
-  //returns active link color style object if link is active
+  //returns active link color style object if link is included in url #
   isActive = (linkName) => {
-    // TEMP:
-    if (linkName === 'work') { return { color: red[500] } }
+    let url = window.location
+    if (url.hash.includes(linkName)) { return { color: red[500] } }
   }
 
   handleBurgerMenuClick = event => {
@@ -101,32 +106,46 @@ class Header extends React.Component{
                 <SvgLogo type={this.determineLogoColor()} size={64}></SvgLogo>
               </div>
               <div className={classes.navButtons}>
-                <Button size="medium" variant="text" className={classes.button}>
-                  <span style={ this.isActive('work') }> Work </span>
-                </Button>
-                <Button size="medium" variant="text" className={classes.button}>
-                  <span style={ this.isActive('skills') }> Skills </span>
-                </Button>
-                <Button size="medium" variant="text" className={classes.button}>
-                  <span style={ this.isActive('projects') }> Projects </span>
-                </Button>
-                <Button size="medium" variant="text" className={classes.button}>
-                  <span style={ this.isActive('life') }> Life </span>
-                </Button>
-                <Button size="medium" variant="text" className={classes.button}>
-                  <span style={ this.isActive('podcasts') }> Podcasts </span>
-                </Button>
-                <Button size="medium" variant="text" className={classes.button}>
-                  <span style={ this.isActive('media') }> Media </span>
-                </Button>
+                <Link to="/#work" className={classes.link}>
+                  <Button size="medium" variant="text" className={classes.button}>
+                    <span style={ this.isActive('work') }> Work </span>
+                  </Button>
+                </Link>
+                <Link to="/#skills" className={classes.link}>
+                  <Button size="medium" variant="text" className={classes.button}>
+                    <span style={ this.isActive('skills') }> Skills </span>
+                  </Button>
+                </Link>
+                <Link to="/#projects" className={classes.link}>
+                  <Button size="medium" variant="text" className={classes.button}>
+                    <span style={ this.isActive('projects') }> Projects </span>
+                  </Button>
+                </Link>
+                <Link to="/content#featured" className={classes.link}>
+                  <Button size="medium" variant="text" className={classes.button}>
+                    <span style={ this.isActive('featured') }> Life </span>
+                  </Button>
+                </Link>
+                <Link to="/content#podcasts" className={classes.link}>
+                  <Button size="medium" variant="text" className={classes.button}>
+                    <span style={ this.isActive('podcasts') }> Podcasts </span>
+                  </Button>
+                </Link>
+                <Link to="/content#media" className={classes.link}>
+                  <Button size="medium" variant="text" className={classes.button}>
+                    <span style={ this.isActive('media') }> Media </span>
+                  </Button>
+                </Link>
               </div>
               <div className={classes.themeToggle}>
                 <ThemeToggle currentTheme={this.props.currentTheme} changeTheme={this.props.changeTheme}></ThemeToggle>
               </div>
               <div className={classes.contact}>
-                <Button size="large" variant="outlined"  className={classes.contactButton}>
-                  Contact Me
-                </Button>
+                <Link to="/contact" className={classes.link}>
+                  <Button size="large" variant="outlined"  className={classes.contactButton}>
+                    Contact Me
+                  </Button>
+                </Link>
               </div>
               <div className={classes.burgerMenu}>
                 <div>
@@ -143,24 +162,41 @@ class Header extends React.Component{
                     open={Boolean(anchorEl)}
                     onClose={this.handleBurgerMenuClose}
                   >
-                    <MenuItem onClick={this.handleBurgerMenuClose}>
-                      <span style={ this.isActive('work') }> Work </span>
-                    </MenuItem>
-                    <MenuItem onClick={this.handleBurgerMenuClose}>
-                      <span style={ this.isActive('skills') }> Skills </span>
-                    </MenuItem>
-                    <MenuItem onClick={this.handleBurgerMenuClose}>
-                      <span style={ this.isActive('projects') }> Projects </span>
-                    </MenuItem>
-                    <MenuItem onClick={this.handleBurgerMenuClose}>
-                      <span style={ this.isActive('life') }> Life </span>
-                    </MenuItem>
-                    <MenuItem onClick={this.handleBurgerMenuClose}>
-                      <span style={ this.isActive('podcasts') }> Podcasts </span>
-                    </MenuItem>
-                    <MenuItem onClick={this.handleBurgerMenuClose}>
-                      <span style={ this.isActive('media') }> Media </span>
-                    </MenuItem>
+                    <Link to="/#work" className={classes.link}>
+                      <MenuItem onClick={this.handleBurgerMenuClose}>
+                        <span style={ this.isActive('work') }> Work </span>
+                      </MenuItem>
+                    </Link>
+                    <Link to="/#skills" className={classes.link}>
+                      <MenuItem onClick={this.handleBurgerMenuClose}>
+                        <span style={ this.isActive('skills') }> Skills </span>
+                      </MenuItem>
+                    </Link>
+                    <Link to="/#projects" className={classes.link}>
+                      <MenuItem onClick={this.handleBurgerMenuClose}>
+                        <span style={ this.isActive('projects') }> Projects </span>
+                      </MenuItem>
+                    </Link>
+                    <Link to="/content#featured" className={classes.link}>
+                      <MenuItem onClick={this.handleBurgerMenuClose}>
+                        <span style={ this.isActive('featured') }> Life </span>
+                      </MenuItem>
+                    </Link>
+                    <Link to="/content#podcasts" className={classes.link}>
+                      <MenuItem onClick={this.handleBurgerMenuClose}>
+                        <span style={ this.isActive('podcasts') }> Podcasts </span>
+                      </MenuItem>
+                    </Link>
+                    <Link to="/content#media" className={classes.link}>
+                      <MenuItem onClick={this.handleBurgerMenuClose}>
+                        <span style={ this.isActive('media') }> Media </span>
+                      </MenuItem>
+                    </Link>
+                    <Link to="/contact" className={classes.link}>
+                      <MenuItem onClick={this.handleBurgerMenuClose}>
+                        <span style={ this.isActive('contact') }> Contact Me </span>
+                      </MenuItem>
+                    </Link>
                   </Menu>
                 </div>
               </div>

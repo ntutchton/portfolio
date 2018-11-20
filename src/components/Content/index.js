@@ -7,13 +7,13 @@ const styles = (theme) => ({
   root: {  }
 })
 
-function Main(props) {
+function Content(props) {
   const { classes } = props;
   return (
     <div className={classes.root}>
-      <Route path="/#work">
+      <Route path="/content#featured">
         <Typography variant="h2">
-          Main
+          Content
         </Typography>
       </Route>
     </div>
@@ -24,4 +24,4 @@ function Main(props) {
 //   size: PropTypes.number.isRequired,
 // };
 
-export default withStyles(styles)(Main);
+export default withStyles(styles)(Content);
