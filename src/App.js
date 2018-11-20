@@ -61,21 +61,7 @@ class App extends Component {
         <CssBaseline />
         <MuiThemeProvider theme={this.getThemeObject(this.state.currentTheme)}>
             <div className="App">
-                <Header currentTheme={this.state.currentTheme}/>
-
-
-
-                <Paper>
-                  <Button variant="outlined" color="primary" onClick={()=> {this.switchTheme(this.state.currentTheme)}}>
-                    Test Theme Change
-                  </Button>
-                  <Button variant="contained" color="secondary">
-                    MEEP
-                  </Button>
-                </Paper>
-
-
-
+              <Header currentTheme={this.state.currentTheme} changeTheme={this.switchTheme}/>
             </div>
         </MuiThemeProvider>
       </React.Fragment>

@@ -1,5 +1,5 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-import { teal, lightBlue } from '@material-ui/core/colors/';
+import { red, lightBlue } from '@material-ui/core/colors/';
 
 const theme = createMuiTheme({
   typography: {
@@ -12,11 +12,21 @@ const theme = createMuiTheme({
   palette: {
     type: 'dark',
     primary: {
-      main: teal.A700,
+      main: red[500],
     },
     secondary: {
       main: lightBlue[400],
       dark: lightBlue[600]
+    },
+    background: {
+      paper: '#303030'
+    }
+  },
+  overrides: {
+    MuiTouchRipple: {
+      root: {
+        color: '#666',
+      },
     },
   },
 });
@@ -27,5 +37,7 @@ Object.keys(theme.typography).forEach( key => {
       key.fontFamily = '"Oxygen", "Helvetica", "Arial", sans-serif"'
   }
 });
+
+console.log(theme);
 
 export default theme;
