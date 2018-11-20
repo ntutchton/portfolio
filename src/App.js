@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+import smoothscroll from 'smoothscroll-polyfill';
 import darkTheme from './themes/dark.theme.js';
 import lightTheme from './themes/light.theme.js';
 import './App.css';
@@ -17,6 +18,10 @@ class App extends Component {
 
   state = {
     currentTheme: 'light',
+  }
+
+  componentWillMount = () => {
+    smoothscroll.polyfill();
   }
 
   // switches currentTheme type between dark and light
