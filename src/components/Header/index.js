@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
+import { HashLink as Link } from 'react-router-hash-link';
+
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -13,12 +15,11 @@ import { red } from '@material-ui/core/colors/';
 import SvgLogo from '../Logo'
 import ThemeToggle from './ThemeToggle'
 
-const styles = (theme) => ({
+const styles = theme => ({
   container: {
     width: '100%',
     display: 'grid',
     gridTemplateColumns: 'repeat(12, 1fr)',
-    gridColumnGap: '1em',
     gridRowGap: '1em',
   },
   logo: {
@@ -41,6 +42,7 @@ const styles = (theme) => ({
   },
   themeToggle: {
     gridColumnStart: '10',
+    margin: '0 .5em',
   },
   contact: {
     paddingTop:'20px',
@@ -49,6 +51,9 @@ const styles = (theme) => ({
     [theme.breakpoints.down('md')]: {
       display: 'none',
     },
+  },
+  contactButton: {
+    margin: '0 .5em',
   },
   link: {
     textDecoration: 'none',
@@ -78,18 +83,27 @@ class Header extends React.Component{
 
   //returns active link color style object if link is included in url #
   isActive = (linkName) => {
-    let url = window.location
-    if (url.hash.includes(linkName)) { return { color: red[500] } }
+    if (this.props.activeUrlHash.includes(linkName)) { return { color: red[500] } }
+  }
+
+  updateActiveUrlHash = destination => {
+    this.props.updateActiveUrlHash(destination)
   }
 
   handleBurgerMenuClick = event => {
     this.setState({ anchorEl: event.currentTarget });
   };
 
-  handleBurgerMenuClose = () => {
+  handleBurgerMenuClose = destination => {
     this.setState({ anchorEl: null });
-
+    if (destination){
+      this.props.updateActiveUrlHash(destination)
+    }
   };
+
+  smoothScroll = el => {
+    el.scrollIntoView({ behavior: 'smooth' })
+  }
 
 
   render() {
@@ -107,32 +121,32 @@ class Header extends React.Component{
               </div>
               <div className={classes.navButtons}>
                 <Link to="/#work" className={classes.link}>
-                  <Button size="medium" variant="text" className={classes.button}>
+                  <Button size="medium" variant="text" className={classes.button} onClick={()=>{this.updateActiveUrlHash('#work')}}>
                     <span style={ this.isActive('work') }> Work </span>
                   </Button>
                 </Link>
                 <Link to="/#skills" className={classes.link}>
-                  <Button size="medium" variant="text" className={classes.button}>
+                  <Button size="medium" variant="text" className={classes.button} onClick={()=>{this.updateActiveUrlHash('#skills')}}>
                     <span style={ this.isActive('skills') }> Skills </span>
                   </Button>
                 </Link>
-                <Link to="/#projects" className={classes.link}>
-                  <Button size="medium" variant="text" className={classes.button}>
+                <Link to="/#projects" className={classes.link} scroll={this.smoothScroll} >
+                  <Button size="medium" variant="text" className={classes.button} onClick={()=>{this.updateActiveUrlHash('#projects')}} >
                     <span style={ this.isActive('projects') }> Projects </span>
                   </Button>
                 </Link>
                 <Link to="/content#featured" className={classes.link}>
-                  <Button size="medium" variant="text" className={classes.button}>
+                  <Button size="medium" variant="text" className={classes.button} onClick={()=>{this.updateActiveUrlHash('#featured')}}>
                     <span style={ this.isActive('featured') }> Life </span>
                   </Button>
                 </Link>
                 <Link to="/content#podcasts" className={classes.link}>
-                  <Button size="medium" variant="text" className={classes.button}>
+                  <Button size="medium" variant="text" className={classes.button} onClick={()=>{this.updateActiveUrlHash('#podcasts')}}>
                     <span style={ this.isActive('podcasts') }> Podcasts </span>
                   </Button>
                 </Link>
                 <Link to="/content#media" className={classes.link}>
-                  <Button size="medium" variant="text" className={classes.button}>
+                  <Button size="medium" variant="text" className={classes.button} onClick={()=>{this.updateActiveUrlHash('#media')}}>
                     <span style={ this.isActive('media') }> Media </span>
                   </Button>
                 </Link>
@@ -142,7 +156,7 @@ class Header extends React.Component{
               </div>
               <div className={classes.contact}>
                 <Link to="/contact" className={classes.link}>
-                  <Button size="large" variant="outlined"  className={classes.contactButton}>
+                  <Button size="large" variant="outlined"  className={classes.contactButton} onClick={()=>{this.updateActiveUrlHash('')}}>
                     Contact Me
                   </Button>
                 </Link>
@@ -163,37 +177,37 @@ class Header extends React.Component{
                     onClose={this.handleBurgerMenuClose}
                   >
                     <Link to="/#work" className={classes.link}>
-                      <MenuItem onClick={this.handleBurgerMenuClose}>
+                      <MenuItem onClick={()=>{this.handleBurgerMenuClose('#work')}}>
                         <span style={ this.isActive('work') }> Work </span>
                       </MenuItem>
                     </Link>
                     <Link to="/#skills" className={classes.link}>
-                      <MenuItem onClick={this.handleBurgerMenuClose}>
+                      <MenuItem onClick={()=>{this.handleBurgerMenuClose('#skills')}}>
                         <span style={ this.isActive('skills') }> Skills </span>
                       </MenuItem>
                     </Link>
                     <Link to="/#projects" className={classes.link}>
-                      <MenuItem onClick={this.handleBurgerMenuClose}>
+                      <MenuItem onClick={()=>{this.handleBurgerMenuClose('#projects')}}>
                         <span style={ this.isActive('projects') }> Projects </span>
                       </MenuItem>
                     </Link>
                     <Link to="/content#featured" className={classes.link}>
-                      <MenuItem onClick={this.handleBurgerMenuClose}>
+                      <MenuItem onClick={()=>{this.handleBurgerMenuClose('#featured')}}>
                         <span style={ this.isActive('featured') }> Life </span>
                       </MenuItem>
                     </Link>
                     <Link to="/content#podcasts" className={classes.link}>
-                      <MenuItem onClick={this.handleBurgerMenuClose}>
+                      <MenuItem onClick={()=>{this.handleBurgerMenuClose('#podcasts')}}>
                         <span style={ this.isActive('podcasts') }> Podcasts </span>
                       </MenuItem>
                     </Link>
                     <Link to="/content#media" className={classes.link}>
-                      <MenuItem onClick={this.handleBurgerMenuClose}>
+                      <MenuItem onClick={()=>{this.handleBurgerMenuClose('#media')}}>
                         <span style={ this.isActive('media') }> Media </span>
                       </MenuItem>
                     </Link>
                     <Link to="/contact" className={classes.link}>
-                      <MenuItem onClick={this.handleBurgerMenuClose}>
+                      <MenuItem onClick={()=>{this.handleBurgerMenuClose('')}}>
                         <span style={ this.isActive('contact') }> Contact Me </span>
                       </MenuItem>
                     </Link>
@@ -211,6 +225,7 @@ class Header extends React.Component{
 Header.propTypes = {
   currentTheme: PropTypes.string.isRequired,
   changeTheme: PropTypes.func.isRequired,
+  activeUrlHash: PropTypes.string.isRequired
 };
 
 export default withStyles(styles)(Header);
