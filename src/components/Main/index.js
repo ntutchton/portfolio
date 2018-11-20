@@ -3,17 +3,13 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = (theme) => ({
-  test: {
-    height:'500px',
-    width: '500px',
-    backgroundColor: 'tomato',
-  }
+  root: {  }
 })
 
 function Main(props) {
   const { classes } = props;
   return (
-    <div className={classes.test}>
+    <div className={classes.root}>
       <Typography variant="h2">
         Main
       </Typography>

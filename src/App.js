@@ -14,7 +14,7 @@ import Contact from './components/Contact'
 class App extends Component {
 
   state = {
-    currentTheme: 'dark',
+    currentTheme: 'light',
   }
 
   // switches currentTheme type between dark and light

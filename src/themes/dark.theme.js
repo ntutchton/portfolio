@@ -38,6 +38,4 @@ Object.keys(theme.typography).forEach( key => {
   }
 });
 
-console.log(theme);
-
 export default theme;
