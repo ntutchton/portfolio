@@ -1,9 +1,9 @@
-/* .container{
-  display: grid;
+.App{
+  min-height: 100vh;
 }
-.grid-offset-1{
-
-} */
-/* .test{
-   grid-column-start:2;
-} */
+.light-app{
+  background-color: #fafafa;
+}
+.dark-app{
+  background-color: #212121;
+}
