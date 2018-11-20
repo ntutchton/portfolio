@@ -3,6 +3,7 @@ import { teal, lightBlue } from '@material-ui/core/colors/';
 
 const theme = createMuiTheme({
   typography: {
+    useNextVariants: true,
     fontFamily: 'Oxygen',
     fontWeightLight: 300,
     fontWeightRegular: 400,
@@ -10,7 +11,6 @@ const theme = createMuiTheme({
   },
   palette: {
     type: 'light',
-
     primary: {
       main: teal.A700,
     },
@@ -19,6 +19,13 @@ const theme = createMuiTheme({
       dark: lightBlue[600]
     },
   },
+});
+
+// set all instances of font-family to Oxygen
+Object.keys(theme.typography).forEach( key => {
+  if (typeof key === 'object'){
+      key.fontFamily = '"Oxygen", "Helvetica", "Arial", sans-serif"'
+  }
 });
 
 export default theme;

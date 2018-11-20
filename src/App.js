@@ -11,6 +11,8 @@ import './App.css';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 
+import Header from './components/Header';
+
 
 class App extends Component {
 
@@ -59,20 +61,21 @@ class App extends Component {
         <CssBaseline />
         <MuiThemeProvider theme={this.getThemeObject(this.state.currentTheme)}>
             <div className="App">
-                <header className="App-header">
-                  <img src={logo} className="App-logo" alt="logo" />
-                  <h1 className="App-title">
-                  <Typography>    Welcome to Nathan's Development Pipeline </Typography>
-                  </h1>
-                </header>
+                <Header currentTheme={this.state.currentTheme}/>
+
+
+
                 <Paper>
                   <Button variant="outlined" color="primary" onClick={()=> {this.switchTheme(this.state.currentTheme)}}>
                     Test Theme Change
                   </Button>
-                  <Button variant="raised" color="secondary">
+                  <Button variant="contained" color="secondary">
                     MEEP
                   </Button>
                 </Paper>
+
+
+
             </div>
         </MuiThemeProvider>
       </React.Fragment>
