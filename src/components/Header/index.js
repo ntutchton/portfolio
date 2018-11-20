@@ -18,7 +18,6 @@ const styles = (theme) => ({
     width: '100%',
     display: 'grid',
     gridTemplateColumns: 'repeat(12, 1fr)',
-    gridColumnGap: '1em',
     gridRowGap: '1em',
   },
   logo: {
@@ -41,6 +40,7 @@ const styles = (theme) => ({
   },
   themeToggle: {
     gridColumnStart: '10',
+    margin: '0 .5em',
   },
   contact: {
     paddingTop:'20px',
@@ -49,6 +49,9 @@ const styles = (theme) => ({
     [theme.breakpoints.down('md')]: {
       display: 'none',
     },
+  },
+  contactButton: {
+    margin: '0 .5em',
   },
   link: {
     textDecoration: 'none',
