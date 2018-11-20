@@ -7,6 +7,7 @@ import lightTheme from './themes/light.theme.js';
 import './App.css';
 
 import Header from './components/Header';
+import Footer from './components/Footer'
 import Main from './components/Main'
 import Content from './components/Content'
 import Contact from './components/Contact'
@@ -64,12 +65,13 @@ class App extends Component {
                   ? 'App dark-app'
                   : 'App light-app'}>
                 <Header currentTheme={this.state.currentTheme} changeTheme={this.switchTheme}/>
-                  <Switch>
-                    <Route exact path="/" component={Main} />
-                    <Route exact path="/content" component={Content} />
-                    <Route exact path="/contact" component={Contact} />
-                    <Route component={ ()=>(<Redirect to="/" />) } />
-                  </Switch>
+                <Switch>
+                  <Route exact path="/" component={Main} />
+                  <Route exact path="/content" component={Content} />
+                  <Route exact path="/contact" component={Contact} />
+                  <Route component={ ()=>(<Redirect to="/" />) } />
+                </Switch>
+                <Footer />
               </div>
           </MuiThemeProvider>
         </React.Fragment>
