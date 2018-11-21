@@ -318,7 +318,7 @@ class EmailForm extends React.Component{
         <ReCAPTCHA
           ref={recaptchaRef}
           theme={this.props.currentTheme}
-          sitekey="6Le8FnwUAAAAAKeQ11z970K2piq3pHosN-_bXXl9"
+          sitekey="6Ld4U3wUAAAAAEFAL9PY1L_z1zj9kix32_BppZaF"
           onChange={this.onCaptcha}
         />
         <div className={classes.sendButtonRow}>
