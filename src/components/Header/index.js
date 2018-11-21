@@ -25,6 +25,8 @@ const styles = theme => ({
   logo: {
     gridColumnStart: '2',
     margin:'.4em',
+    display:'flex',
+    justifyContent: 'center',
   },
   navButtons: {
     gridColumnStart: '3',
