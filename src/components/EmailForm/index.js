@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import { red, green } from '@material-ui/core/colors/';
 import ReCAPTCHA from "react-google-recaptcha";
 import verifyReCaptcha from '../../http/reCaptcha'
+import sendEmail from '../../http/email'
 import Button from '@material-ui/core/Button';
 import SendIcon from '@material-ui/icons/SendTwoTone';
 import TextField from '@material-ui/core/TextField';
@@ -38,6 +39,7 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
+    textAlign: 'left',
   },
   emoji:{
     fontSize: '200%',
@@ -158,22 +160,27 @@ class EmailForm extends React.Component{
       && this.validateName()
       && this.validateMessage()
       && this.state.validReCaptcha) {
-      this.sendEmail(this.state.name, this.state.email, this.state.message)
+      this.triggerSendEmail(this.state.name, this.state.email, this.state.message)
       return
     }
     //build new error object and only make one call to setState at end
     let errors = {}
+    let numErrors = 0
+
     if (!this.validateEmail()) {
       errors.email= true
       errors.any=true
+      numErrors += 1
     }
     if (!this.validateName()){
       errors.name= true
       errors.any= true
+      numErrors += 1
     }
     if (!this.validateMessage()){
       errors.message= true
       errors.any= true
+      numErrors += 1
     }
     // reCaptcha is highest priority error, and so will return if found
     if (!this.state.validReCaptcha){
@@ -183,12 +190,14 @@ class EmailForm extends React.Component{
       return
 
     }
+    //check all errors at once to set multipleErrors bool and decide if we should use and
+    if ( numErrors > 1 ){}
     //if any non-recaptcha errors found, display error message
     if (errors.any){
       this.setState({
         errors: errors
       })
-      this.setErrorText('Please correct the errors in this form and try again.')
+      this.setErrorText('Please correct the errors in the form and submit again.')
     }
   }
 
@@ -219,9 +228,20 @@ class EmailForm extends React.Component{
     })
   }
 
-  sendEmail = (name, email, message) => {
-    console.log('TODO SEND ->', name, email, message)
-    this.displayConfirmation()
+  triggerSendEmail = (name, email, message) => {
+    // console.log('TODO SEND ->', name, email, message)
+    sendEmail(name, email, message)
+      .then( res => {
+        let data = JSON.parse(res.data.body)
+        if (res.status=== 200 && data.MessageId) {
+          this.displayConfirmation()
+          this.resetForm()
+        }
+        else {
+          console.log(res);
+          this.resetForm()
+        }
+      })
   }
 
   render(){
@@ -233,14 +253,14 @@ class EmailForm extends React.Component{
             this.state.showConfirmation
             ?
             <div className={classNames([classes.messageRow, classes.confirmationRow])}>
-              <Typography variant="subtitle2" className={classes.confirmationText}>
+              <Typography variant="subtitle1" className={classes.confirmationText}>
                 <span className={classes.confirmationMessageWrapper}>
                   <span role="img" aria-label="thumbs-up" className={classes.emoji}>👍🏻</span>
-                  <span className={classes.confirmationText}>You've sent me a message!  I'll be in touch soon.</span>
+                  <span className={classes.confirmationText}>I've received your message and will be in touch soon.</span>
                 </span>
               </Typography>
               <div className={classes.hideConfirmation}>
-                <Close onClick={()=>{this.setState({showConfirmation:false})}}/>
+                <Close color={this.props.currentTheme === 'dark' ? 'primary' : ''} onClick={()=>{this.setState({showConfirmation:false})}}/>
               </div>
             </div>
             :
@@ -307,18 +327,19 @@ class EmailForm extends React.Component{
               <SendIcon className={classes.sendIconPadding}></SendIcon>
             </Button>
         </div>
-        <div className={classes.messageRow}>
           {
             this.state.errors.any
             ?
-            <Typography variant="subtitle2" className={classes.errorText}>
-              {this.state.errorText}
-            </Typography>
+            <div className={classes.messageRow}>
+              <Typography variant="subtitle2" className={classes.errorText}>
+                {this.state.errorText}
+              </Typography>
+            </div>
             :
             null
           }
-        </div>
       </div>
+
     )
   }
 }
