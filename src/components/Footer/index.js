@@ -9,7 +9,7 @@ const styles = (theme) => ({
   root: {
     backgroundColor: '#212121',
     width: '100%',
-    height: '64px',
+    minHeight: '64px',
     display: 'grid',
     gridTemplateColumns: 'repeat(12, 1fr)',
     gridRowGap: '1em',

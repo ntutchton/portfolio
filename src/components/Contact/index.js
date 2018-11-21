@@ -33,7 +33,7 @@ function Contact(props) {
   return (
     <div className={classes.root}>
       <Typography variant="h3">
-        Get in Touch.
+        Get in Touch
       </Typography>
       <div className={classes.formContainer}>
         <EmailForm currentTheme={props.currentTheme}/>

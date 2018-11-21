@@ -1,23 +1,53 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import classNames from 'classnames';
 import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors/';
+import { red, green } from '@material-ui/core/colors/';
 import ReCAPTCHA from "react-google-recaptcha";
 import verifyReCaptcha from '../../http/reCaptcha'
+import sendEmail from '../../http/email'
 import Button from '@material-ui/core/Button';
 import SendIcon from '@material-ui/icons/SendTwoTone';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import AccountCircle from '@material-ui/icons/AccountCircleTwoTone';
+import Close from '@material-ui/icons/Close';
 import Email from '@material-ui/icons/EmailTwoTone';
 import Message from '@material-ui/icons/TextsmsTwoTone';
 
 const styles = theme => ({
-  errorRow: {
+  messageRow: {
     minHeight: '2em',
     width:'100%',
     textAlign: 'right',
+  },
+  confirmationRow:{
+    display: 'flex',
+    justifyContent: 'space-between',
+    margin: '1em 0'
+  },
+  hideConfirmation: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    '&:hover': {
+      cursor: 'pointer'
+    }
+  },
+  confirmationText: {
+    color: green[400],
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    textAlign: 'left',
+  },
+  emoji:{
+    fontSize: '200%',
+    paddingRight:  '.5em',
+  },
+  confirmationMessageWrapper:{
+    display: 'flex',
+    justifyContent: 'center'
   },
   errorText: {
     color: red[500]
@@ -25,17 +55,18 @@ const styles = theme => ({
   input:{
     width:'60%',
     marginBottom: '2em',
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+    },
   },
   message:{
     width:'100%',
     marginBottom: '2em',
   },
   messageIcon:{
-    // positionEnd:{
-      marginLeft: '0',
-      marginRight:'8px',
-      marginBottom: '37%',
-    // }
+    marginLeft: '0',
+    marginRight:'8px',
+    marginBottom: '13em',
   },
   sendButtonRow:{
     width:'100%',
@@ -48,7 +79,7 @@ const styles = theme => ({
   },
   sendButton: {
     width: '25%',
-  }
+  },
 });
 
 const recaptchaRef = React.createRef();
@@ -56,12 +87,13 @@ const recaptchaRef = React.createRef();
 class EmailForm extends React.Component{
   state = {
     validReCaptcha: false,
-    formError: false,
+    showConfirmation: false,
     errorText: '',
     name:'',
     email:'',
     message:'',
     errors: {
+      any: false,
       name: false,
       email: false,
       message: false
@@ -95,14 +127,15 @@ class EmailForm extends React.Component{
 
   toggleErrorText = () => {
     this.setState({
-      formError: !this.state.formError
+      errors: {
+        any: !this.state.errors.any
+      }
     })
   }
 
   validateEmail = () => {
-    let regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    console.log();
-    return regex.test((this.state.email).toLowerCase());
+    let regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return (this.state.email.length > 1 && regex.test((this.state.email).toLowerCase()));
   }
 
   validateName = () => {
@@ -120,38 +153,95 @@ class EmailForm extends React.Component{
 };
 
   submit = () => {
+    //clean errors
+    this.clearFormErrors()
+    //everything looks good, return
     if (this.validateEmail()
       && this.validateName()
       && this.validateMessage()
       && this.state.validReCaptcha) {
-      console.log('form is valid -> TODO send')
+      this.triggerSendEmail(this.state.name, this.state.email, this.state.message)
       return
     }
+    //build new error object and only make one call to setState at end
+    let errors = {}
+    let numErrors = 0
 
-    //this structure doesn't pick up multiple erros. need to retink and refactor so that the messages make sense also
-    else if (!this.validateEmail()) {
+    if (!this.validateEmail()) {
+      errors.email= true
+      errors.any=true
+      numErrors += 1
+    }
+    if (!this.validateName()){
+      errors.name= true
+      errors.any= true
+      numErrors += 1
+    }
+    if (!this.validateMessage()){
+      errors.message= true
+      errors.any= true
+      numErrors += 1
+    }
+    // reCaptcha is highest priority error, and so will return if found
+    if (!this.state.validReCaptcha){
+      errors.any= true
+      recaptchaRef.current.reset();
+      this.setErrorText('Please complete the reCaptcha.')
+      return
+
+    }
+    //check all errors at once to set multipleErrors bool and decide if we should use and
+    if ( numErrors > 1 ){}
+    //if any non-recaptcha errors found, display error message
+    if (errors.any){
       this.setState({
-        errors: {
-          email: true
+        errors: errors
+      })
+      this.setErrorText('Please correct the errors in the form and submit again.')
+    }
+  }
+
+  clearFormErrors = () => {
+    this.setState({
+      errors:{
+        any: false,
+        name: false,
+        email: false,
+        message: false
+      }
+    })
+  }
+
+  resetForm = () => {
+    this.setState({
+      name: '',
+      message: '',
+      email: '',
+      validReCaptcha: false
+    })
+    recaptchaRef.current.reset();
+  }
+
+  displayConfirmation = () => {
+    this.setState({
+      showConfirmation: true
+    })
+  }
+
+  triggerSendEmail = (name, email, message) => {
+    // console.log('TODO SEND ->', name, email, message)
+    sendEmail(name, email, message)
+      .then( res => {
+        let data = JSON.parse(res.data.body)
+        if (res.status=== 200 && data.MessageId) {
+          this.displayConfirmation()
+          this.resetForm()
+        }
+        else {
+          console.log(res);
+          this.resetForm()
         }
       })
-    }
-    else if (!this.validateName()){
-      this.setState({
-        errors: {
-          name: true
-        }
-      })
-    }
-    else if (!this.validateMessage()){
-      this.setState({
-        errors: {
-          message: true
-        }
-      })
-    }
-    this.setErrorText('Please correct the errors in this form and try again.')
-    this.toggleErrorText()
   }
 
   render(){
@@ -159,6 +249,23 @@ class EmailForm extends React.Component{
 
     return(
       <div>
+          {
+            this.state.showConfirmation
+            ?
+            <div className={classNames([classes.messageRow, classes.confirmationRow])}>
+              <Typography variant="subtitle1" className={classes.confirmationText}>
+                <span className={classes.confirmationMessageWrapper}>
+                  <span role="img" aria-label="thumbs-up" className={classes.emoji}>👍🏻</span>
+                  <span className={classes.confirmationText}>I've received your message and will be in touch soon.</span>
+                </span>
+              </Typography>
+              <div className={classes.hideConfirmation}>
+                <Close color={this.props.currentTheme === 'dark' ? 'primary' : ''} onClick={()=>{this.setState({showConfirmation:false})}}/>
+              </div>
+            </div>
+            :
+            null
+          }
         <form>
           <TextField
             className={classes.input}
@@ -220,26 +327,21 @@ class EmailForm extends React.Component{
               <SendIcon className={classes.sendIconPadding}></SendIcon>
             </Button>
         </div>
-        <div className={classes.errorRow}>
           {
-            this.state.formError
+            this.state.errors.any
             ?
-            <Typography variant="subtitle2" className={classes.errorText}>
-              {this.state.errorText}
-            </Typography>
+            <div className={classes.messageRow}>
+              <Typography variant="subtitle2" className={classes.errorText}>
+                {this.state.errorText}
+              </Typography>
+            </div>
             :
             null
           }
-        </div>
       </div>
-
 
     )
   }
 }
-
-EmailForm.propTypes = {
-
-};
 
 export default withStyles(styles)(EmailForm);
