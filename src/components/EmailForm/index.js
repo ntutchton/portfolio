@@ -1,8 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import classNames from 'classnames';
 import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors/';
+import { red, green } from '@material-ui/core/colors/';
 import ReCAPTCHA from "react-google-recaptcha";
 import verifyReCaptcha from '../../http/reCaptcha'
 import Button from '@material-ui/core/Button';
@@ -10,14 +10,35 @@ import SendIcon from '@material-ui/icons/SendTwoTone';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import AccountCircle from '@material-ui/icons/AccountCircleTwoTone';
+import Close from '@material-ui/icons/Close';
 import Email from '@material-ui/icons/EmailTwoTone';
 import Message from '@material-ui/icons/TextsmsTwoTone';
 
 const styles = theme => ({
-  errorRow: {
+  messageRow: {
     minHeight: '2em',
     width:'100%',
     textAlign: 'right',
+  },
+  confirmationRow:{
+    display: 'flex',
+    justifyContent: 'space-between',
+    margin: '1em 0'
+  },
+  hideConfirmation: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    height: '2em',
+    '&:hover': {
+      cursor: 'pointer'
+    }
+  },
+  confirmationText: {
+    color: green[400],
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
   },
   errorText: {
     color: red[500]
@@ -25,17 +46,18 @@ const styles = theme => ({
   input:{
     width:'60%',
     marginBottom: '2em',
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+    },
   },
   message:{
     width:'100%',
     marginBottom: '2em',
   },
   messageIcon:{
-    // positionEnd:{
-      marginLeft: '0',
-      marginRight:'8px',
-      marginBottom: '37%',
-    // }
+    marginLeft: '0',
+    marginRight:'8px',
+    marginBottom: '13em',
   },
   sendButtonRow:{
     width:'100%',
@@ -56,12 +78,13 @@ const recaptchaRef = React.createRef();
 class EmailForm extends React.Component{
   state = {
     validReCaptcha: false,
-    formError: false,
+    showConfirmation: false,
     errorText: '',
     name:'',
     email:'',
     message:'',
     errors: {
+      any: false,
       name: false,
       email: false,
       message: false
@@ -95,14 +118,15 @@ class EmailForm extends React.Component{
 
   toggleErrorText = () => {
     this.setState({
-      formError: !this.state.formError
+      errors: {
+        any: !this.state.errors.any
+      }
     })
   }
 
   validateEmail = () => {
-    let regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    console.log();
-    return regex.test((this.state.email).toLowerCase());
+    let regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return (this.state.email.length > 1 && regex.test((this.state.email).toLowerCase()));
   }
 
   validateName = () => {
@@ -120,38 +144,77 @@ class EmailForm extends React.Component{
 };
 
   submit = () => {
+    //clean errors
+    this.clearFormErrors()
+    //everything looks good, return
     if (this.validateEmail()
       && this.validateName()
       && this.validateMessage()
       && this.state.validReCaptcha) {
-      console.log('form is valid -> TODO send')
+      this.sendEmail(this.state.name, this.state.email, this.state.message)
       return
     }
+    //build new error object and only make one call to setState at end
+    let errors = {}
+    if (!this.validateEmail()) {
+      errors.email= true
+      errors.any=true
+    }
+    if (!this.validateName()){
+      errors.name= true
+      errors.any= true
+    }
+    if (!this.validateMessage()){
+      errors.message= true
+      errors.any= true
+    }
+    // reCaptcha is highest priority error, and so will return if found
+    if (!this.state.validReCaptcha){
+      errors.any= true
+      recaptchaRef.current.reset();
+      this.setErrorText('Please complete the reCaptcha.')
+      return
 
-    //this structure doesn't pick up multiple erros. need to retink and refactor so that the messages make sense also
-    else if (!this.validateEmail()) {
-      this.setState({
-        errors: {
-          email: true
-        }
-      })
     }
-    else if (!this.validateName()){
+    //if any non-recaptcha errors found, display error message
+    if (errors.any){
       this.setState({
-        errors: {
-          name: true
-        }
+        errors: errors
       })
+      this.setErrorText('Please correct the errors in this form and try again.')
     }
-    else if (!this.validateMessage()){
-      this.setState({
-        errors: {
-          message: true
-        }
-      })
-    }
-    this.setErrorText('Please correct the errors in this form and try again.')
-    this.toggleErrorText()
+  }
+
+  clearFormErrors = () => {
+    this.setState({
+      errors:{
+        any: false,
+        name: false,
+        email: false,
+        message: false
+      }
+    })
+  }
+
+  resetForm = () => {
+    this.setState({
+      name: '',
+      message: '',
+      email: '',
+      validReCaptcha: false
+    })
+    recaptchaRef.current.reset();
+  }
+
+  displayConfirmation = () => {
+    this.setState({
+      showConfirmation: true
+    })
+  }
+
+  sendEmail = (name, email, message) => {
+    console.log('TODO SEND ->', name, email, message)
+    this.displayConfirmation()
   }
 
   render(){
@@ -159,6 +222,20 @@ class EmailForm extends React.Component{
 
     return(
       <div>
+          {
+            this.state.showConfirmation
+            ?
+            <div className={classNames([classes.messageRow, classes.confirmationRow])}>
+              <Typography variant="subtitle2" className={classes.confirmationText}>
+                You've sent me a message!  I'll be in touch soon.
+              </Typography>
+              <div className={classes.hideConfirmation}>
+                <Close onClick={()=>{this.setState({showConfirmation:false})}}/>
+              </div>
+            </div>
+            :
+            null
+          }
         <form>
           <TextField
             className={classes.input}
@@ -220,9 +297,9 @@ class EmailForm extends React.Component{
               <SendIcon className={classes.sendIconPadding}></SendIcon>
             </Button>
         </div>
-        <div className={classes.errorRow}>
+        <div className={classes.messageRow}>
           {
-            this.state.formError
+            this.state.errors.any
             ?
             <Typography variant="subtitle2" className={classes.errorText}>
               {this.state.errorText}
@@ -232,14 +309,8 @@ class EmailForm extends React.Component{
           }
         </div>
       </div>
-
-
     )
   }
 }
-
-EmailForm.propTypes = {
-
-};
 
 export default withStyles(styles)(EmailForm);
