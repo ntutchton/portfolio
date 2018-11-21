@@ -4,7 +4,9 @@ import { withStyles } from '@material-ui/core/styles';
 import { Route } from 'react-router-dom'
 
 const styles = (theme) => ({
-  root: {  }
+  root: {
+    flex: '1'
+  }
 })
 
 function Content(props) {

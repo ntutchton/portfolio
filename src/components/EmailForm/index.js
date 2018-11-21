@@ -29,7 +29,6 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    height: '2em',
     '&:hover': {
       cursor: 'pointer'
     }
@@ -39,6 +38,14 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
+  },
+  emoji:{
+    fontSize: '200%',
+    paddingRight:  '.5em',
+  },
+  confirmationMessageWrapper:{
+    display: 'flex',
+    justifyContent: 'center'
   },
   errorText: {
     color: red[500]
@@ -70,7 +77,7 @@ const styles = theme => ({
   },
   sendButton: {
     width: '25%',
-  }
+  },
 });
 
 const recaptchaRef = React.createRef();
@@ -227,7 +234,10 @@ class EmailForm extends React.Component{
             ?
             <div className={classNames([classes.messageRow, classes.confirmationRow])}>
               <Typography variant="subtitle2" className={classes.confirmationText}>
-                You've sent me a message!  I'll be in touch soon.
+                <span className={classes.confirmationMessageWrapper}>
+                  <span role="img" aria-label="thumbs-up" className={classes.emoji}>👍🏻</span>
+                  <span className={classes.confirmationText}>You've sent me a message!  I'll be in touch soon.</span>
+                </span>
               </Typography>
               <div className={classes.hideConfirmation}>
                 <Close onClick={()=>{this.setState({showConfirmation:false})}}/>

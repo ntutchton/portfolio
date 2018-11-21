@@ -2,8 +2,10 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
-const styles = (theme) => ({
-  root: {  }
+const styles = theme => ({
+  root: {
+    flex: '1'
+  }
 })
 
 function Main(props) {
@@ -14,7 +16,6 @@ function Main(props) {
         <Typography variant="h2">
           Main
         </Typography>
-        <div style={{height:'500vh'}}></div>
         <div id="projects">
           projects
         </div>
