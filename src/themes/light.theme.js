@@ -13,6 +13,7 @@ const theme = createMuiTheme({
     type: 'light',
     primary: {
       main: red[500],
+      dark: red[600],
     },
     secondary: {
       main: lightBlue[400],

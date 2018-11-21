@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import EmailForm from '../EmailForm'
 
-const styles = (theme) => ({
+const styles = theme => ({
   root: {
     margin: '0 auto',
     paddingTop: '3em',
@@ -18,7 +18,7 @@ const styles = (theme) => ({
     },
   },
   formContainer: {
-    margin: '5em 20%',
+    margin: '4em 20%',
     [theme.breakpoints.down('md')]: {
       margin: '5em 10%',
     },
