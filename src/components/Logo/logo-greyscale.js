@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 
 function LogoGreyscale(props) {
   return (
-    <svg  width={props.size + 'px'} height={props.size + 'px'} viewBox="0 0 276 565" version="1.1">
+
+    <svg width={props.size + 'px'} height={props.size + 'px'} viewBox="0 0 276 565" version="1.1">
         <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
             <g id="logo" transform="translate(-503.000000, -138.000000)" fillRule="nonzero">
                 <g id="logo-greyscale" transform="translate(521.000000, 157.000000)">
@@ -16,12 +17,12 @@ function LogoGreyscale(props) {
                             <path d="M239.205298,45.5310136 L1.58940397,206.087746" id="Path-4"></path>
                             <ellipse id="Oval" fill="#BDBDBD" cx="120.850993" cy="310.043116" rx="62.2509934" ry="62.4431165"></ellipse>
                         </g>
-                        <rect fill="#D8D8D8" x="-22" y="-25" width="285" height="576"></rect>
                     </g>
                 </g>
             </g>
         </g>
     </svg>
+
   );
 }
 

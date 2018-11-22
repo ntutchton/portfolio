@@ -2,6 +2,9 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import SvgLogo from '../Logo'
+import { Parallax } from 'react-scroll-parallax';
+
 
 const styles = theme => ({
   root: {
@@ -9,6 +12,7 @@ const styles = theme => ({
   },
   section: {
     display: 'grid',
+    minHeight: '100vh',
     gridTemplateColumns: 'repeat(12, 1fr)',
   },
   heroImage: {
@@ -35,7 +39,7 @@ const styles = theme => ({
   heroName: {
     marginBottom: '1.3em',
     fontWeight: '700',
-    width:'150%',
+    width:'200%',
     [theme.breakpoints.down('sm')]: {
       width: '100%',
     },
@@ -44,6 +48,10 @@ const styles = theme => ({
     width: '15em',
     height: '4em',
     marginBottom: '15em',
+  },
+  paralaxWrapper: {
+    transform: 'translateY(-450px)translateX(-60px)',
+    zIndex: '-1',
   }
 })
 
@@ -54,7 +62,9 @@ function Main(props) {
       <div>
 
         <div className={classes.section}>
+
           <div className={classes.heroText}>
+
             <Typography variant="h6" color="textSecondary" style={{width: '150%', marginBottom: '2em'}}>
               Hello, my name is
             </Typography>
@@ -70,10 +80,23 @@ function Main(props) {
             <Button variant="contained" color="primary" className={classes.heroContactButton}>
               Contact Me
             </Button>
+
+            <Parallax
+              className={classes.paralaxWrapper}
+              offsetYMax={20}
+              offsetYMin={-20}
+              slowerScrollRate
+              tag="figure"
+            >
+                <SvgLogo size={700} type="greyscale"></SvgLogo>
+            </Parallax>
+
           </div>
+
           <div className={classes.heroImage}>
 
           </div>
+
         </div>
 
         <div id="work" className={classes.section}>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+import { ParallaxProvider } from 'react-scroll-parallax';
 import smoothscroll from 'smoothscroll-polyfill';
 import darkTheme from './themes/dark.theme.js';
 import lightTheme from './themes/light.theme.js';
@@ -71,29 +72,31 @@ class App extends Component {
     return (
       <Router>
         <React.Fragment>
-          <CssBaseline />
-          <MuiThemeProvider theme={this.getThemeObject(this.state.currentTheme)}>
-              <div className={
-                (this.state.currentTheme === 'dark')
-                  ? 'App dark-app'
-                  : 'App light-app'}>
-                <Header
-                  updateActiveUrlHash={this.updateActiveUrlHash}
-                  activeUrlHash={this.state.activeUrlHash}
-                  currentTheme={this.state.currentTheme}
-                  changeTheme={this.switchTheme}/>
-                <Switch>
-                  <Route exact path="/" component={Main} />
-                  <Route exact path="/content" component={Content} />
-                  <Route exact path="/contact"
-                    component={()=>(
-                      <Contact currentTheme={this.state.currentTheme}/>
-                    )}/>
-                  <Route component={ ()=>(<Redirect to="/" />) } />
-                </Switch>
-                <Footer updateActiveUrlHash={this.updateActiveUrlHash}/>
-              </div>
-          </MuiThemeProvider>
+          <ParallaxProvider>
+            <CssBaseline />
+            <MuiThemeProvider theme={this.getThemeObject(this.state.currentTheme)}>
+                <div className={
+                  (this.state.currentTheme === 'dark')
+                    ? 'App dark-app'
+                    : 'App light-app'}>
+                  <Header
+                    updateActiveUrlHash={this.updateActiveUrlHash}
+                    activeUrlHash={this.state.activeUrlHash}
+                    currentTheme={this.state.currentTheme}
+                    changeTheme={this.switchTheme}/>
+                  <Switch>
+                    <Route exact path="/" component={Main} />
+                    <Route exact path="/content" component={Content} />
+                    <Route exact path="/contact"
+                      component={()=>(
+                        <Contact currentTheme={this.state.currentTheme}/>
+                      )}/>
+                    <Route component={ ()=>(<Redirect to="/" />) } />
+                  </Switch>
+                  <Footer updateActiveUrlHash={this.updateActiveUrlHash}/>
+                </div>
+            </MuiThemeProvider>
+          </ParallaxProvider>
         </React.Fragment>
       </Router>
     );
