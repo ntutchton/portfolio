@@ -5,6 +5,9 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = theme => ({
   root: {
     flex: '1'
+  },
+  section: {
+    height: '100vh', //TEMP
   }
 })
 
@@ -13,13 +16,39 @@ function Main(props) {
   return (
     <div className={classes.root}>
       <div>
-        <Typography variant="h2">
-          Main
-        </Typography>
-        <div id="projects">
-          projects
+
+        <div className={classes.section}>
+          <Typography variant="h2">
+            Main
+          </Typography>
         </div>
+
+        <div id="work" className={classes.section}>
+          <Typography variant="h2">
+            work
+          </Typography>
+        </div>
+
+        <div id="skills" className={classes.section}>
+          <Typography variant="h2">
+            skills
+          </Typography>
+        </div>
+
+        <div className={classes.blurb}>
+          <Typography variant="h2">
+            blurb
+          </Typography>
+        </div>
+
+        <div id="projects" className={classes.section}>
+          <Typography variant="h2">
+            projects
+          </Typography>
+        </div>
+
       </div>
+
     </div>
   );
 }

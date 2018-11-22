@@ -109,8 +109,9 @@ class EmailForm extends React.Component{
           })
         }
         else {
+          //probably expired although ot necesarrily
           this.toggleErrorText()
-          this.setErrorText('There was an external error with the ReCaptcha API.  Please recomplete the ReCaptcha.')
+          this.setErrorText('The ReCaptcha has expired.  Please recomplete the ReCaptcha.')
           recaptchaRef.current.reset();
         }
       })
@@ -260,7 +261,7 @@ class EmailForm extends React.Component{
                 </span>
               </Typography>
               <div className={classes.hideConfirmation}>
-                <Close color={this.props.currentTheme === 'dark' ? 'primary' : ''} onClick={()=>{this.setState({showConfirmation:false})}}/>
+                <Close color={this.props.currentTheme === 'dark' ? 'primary' : null} onClick={()=>{this.setState({showConfirmation:false})}}/>
               </div>
             </div>
             :

@@ -20,10 +20,10 @@ const styles = theme => ({
   formContainer: {
     margin: '4em 20%',
     [theme.breakpoints.down('md')]: {
-      margin: '5em 10%',
+      margin: '4em 10%',
     },
     [theme.breakpoints.down('sm')]: {
-      margin: '5em 5%',
+      margin: '4em 5%',
     },
   }
 })
