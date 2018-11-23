@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom'
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
@@ -10,6 +12,9 @@ import { Parallax } from 'react-scroll-parallax';
 const styles = theme => ({
   root: {
     flex: '1'
+  },
+  link: {
+    textDecoration: 'none',
   },
   section: {
     height: '1000px',
@@ -63,7 +68,6 @@ const styles = theme => ({
     marginBottom: '15em',
   },
   paralaxWrapper: {
-    // transform: 'translateY(60px)translateX(-80px)',//OR translateX(-60px) to support bad zindexing
     transform: 'translateY(-460px)translateX(-50px)',
     zIndex: '-1',
   },
@@ -71,7 +75,7 @@ const styles = theme => ({
     opacity: '.3'
   }
 })
-//            <div style={{ transform: 'translateX(0px)translateY(-470px)', zIndex: '-1', overflow: 'hidden', width: '200%' }}>
+
 function Main(props) {
   const { classes } = props;
   return (
@@ -94,10 +98,11 @@ function Main(props) {
             <Typography variant="h6" color="textSecondary" style={{marginBottom: '4em', width: '150%'}}>
               full-stack applications.
             </Typography>
-            <Button variant="contained" color="primary" className={classes.heroContactButton}>
-              Contact Me
-            </Button>
-
+            <Link to="/contact" className={classes.link} onClick={()=>{props.updateActiveUrlHash('')}}>
+              <Button variant="contained" color="primary" className={classes.heroContactButton}>
+                Contact Me
+              </Button>
+            </Link>
 
               <Parallax
                 className={classNames([classes.paralaxWrapper, (props.currentTheme === 'dark' ? classes.paralaxDark: null)])}
@@ -147,5 +152,10 @@ function Main(props) {
     </div>
   );
 }
+
+Main.propTypes = {
+  updateActiveUrlHash: PropTypes.func.isRequired,
+  currentTheme: PropTypes.string.isRequired,
+};
 
 export default withStyles(styles)(Main);

@@ -227,7 +227,8 @@ class Header extends React.Component{
 Header.propTypes = {
   currentTheme: PropTypes.string.isRequired,
   changeTheme: PropTypes.func.isRequired,
-  activeUrlHash: PropTypes.string.isRequired
+  activeUrlHash: PropTypes.string.isRequired,
+  updateActiveUrlHash: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(Header);
