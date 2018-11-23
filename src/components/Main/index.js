@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 import SvgLogo from '../Logo'
 import { Parallax } from 'react-scroll-parallax';
 
-import Timeline from './Timeline'
+import WorkTimeline from './Timeline'
 
 
 const styles = theme => ({
@@ -75,7 +75,7 @@ const styles = theme => ({
     marginBottom: '15em',
   },
   paralaxWrapper: {
-    transform: 'translateY(-460px)translateX(-50px)',
+    transform: 'translateY(-430px)translateX(-50px)',
     zIndex: '-1',
   },
   paralaxDark: {
@@ -129,7 +129,7 @@ function Main(props) {
         </div>
 
         <div id="work" className={classes.section}>
-          <Timeline />
+          <WorkTimeline />
         </div>
 
         <div id="skills" className={classes.section}>
