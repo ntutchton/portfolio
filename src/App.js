@@ -85,7 +85,7 @@ class App extends Component {
                     currentTheme={this.state.currentTheme}
                     changeTheme={this.switchTheme}/>
                   <Switch>
-                    <Route exact path="/" component={Main} />
+                    <Route exact path="/" render={(props) => <Main {...props} currentTheme={this.state.currentTheme} />} />
                     <Route exact path="/content" component={Content} />
                     <Route exact path="/contact"
                       component={()=>(

@@ -1,6 +1,7 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
+import classNames from 'classnames';
 import Button from '@material-ui/core/Button';
 import SvgLogo from '../Logo'
 import { Parallax } from 'react-scroll-parallax';
@@ -11,18 +12,29 @@ const styles = theme => ({
     flex: '1'
   },
   section: {
+    height: '1000px',
+    width:'100%',
+    zIndex: '2',
+  },
+  hero: {
     display: 'grid',
-    minHeight: '100vh',
+    height: '870px',
+    overflow: 'hidden',
     gridTemplateColumns: 'repeat(12, 1fr)',
   },
   heroImage: {
-    height:'50px', //TEMP
+    height:'750px', //TEMP
     gridColumnStart: '5',
-    gridColumnEnd: '12',
+    gridColumnEnd: '13',
     backgroundColor: 'grey',
     display: 'flex',
+    zIndex: '2',
     [theme.breakpoints.down('sm')]: {
-      gridColumnStart: '2',
+      gridColumnStart: '1',
+      zIndex: '3',
+    },
+    [theme.breakpoints.up('lg')]: {
+      gridColumnEnd: '12',
     },
   },
   heroText: {
@@ -31,7 +43,8 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'column',
     paddingTop: '10em',
-    zIndex: '2',
+    zIndex: '3',
+    marginBottom: '-750px',
     [theme.breakpoints.down('sm')]: {
       gridColumnEnd: '12',
     },
@@ -50,18 +63,22 @@ const styles = theme => ({
     marginBottom: '15em',
   },
   paralaxWrapper: {
-    transform: 'translateY(-450px)translateX(-60px)',
+    // transform: 'translateY(60px)translateX(-80px)',//OR translateX(-60px) to support bad zindexing
+    transform: 'translateY(-460px)translateX(-50px)',
     zIndex: '-1',
+  },
+  paralaxDark: {
+    opacity: '.3'
   }
 })
-
+//            <div style={{ transform: 'translateX(0px)translateY(-470px)', zIndex: '-1', overflow: 'hidden', width: '200%' }}>
 function Main(props) {
   const { classes } = props;
   return (
     <div className={classes.root}>
       <div>
 
-        <div className={classes.section}>
+        <div className={classes.hero}>
 
           <div className={classes.heroText}>
 
@@ -71,25 +88,27 @@ function Main(props) {
             <Typography variant="h3" className={classes.heroName}>
               Nathan Tutchton
             </Typography>
-            <Typography variant="h6" color="textSecondary">
-              I design and develop
+            <Typography variant="h6" color="textSecondary" style={{width: '150%'}}>
+              I design and develop beautiful
             </Typography>
-            <Typography variant="h6" color="textSecondary" style={{marginBottom: '4em'}}>
-              beautiful full-stack applications.
+            <Typography variant="h6" color="textSecondary" style={{marginBottom: '4em', width: '150%'}}>
+              full-stack applications.
             </Typography>
             <Button variant="contained" color="primary" className={classes.heroContactButton}>
               Contact Me
             </Button>
 
-            <Parallax
-              className={classes.paralaxWrapper}
-              offsetYMax={20}
-              offsetYMin={-20}
-              slowerScrollRate
-              tag="figure"
-            >
-                <SvgLogo size={700} type="greyscale"></SvgLogo>
-            </Parallax>
+
+              <Parallax
+                className={classNames([classes.paralaxWrapper, (props.currentTheme === 'dark' ? classes.paralaxDark: null)])}
+                offsetYMax={20}
+                offsetYMin={-20}
+                slowerScrollRate
+                tag="figure"
+              >
+                  <SvgLogo size={700} type="greyscale"></SvgLogo>
+              </Parallax>
+
 
           </div>
 
