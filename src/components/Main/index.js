@@ -8,6 +8,8 @@ import Button from '@material-ui/core/Button';
 import SvgLogo from '../Logo'
 import { Parallax } from 'react-scroll-parallax';
 
+import Timeline from './Timeline'
+
 
 const styles = theme => ({
   root: {
@@ -17,9 +19,9 @@ const styles = theme => ({
     textDecoration: 'none',
   },
   section: {
-    height: '1000px',
-    width:'100%',
-    zIndex: '2',
+    // minHeight: '100vh',
+    // width:'100%',
+    // zIndex: '2',
   },
   hero: {
     display: 'grid',
@@ -28,15 +30,20 @@ const styles = theme => ({
     gridTemplateColumns: 'repeat(12, 1fr)',
   },
   heroImage: {
-    height:'750px', //TEMP
+    height:'750px',
     gridColumnStart: '5',
     gridColumnEnd: '13',
     backgroundColor: 'grey',
     display: 'flex',
     zIndex: '2',
+    transition: 'all 1s ease-in-out',
     [theme.breakpoints.down('sm')]: {
       gridColumnStart: '1',
       zIndex: '3',
+      marginLeft: '0'
+    },
+    [theme.breakpoints.down('md')]: {
+      marginLeft: '5em',
     },
     [theme.breakpoints.up('lg')]: {
       gridColumnEnd: '12',
@@ -104,16 +111,14 @@ function Main(props) {
               </Button>
             </Link>
 
-              <Parallax
-                className={classNames([classes.paralaxWrapper, (props.currentTheme === 'dark' ? classes.paralaxDark: null)])}
-                offsetYMax={20}
-                offsetYMin={-20}
-                slowerScrollRate
-                tag="figure"
-              >
-                  <SvgLogo size={700} type="greyscale"></SvgLogo>
-              </Parallax>
-
+            <Parallax
+              className={classNames([classes.paralaxWrapper, (props.currentTheme === 'dark' ? classes.paralaxDark: null)])}
+              offsetYMax={20}
+              offsetYMin={-20}
+              slowerScrollRate
+              tag="figure">
+                <SvgLogo size={700} type="greyscale"></SvgLogo>
+            </Parallax>
 
           </div>
 
@@ -124,9 +129,7 @@ function Main(props) {
         </div>
 
         <div id="work" className={classes.section}>
-          <Typography variant="h2">
-            work
-          </Typography>
+          <Timeline />
         </div>
 
         <div id="skills" className={classes.section}>
@@ -153,7 +156,7 @@ function Main(props) {
   );
 }
 
-Main.propTypes = {
+Main.ropTypes = {
   updateActiveUrlHash: PropTypes.func.isRequired,
   currentTheme: PropTypes.string.isRequired,
 };
