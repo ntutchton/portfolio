@@ -19,7 +19,7 @@ const styles = theme => ({
     textDecoration: 'none',
   },
   section: {
-    // minHeight: '100vh',
+    minHeight: '100vh',
     // width:'100%',
     // zIndex: '2',
   },
