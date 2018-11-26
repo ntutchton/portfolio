@@ -9,6 +9,7 @@ import SvgLogo from '../Logo'
 import { Parallax } from 'react-scroll-parallax';
 
 import Timeline from './Timeline'
+import Skills from './Skills'
 
 
 const styles = theme => ({
@@ -80,7 +81,10 @@ const styles = theme => ({
   },
   paralaxDark: {
     opacity: '.2'
-  }
+  },
+  skillSection: {
+      background: '#424242'
+  },
 })
 
 function Main(props) {
@@ -132,10 +136,11 @@ function Main(props) {
           <Timeline theme={props.theme} updateActiveUrlHash={props.updateActiveUrlHash}/>
         </div>
 
-        <div id="skills" className={classes.section}>
-          <Typography variant="h2">
-            skills
+        <div id="skills" className={classNames([classes.section, classes.skillSection])}>
+          <Typography variant="h3" style={{color: 'white', background: '#424242', padding: '1em 5%'}}>
+            I like to work with...
           </Typography>
+          <Skills />
         </div>
 
         <div className={classes.blurb}>
