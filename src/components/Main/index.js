@@ -79,7 +79,7 @@ const styles = theme => ({
     zIndex: '-1',
   },
   paralaxDark: {
-    opacity: '.3'
+    opacity: '.2'
   }
 })
 

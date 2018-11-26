@@ -23,7 +23,6 @@ class Timeline extends React.Component {
 
   handleScroll = () => {
     lastScrollY = window.scrollY;
-    // console.log(lastScrollY);
     if (!ticking) {
       window.requestAnimationFrame(() => {
         this.setState({
@@ -39,9 +38,9 @@ class Timeline extends React.Component {
     const { classes } = this.props
     return (
       <div className={classes.root}>
-        <TimelineSection scroll={this.state.scroll} identifier="dish"/>
-        <TimelineSection scroll={this.state.scroll} identifier="bits"/>
-        <TimelineSection scroll={this.state.scroll} identifier="future"/>
+        <TimelineSection scroll={this.state.scroll} sectionHeight={800} type="left" order={'top'} logoSource="logos/DISH.svg"/>
+        <TimelineSection scroll={this.state.scroll} sectionHeight={800} type="right" logoSource="logos/BITS.svg"/>
+        <TimelineSection scroll={this.state.scroll} sectionHeight={800} type="left" order={'bottom'} logoSource="logos/FUTURE.svg"/>
       </div>
     )
   }
