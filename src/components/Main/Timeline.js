@@ -32,7 +32,8 @@ const styles = theme => ({
     [theme.breakpoints.down('md')]: {
       padding: '1em 0',
       display: 'flex',
-      justifyContent: 'space-between',
+      flexDirection: 'column',
+      justifyContent: 'space-around',
       marginTop: '10%',
       flexGrow: '1',
     },
@@ -48,8 +49,9 @@ const styles = theme => ({
     padding: '0 5%',
     textAlign: 'right',
     [theme.breakpoints.down('md')]: {
-      width: '30%',
+      width: '60%',
       padding: '0',
+      textAlign: 'left',
     },
   },
   textWrapper: {
