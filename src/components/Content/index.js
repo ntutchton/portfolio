@@ -1,11 +1,13 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import { Route } from 'react-router-dom'
 
 const styles = (theme) => ({
   root: {
     flex: '1'
+  },
+  section: {
+    height: '100vh', //TEMP
   }
 })
 
@@ -13,11 +15,31 @@ function Content(props) {
   const { classes } = props;
   return (
     <div className={classes.root}>
-      <Route path="/content#featured">
+
+      <div id="featured" className={classes.section}>
         <Typography variant="h2">
-          Content
+          Featured
         </Typography>
-      </Route>
+      </div>
+
+      <div >
+        <Typography variant="h2">
+          Other Stuff?
+        </Typography>
+      </div>
+
+      <div id="podcasts" className={classes.section}>
+        <Typography variant="h2">
+          Podcasts
+        </Typography>
+      </div>
+
+      <div id="media" className={classes.section}>
+        <Typography variant="h2">
+          Media
+        </Typography>
+      </div>
+
     </div>
   );
 }

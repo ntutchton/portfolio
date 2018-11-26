@@ -4,7 +4,8 @@ html, body{
 #root, .App{
   display: flex;
   flex-direction: column;
-  height: 100%;
+  min-height: 100%;
+  flex: 1;
 }
 .light-app{
   background-color: #fafafa;
@@ -12,3 +13,12 @@ html, body{
 .dark-app{
   background-color: #212121;
 }
+/* #Timeline-Wrapper{
+  /* animation: dash 3s linear infinite; */
+  /* stroke-dashoffset: 5056; */
+/* }
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+} */
