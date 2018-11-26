@@ -8,25 +8,46 @@ const styles = {
   root: {
     display: 'grid',
     height:'100%',
+    overflow: 'hidden',
     gridTemplateColumns: 'repeat(12, 1fr)',
   },
   timelineImage: {
     height: '600px',
-    backgroundColor: '#9E9E9E',
+    // backgroundColor: '#9E9E9E',
+    background: 'linear-gradient(to bottom, #ffb76b 0%,#ffa73d 50%,#ff7c00 51%,#ff7f04 100%)',
     gridColumnStart: '1',
     gridColumnEnd: '8',
   },
-  timelineWrapper: {
+  timelineText: {
     gridColumnStart: '8',
     gridColumnEnd: '13',
-    marginLeft: '-31%',
+  },
+  timelineTextLeft: {
+    gridColumnStart: '1',
+    gridColumnEnd: '6',
+  },
+  timelineImageRight: {
+    height: '600px',
+    background: 'linear-gradient(to bottom, #ffb76b 0%,#ffa73d 50%,#ff7c00 51%,#ff7f04 100%)',
+    gridColumnStart: '6',
+    gridColumnEnd: '13',
+  },
+  timelineWrapper: {
+    transform: 'scale(1.01)',
     minHeight: '2000px',
+    marginBottom: '-2245px',
+    gridColumnEnd: '8',
+    display: 'flex',
+    gridColumnStart: '6',
+    flexDirection: 'column',
+    justifyContent: 'center',
   },
   svg: {
     strokeDasharray: '5056',
     // strokeDashoffset: '5056'
     transition: 'stroke-dashoffset .4s cubic-bezier(.17,.67,.83,.67)',
     // transitionDelay: '.1s',
+    // transform: 'scale(1.01)',
   }
 }
 
@@ -40,6 +61,8 @@ class WorkTimeline extends React.Component {
     svgDrawOffset: '5056',
     scrollStartHeight: 500, //945
     scrollEndHeight: 3650, //3175
+    // scrollComplete: false,
+    // scrollCompleteHeight: 2120,
   }
 
   componentDidMount() {
@@ -62,21 +85,30 @@ class WorkTimeline extends React.Component {
   };
 
   updateProgress = scrollY => {
-    if (scrollY > this.state.scrollStartHeight && scrollY < this.state.scrollEndHeight){
-      this.setState({
-        progress: this.normalizeScrollValue(scrollY)
-      })
-    }
-    else if (scrollY < this.state.scrollStartHeight){
-      this.setState({
-        progress: 1
-      })
-    }
-    else if (scrollY > this.state.scrollEndHeight){
-      this.setState({
-        progress: 0
-      })
-    }
+    // if (scrollY > this.state.scrollCompleteHeight){
+    //   this.setState({
+    //     progress: 0,
+    //     scrollComplete: true
+    //   })
+    //   return
+    // }
+    // if (!this.state.scrollComplete){
+      if (scrollY > this.state.scrollStartHeight && scrollY < this.state.scrollEndHeight){
+        this.setState({
+          progress: this.normalizeScrollValue(scrollY)
+        })
+      }
+      else if (scrollY < this.state.scrollStartHeight){
+        this.setState({
+          progress: 1
+        })
+      }
+      else if (scrollY > this.state.scrollEndHeight){
+        this.setState({
+          progress: 0,
+        })
+      }
+    // }
   }
 
   //returns 0-100 value based off scrollStartHeight and scrollEndHeight range
@@ -89,13 +121,10 @@ class WorkTimeline extends React.Component {
 
     return (
       <div className={classes.root}>
-        <div className={classes.timelineImage}>
 
-        </div>
         <div className={classes.timelineWrapper}>
 
-
-          <svg width="196px" height="2222px" viewBox="0 0 196 2222" version="1.1" >
+          <svg className={classes.svg} width="196px" height="2222px" viewBox="0 0 196 2222" version="1.1" style={{margin: '0 auto'}}>
               <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd" strokeLinecap="round">
                   <g className={classes.svg} id="Timeline-Wrapper" transform="translate(-165.000000, -242.000000)" fillRule="nonzero" stroke="#F44336" strokeWidth="10" strokeDashoffset={`${this.state.svgDrawOffset * this.state.progress}`}>
                       <g id="Timeline-Wrapper" transform="translate(170.000000, 247.000000)">
@@ -110,9 +139,30 @@ class WorkTimeline extends React.Component {
               </g>
           </svg>
 
-
-
         </div>
+
+        <div className={classes.timelineImage}>
+          <div style={{height: '200px', width: '200px', background: 'gold'}}></div>
+        </div>
+        <div className={classes.timelineText}>
+          <h3>TEXT</h3>
+        </div>
+
+        <div className={classes.timelineTextLeft} style={{margin: '148px 0'}}>
+          <h3>TEXT</h3>
+        </div>
+        <div className={classes.timelineImageRight} style={{margin: '148px 0'}}>
+          <div style={{height: '200px', width: '200px', background: 'gold'}}></div>
+        </div>
+
+        <div className={classes.timelineImage}>
+          <div style={{height: '200px', width: '200px', background: 'gold'}}></div>
+        </div>
+        <div className={classes.timelineText}>
+          <h3>TEXT</h3>
+        </div>
+
+
       </div>
     )
   }
