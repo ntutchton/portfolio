@@ -129,7 +129,7 @@ function Main(props) {
         </div>
 
         <div id="work" className={classes.section}>
-          <Timeline theme={props.theme}/>
+          <Timeline theme={props.theme} updateActiveUrlHash={props.updateActiveUrlHash}/>
         </div>
 
         <div id="skills" className={classes.section}>

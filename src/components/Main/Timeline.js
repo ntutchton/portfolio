@@ -1,10 +1,11 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Popover from '@material-ui/core/Popover';
 import ArrowForward from '@material-ui/icons/ArrowForward';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 import TimelineSection from './TimelineSection'
 
@@ -14,6 +15,9 @@ let ticking = false;
 const styles = theme => ({
   root: {
     overflow: 'hidden'
+  },
+  link: {
+    textDecoration: 'none',
   },
   wrapper: {
     padding: '5%',
@@ -55,7 +59,6 @@ const styles = theme => ({
       justifyContent: 'space-between',
       [theme.breakpoints.down('sm')]: {
         flexGrow: '2',
-        // justifyContent: 'space-between',
       },
   },
   blurb: {
@@ -88,8 +91,12 @@ class Timeline extends React.Component {
     anchorEl: null,
   }
 
-  componentDidMount(){
+  componentWillMount(){
     window.addEventListener('scroll', this.handleScroll);
+  }
+
+  componentWillUnmount(){
+      window.removeEventListener('scroll', this.handleScroll);
   }
 
   handleScroll = () => {
@@ -130,7 +137,7 @@ class Timeline extends React.Component {
               <Typography variant="h4" className={classes.header}>
                 Software Configuration and Build Engineer
               </Typography>
-              <Typography variant="subtitle1" className={classes.date}>
+              <Typography variant="subtitle2" className={classes.date}>
                 2017
               </Typography>
             </div>
@@ -148,7 +155,7 @@ class Timeline extends React.Component {
               <Typography variant="h4" className={classes.header}>
                 UI / UX Developer
               </Typography>
-              <Typography variant="subtitle1" className={classes.date}>
+              <Typography variant="subtitle2" className={classes.date}>
                 2018 - Present
               </Typography>
             </div>
@@ -181,7 +188,7 @@ class Timeline extends React.Component {
                  }}
                >
                   <div className={classes.popover}>
-                    <Typography variant="subtitle2" >You will need an active security clearence to view this content.</Typography>
+                    <Typography variant="subtitle1" >You will need an active security clearence to view this content.</Typography>
                     <Button style={{marginTop: '1em'}} href={'https://my.gs.mil/login'}>
                       No Problem <ArrowForward style={{marginLeft: '5px'}}/>
                     </Button>
@@ -201,9 +208,13 @@ class Timeline extends React.Component {
               <Typography variant="body1" className={classes.blurb}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dapibus sapien eget eleifend lacinia. In sagittis in risus non dictum. Ut sit amet lorem arcu. Proin sed nulla feugiat, blandit eros eu, tempor ex. Etiam non condimentum ex. Vivamus dapibus ante sed rhoncus vehicula. Cras dictum porttitor leo, ac sodales mauris scelerisque sed. Donec odio neque, consectetur nec pulvinar eu, maximus id arcu. Interdum et malesuada fames ac ante ipsum primis in faucibus.
               </Typography>
-              <Button variant="contained" color="primary" className={classes.seeMoreButton}>
-                See More
-              </Button>
+
+              <Link to="/contact" className={classes.link} onClick={()=>{this.props.updateActiveUrlHash('')}}>
+                <Button variant="contained" color="primary" className={classes.seeMoreButton} >
+                  Let's Work Together
+                </Button>
+              </Link>
+
             </div>
           </div>
         </TimelineSection>
@@ -211,5 +222,11 @@ class Timeline extends React.Component {
     )
   }
 }
+
+Timeline.propTypes = {
+  updateActiveUrlHash: PropTypes.func.isRequired,
+  theme: PropTypes.object.isRequired,
+}
+
 
 export default withStyles(styles)(Timeline)
