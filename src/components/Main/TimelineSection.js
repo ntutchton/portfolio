@@ -169,7 +169,7 @@ class TimelineSection extends React.Component {
         </svg>
 
           <div className={classes.timelineLogo} style={{marginTop: `-${this.state.sectionHeight}px`, height: `${this.state.sectionHeight}px`, minWidth: `${this.state.width - 2}px`}}>
-            <img style={{ height: `${this.state.sectionHeight * 0.21327}px`, margin: '0 auto', marginTop: '5px', marginBottom: '2px', transform: 'translateY(-5px)'}} src={this.props.logoSource} alt="logo"/>
+            <img style={{ height: `${this.state.sectionHeight * 0.21327}px`, margin: '0 auto', marginTop: '5px', marginBottom: '2px', transform: 'translateY(-5px)'}} src={this.props.logoSource} alt=""/>
           </div>
 
           <div className={classNames([
@@ -199,7 +199,7 @@ class TimelineSection extends React.Component {
                   ? classes.bottom
                   : {})
             ])} style={{marginTop: `-${this.state.sectionHeight}px`}}>
-            <img className={classes.timelineImage}/>
+            <img className={classes.timelineImage} alt=""/>
           </div>
 
 
