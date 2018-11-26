@@ -2,25 +2,25 @@ import React from 'react'
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-// import SvgIcon from '../Icon'
 
-const styles = {
+const styles = theme => ({
   root: {
     display: 'grid',
     height:'100%',
     overflow: 'hidden',
     gridTemplateColumns: 'repeat(12, 1fr)',
-    margin: '-5px 0'
+    margin: '-6px 0'
   },
   timelineImageWrapper: {
-    // height: '100%',
-    // backgroundColor: '#9E9E9E',
-    // background: 'linear-gradient(to bottom, #ffb76b 0%,#ffa73d 50%,#ff7c00 51%,#ff7f04 100%)',
     display: 'flex',
     justifyContent: 'center',
     flexDirection: 'column',
+    [theme.breakpoints.down('md')]: {
+      display: 'none'
+    },
   },
   timelineImage: {
+    transition: 'all 1s ease-in-out',
     height: '650px',
     background: '#9E9E9E',
   },
@@ -32,14 +32,11 @@ const styles = {
     gridColumnStart: '6',
     gridColumnEnd: '13',
   },
-  inmageTop: {
-    justifyContent: 'flex-start'
+  top: {
+    justifyContent: 'flex-start !important'
   },
-  imageBottom: {
-    justifyContent: 'flex-end',
-  },
-  timelineText: {
-
+  bottom: {
+    justifyContent: 'flex-end !important',
   },
   timelineLogo: {
     gridColumn: '6 / span 2',
@@ -47,37 +44,57 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
+    transition: 'filter 1s ease-in-out',
+    [theme.breakpoints.down('md')]: {
+      // filter: 'opacity(.6)',
+      gridColumn: '7 / span 2',
+    },
   },
-  timelineTextRight: {
+  timelineInfo: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    [theme.breakpoints.down('md')]: {
+      zIndex: '20',
+    },
+  },
+  timelineInfoRight: {
     gridColumnStart: '8',
-    gridColumnEnd: '13',
+    gridColumnEnd: '12',
+    [theme.breakpoints.down('md')]: {
+      gridColumnStart: '1',
+      gridColumnEnd: '13',
+    },
   },
-  timelineTextLeft: {
-    gridColumnStart: '1',
+  timelineInfoLeft: {
+    gridColumnStart: '2',
     gridColumnEnd: '6',
+    [theme.breakpoints.down('md')]: {
+      gridColumnStart: '1',
+      gridColumnEnd: '13',
+    },
   },
-  // timelineWrapper: {
-  //   transform: 'scale(1.01)',
-  //   minHeight: '2000px',
-  //   marginBottom: '-2245px',
-  //   gridColumnEnd: '13',
-  //   display: 'flex',
-  //   gridColumnStart: '1',
-  //   flexDirection: 'column',
-  //   justifyContent: 'center',
-  // },
+  infoContent:{
+    height: '650px',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    [theme.breakpoints.down('md')]: {
+      height: '100%',
+    },
+  },
   animatedSvg: {
-    transition: 'stroke-dashoffset .4s cubic-bezier(.17,.67,.83,.67)',
+    transition: 'filter 1s ease-in-out',
     gridColumnStart: '6',
     gridColumnEnd: '8',
-    // display: 'flex',
-    // flexDirection: 'column',
-    // justifyContent:'center',
-    // transform: 'scale(1.01)',
     margin: '0 auto',
     zIndex: '10',
+    [theme.breakpoints.down('md')]: {
+      // filter: 'opacity(.8)',
+      gridColumn: '7 / span 2',
+    },
   }
-}
+})
 
 class TimelineSection extends React.Component {
 
@@ -133,14 +150,10 @@ class TimelineSection extends React.Component {
   render(){
     const { classes } = this.props
 
-    const logos = {
-
-    }
-
     return (
       <div className={classes.root} style={{height: `${this.state.sectionHeight}`}}>
 
-        <svg ref={this.timelineWrapper} className={classes.animatedSvg} width={`${this.state.width}px`} height={`${this.state.sectionHeight}px`} viewBox="0 0 196 854" version="1.1">
+        <svg ref={this.timelineWrapper} className={classes.animatedSvg} width={`${this.state.width}px`} height={`${this.state.sectionHeight}px`} viewBox="0 0 196 854" version="1.1" >
             <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd" strokeLinecap="round">
                 <g id="Artboard" transform="translate(-84.000000, -1654.000000)" fillRule="nonzero" stroke="#F44336" strokeWidth="10" strokeDasharray={`${this.state.pathLength}`} strokeDashoffset={`${this.state.pathLength * this.getProgress(this.props.scroll)}`}>
                     <g id="TIMELINE" transform="translate(89.000000, 1659.000000)">
@@ -155,13 +168,24 @@ class TimelineSection extends React.Component {
             </g>
         </svg>
 
-          <div className={classes.timelineLogo} style={{marginTop: `-${this.state.sectionHeight}px`, height: `${this.state.sectionHeight}px`, minWidth: `${this.state.width}px`}}>
-            <img style={{ height: `${this.state.sectionHeight * 0.21327}px`, margin: '0 auto', transform: 'translateY(-5px)'}} src={this.props.logoSource} alt="logo"/>
-
+          <div className={classes.timelineLogo} style={{marginTop: `-${this.state.sectionHeight}px`, height: `${this.state.sectionHeight}px`, minWidth: `${this.state.width - 2}px`}}>
+            <img style={{ height: `${this.state.sectionHeight * 0.21327}px`, margin: '0 auto', marginTop: '5px', marginBottom: '2px', transform: 'translateY(-5px)'}} src={this.props.logoSource} alt="logo"/>
           </div>
 
-          <div className={classes.timelineInfo}>
-
+          <div className={classNames([
+              classes.timelineInfo,
+              (this.props.type === 'right'
+                ? classes.timelineInfoLeft
+                : classes.timelineInfoRight),
+              (this.props.order === 'top'
+                ? classes.top
+                : this.props.order === 'bottom'
+                  ? classes.bottom
+                  : {}),
+            ])} style={{height: `${this.state.sectionHeight}px`, marginTop: `-${this.state.sectionHeight}px`}}>
+            <div className={classes.infoContent}>
+               {this.props.children}
+            </div>
           </div>
 
           <div className={classNames([
@@ -170,9 +194,9 @@ class TimelineSection extends React.Component {
                 ? classes.imageRight
                 : classes.imageLeft),
               (this.props.order === 'top'
-                ? classes.inmageTop
+                ? classes.top
                 : this.props.order === 'bottom'
-                  ? classes.imageBottom
+                  ? classes.bottom
                   : {})
             ])} style={{marginTop: `-${this.state.sectionHeight}px`}}>
             <img className={classes.timelineImage}/>

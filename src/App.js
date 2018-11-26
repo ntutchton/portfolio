@@ -67,7 +67,6 @@ class App extends Component {
     })
   }
 
-
   render() {
     return (
       <Router>
@@ -85,7 +84,7 @@ class App extends Component {
                     currentTheme={this.state.currentTheme}
                     changeTheme={this.switchTheme}/>
                   <Switch>
-                    <Route exact path="/" render={(props) => <Main {...props} currentTheme={this.state.currentTheme} updateActiveUrlHash={this.updateActiveUrlHash} />} />
+                    <Route exact path="/" render={(props) => <Main {...props} currentTheme={this.state.currentTheme} theme={this.getThemeObject(this.state.currentTheme)} updateActiveUrlHash={this.updateActiveUrlHash} />} />
                     <Route exact path="/content" component={Content} />
                     <Route exact path="/contact"
                       component={()=>(

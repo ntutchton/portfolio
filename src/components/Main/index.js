@@ -129,7 +129,7 @@ function Main(props) {
         </div>
 
         <div id="work" className={classes.section}>
-          <Timeline />
+          <Timeline theme={props.theme}/>
         </div>
 
         <div id="skills" className={classes.section}>
