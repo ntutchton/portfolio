@@ -83,7 +83,9 @@ const styles = theme => ({
     opacity: '.2'
   },
   skillSection: {
-      background: '#424242'
+      background: '#424242',
+      display: 'flex',
+      flexDirection: 'column',
   },
 })
 

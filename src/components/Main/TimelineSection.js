@@ -45,6 +45,9 @@ const styles = theme => ({
     flexDirection: 'column',
     justifyContent: 'center',
     transition: 'filter 1s ease-in-out',
+    [theme.breakpoints.down('md')]: {
+      gridColumn: '7 / span 2',
+    },
   },
   timelineInfo: {
     display: 'flex',
@@ -85,6 +88,9 @@ const styles = theme => ({
     gridColumnEnd: '8',
     margin: '0 auto',
     zIndex: '10',
+    [theme.breakpoints.down('md')]: {
+      gridColumn: '7 / span 2',
+    },
   }
 })
 

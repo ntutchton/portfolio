@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import SvgLogo from '../Logo'
 import Icon from '../Icon'
 
-const styles = (theme) => ({
+const styles = theme => ({
   root: {
     backgroundColor: '#212121',
     width: '100%',
