@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles';
 
 import SkillCircle from './SkillCircle'
@@ -28,8 +28,8 @@ class Skills extends React.Component{
   }
 }
 
-Skills.propTypes = {
-
-}
+// Skills.propTypes = {
+//
+// }
 
 export default withStyles(styles)(Skills)

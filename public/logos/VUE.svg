@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="150px" height="150px" viewBox="0 0 150 150" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>VUE</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Greyscale" transform="translate(-337.000000, -55.000000)">
+            <g id="VUE" transform="translate(337.000000, 55.000000)">
+                <g id="Vue.js_Logo" transform="translate(0.000000, 10.000000)">
+                    <g id="g10" transform="translate(74.999997, 65.500003) scale(-1, 1) rotate(-180.000000) translate(-74.999997, -65.500003) translate(-0.000001, 0.189860)">
+                        <g id="g12" transform="translate(0.047424, 0.006531)" fill="#4DBA87">
+                            <polygon id="path14" points="91.6666644 129.860866 74.49318 100.042989 57.3196955 129.860866 0.129545451 129.860866 74.49318 0.746510126 148.856814 129.860866"></polygon>
+                        </g>
+                        <g id="g16" transform="translate(29.592878, 51.647109)" fill="#435466">
+                            <polygon id="path18" points="62.1212106 78.2202879 44.9477261 48.4024104 27.7742417 78.2202879 0.329545446 78.2202879 44.9477261 0.751826068 89.5659069 78.2202879"></polygon>
+                        </g>
+                    </g>
+                </g>
+                <rect id="Rectangle" fill="#FFFFFF" fill-rule="nonzero" style="mix-blend-mode: color;" x="0" y="0" width="150" height="150"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

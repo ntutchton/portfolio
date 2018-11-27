@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="150px" height="150px" viewBox="0 0 150 150" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>ANGULAR</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Greyscale" transform="translate(-990.000000, -249.000000)">
+            <g id="ANGULAR" transform="translate(990.000000, 249.000000)">
+                <g id="angular" transform="translate(4.000000, 0.000000)">
+                    <polygon id="Path" fill="#E23237" points="0.0548638132 25.1041428 69.3478598 0.384527352 140.506226 24.664683 128.984825 116.456855 69.3478598 149.526207 10.6435798 116.896315"></polygon>
+                    <polygon id="Path" fill="#B52E31" points="140.506226 24.664683 69.3478598 0.384527352 69.3478598 149.526207 128.984825 116.511788"></polygon>
+                    <path d="M69.4575876,17.7981232 L26.2797665,113.984894 L42.4097276,113.710231 L51.0782101,92.011902 L69.5124514,92.011902 L69.5673153,92.011902 L89.8120622,92.011902 L99.303502,113.984894 L114.720233,114.259556 L69.4575876,17.7981232 Z M69.5673153,48.6152438 L84.1610896,79.1577022 L70.1708173,79.1577022 L69.4575876,79.1577022 L56.7291827,79.1577022 L69.5673153,48.6152438 Z" id="Shape" fill="#FFFFFF" fill-rule="nonzero"></path>
+                </g>
+                <rect id="Rectangle-Copy-6" fill="#FFFFFF" fill-rule="nonzero" style="mix-blend-mode: color;" x="0" y="0" width="150" height="150"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

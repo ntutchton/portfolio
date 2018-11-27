@@ -71,6 +71,11 @@ const styles = theme => ({
       order: '2',
       margin:  '0 0 0 0', //TODO tweak for blurb height
     },
+    [theme.breakpoints.up('lg')]: {
+      padding: '0',
+      background: 'none',
+      boxShadow:  'none', //TODO tweak for blurb height
+    },
   },
   seeMoreButton: {
     width: '15em',
@@ -153,12 +158,17 @@ class Timeline extends React.Component {
           </div>
         </TimelineSection>
 
-        <TimelineSection scroll={this.state.scroll} sectionHeight={800} type="right" order='top' logoSource="logos/QUESTION.svg">
+        <TimelineSection scroll={this.state.scroll} sectionHeight={800} type="right" order='top' logoSource="logos/DU.svg">
           <div className={classes.wrapper}>
             <div className={classes.headerWrapper}>
-              <Typography variant="h4" className={classes.header}>
-                Who Knows?
-              </Typography>
+              <div className={classes.headerWrapper}>
+                <Typography variant="h4" className={classes.header}>
+                  M.S. in Software Engineering
+                </Typography>
+                <Typography variant="subtitle2" className={classes.date}>
+                  2017 - 2019
+                </Typography>
+              </div>
             </div>
             <div className={classes.textWrapper}>
               <Paper className={classes.paper} elevation={1}>
