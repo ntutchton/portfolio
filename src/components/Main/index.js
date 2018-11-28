@@ -8,8 +8,9 @@ import Button from '@material-ui/core/Button';
 import SvgLogo from '../Logo'
 import { Parallax } from 'react-scroll-parallax';
 
-import Timeline from './Timeline'
-import Skills from './Skills'
+import Timeline from './Timeline/'
+import Skills from './Skills/'
+import Projects from './Projects/'
 
 
 const styles = theme => ({
@@ -164,6 +165,7 @@ function Main(props) {
           <Typography variant="h3" className={classes.projectHeader}>
             <span>... to build stuff like this</span> <span role="img" aria-label="thumbs-up" className={classes.emoji}>👇🏻</span>
           </Typography>
+          <Projects />
         </div>
 
         <div className={classes.blurb}>
