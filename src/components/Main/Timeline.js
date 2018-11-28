@@ -238,7 +238,7 @@ class Timeline extends React.Component {
           </div>
         </TimelineSection>
 
-        <TimelineSection scroll={this.state.scroll} sectionHeight={800} type="right" order='top' logoSource="logos/QUESTION.svg">
+        <TimelineSection scroll={this.state.scroll} sectionHeight={800} type="right" order='top' logoSource="logos/FUTURE.svg">
           <div className={classes.wrapper}>
             <div className={classes.headerWrapper}>
               <Typography variant="h4" className={classes.header}>
