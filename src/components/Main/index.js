@@ -93,15 +93,12 @@ const styles = theme => ({
   skillsHeader: {
     color: 'white',
     background: '#313131',
-    padding: '1em 5% 0 1em',
+    padding: '1em 5% 1em 1em',
     textAlign: 'center',
   },
   projectHeader: {
-    padding: '1em 5% 0 1em',
+    padding: '1em 5% 1em 1em',
     textAlign: 'center',
-  },
-  emoji:{
-    paddingRight:  '.5em',
   },
 })
 
@@ -155,15 +152,15 @@ function Main(props) {
         </div>
 
         <div id="skills" className={classes.skillSection}>
-          <Typography variant="h3" className={classes.skillsHeader}>
-            I use tools like these...
-          </Typography>
           <Skills />
+            <Typography variant="h3" className={classes.skillsHeader}>
+              <span role="img" aria-label="point-up" style={{paddingRight: '.5em'}}>☝🏻</span><span style={{paddingRight: '13px'}}>I use tools like these</span>
+            </Typography>
         </div>
 
         <div id="projects" className={classes.section}>
           <Typography variant="h3" className={classes.projectHeader}>
-            <span>... to build stuff like this</span> <span role="img" aria-label="thumbs-up" className={classes.emoji}>👇🏻</span>
+             <span>to build stuff like this</span><span role="img" aria-label="point-down" style={{paddingLeft: '.5em'}}>👇🏻</span>
           </Typography>
           <Projects />
         </div>
