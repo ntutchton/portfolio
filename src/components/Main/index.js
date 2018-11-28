@@ -83,7 +83,14 @@ const styles = theme => ({
     opacity: '.2'
   },
   skillSection: {
-      background: '#424242'
+      background: '#313131',
+      display: 'flex',
+      flexDirection: 'column',
+  },
+  skillsHeader: {
+    color: 'white',
+    background: '#313131',
+    padding: '1em 5% 0 1em'
   },
 })
 
@@ -136,8 +143,8 @@ function Main(props) {
           <Timeline theme={props.theme} updateActiveUrlHash={props.updateActiveUrlHash}/>
         </div>
 
-        <div id="skills" className={classNames([classes.section, classes.skillSection])}>
-          <Typography variant="h3" style={{color: 'white', background: '#424242', padding: '1em 5%'}}>
+        <div id="skills" className={classes.skillSection}>
+          <Typography variant="h3" className={classes.skillsHeader}>
             I like to work with...
           </Typography>
           <Skills />

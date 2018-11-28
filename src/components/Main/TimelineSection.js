@@ -46,7 +46,6 @@ const styles = theme => ({
     justifyContent: 'center',
     transition: 'filter 1s ease-in-out',
     [theme.breakpoints.down('md')]: {
-      // filter: 'opacity(.6)',
       gridColumn: '7 / span 2',
     },
   },
@@ -90,7 +89,6 @@ const styles = theme => ({
     margin: '0 auto',
     zIndex: '10',
     [theme.breakpoints.down('md')]: {
-      // filter: 'opacity(.8)',
       gridColumn: '7 / span 2',
     },
   }

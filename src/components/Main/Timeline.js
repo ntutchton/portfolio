@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Popover from '@material-ui/core/Popover';
+import Paper from '@material-ui/core/Paper';
 import ArrowForward from '@material-ui/icons/ArrowForward';
 import { Link } from 'react-router-dom'
 
@@ -32,8 +33,8 @@ const styles = theme => ({
     [theme.breakpoints.down('md')]: {
       padding: '1em 0',
       display: 'flex',
-      justifyContent: 'space-between',
-      marginTop: '10%',
+      flexDirection: 'column',
+      justifyContent: 'space-around',
       flexGrow: '1',
     },
   },
@@ -48,8 +49,9 @@ const styles = theme => ({
     padding: '0 5%',
     textAlign: 'right',
     [theme.breakpoints.down('md')]: {
-      width: '30%',
+      width: '60%',
       padding: '0',
+      textAlign: 'left',
     },
   },
   textWrapper: {
@@ -61,15 +63,18 @@ const styles = theme => ({
         flexGrow: '2',
       },
   },
-  blurb: {
-    padding: '1em 0 3em 0',
+  paper: {
+    margin: '1em 0 3em 0',
+    padding: '1em 1.5em',
     [theme.breakpoints.down('md')]: {
       padding: '1em',
       order: '2',
-      margin: '3em 0 0 0',
-      border: '2px solid ' + theme.palette.divider,
-      borderRadius: '2px',
-      background: theme.palette.background.paper,
+      margin:  '0 0 0 0', //TODO tweak for blurb height
+    },
+    [theme.breakpoints.up('lg')]: {
+      padding: '0',
+      background: 'none',
+      boxShadow:  'none', //TODO tweak for blurb height
     },
   },
   seeMoreButton: {
@@ -131,6 +136,7 @@ class Timeline extends React.Component {
 
     return (
       <div className={classes.root}>
+
         <TimelineSection scroll={this.state.scroll} sectionHeight={800} type="left" order='top' logoSource="logos/DISH.svg">
           <div className={classes.wrapper}>
             <div className={classes.headerWrapper}>
@@ -142,15 +148,47 @@ class Timeline extends React.Component {
               </Typography>
             </div>
             <div className={classes.textWrapper}>
+              <Paper className={classes.paper} elevation={1}>
+                <Typography variant="body1" >
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dapibus sapien eget eleifend lacinia. In sagittis in risus non dictum. Ut sit amet lorem arcu. Proin sed nulla feugiat, blandit eros eu, tempor ex. Etiam non condimentum ex. Vivamus dapibus ante sed rhoncus vehicula. Cras dictum porttitor leo, ac sodales mauris scelerisque sed. Donec odio neque, consectetur nec pulvinar eu, maximus id arcu. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                </Typography>
+              </Paper>
               <span></span>
-              <Typography variant="body1" className={classes.blurb}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dapibus sapien eget eleifend lacinia. In sagittis in risus non dictum. Ut sit amet lorem arcu. Proin sed nulla feugiat, blandit eros eu, tempor ex. Etiam non condimentum ex. Vivamus dapibus ante sed rhoncus vehicula. Cras dictum porttitor leo, ac sodales mauris scelerisque sed. Donec odio neque, consectetur nec pulvinar eu, maximus id arcu. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-              </Typography>
             </div>
           </div>
         </TimelineSection>
-        <TimelineSection scroll={this.state.scroll} sectionHeight={800} type="right" order="top" logoSource="logos/BITS.svg">
+
+        <TimelineSection scroll={this.state.scroll} sectionHeight={800} type="right" order='top' logoSource="logos/DU.svg">
           <div className={classes.wrapper}>
+            <div className={classes.headerWrapper}>
+              <div className={classes.headerWrapper}>
+                <Typography variant="h4" className={classes.header}>
+                  M.S. in Software Engineering
+                </Typography>
+                <Typography variant="subtitle2" className={classes.date}>
+                  2017 - 2019
+                </Typography>
+              </div>
+            </div>
+            <div className={classes.textWrapper}>
+              <Paper className={classes.paper} elevation={1}>
+                <Typography variant="body1" >
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dapibus sapien eget eleifend lacinia. In sagittis in risus non dictum. Ut sit amet lorem arcu. Proin sed nulla feugiat, blandit eros eu, tempor ex. Etiam non condimentum ex. Vivamus dapibus ante sed rhoncus vehicula. Cras dictum porttitor leo, ac sodales mauris scelerisque sed. Donec odio neque, consectetur nec pulvinar eu, maximus id arcu. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                </Typography>
+              </Paper>
+
+              <Link to="/contact" className={classes.link} onClick={()=>{this.props.updateActiveUrlHash('')}}>
+                <Button variant="contained" color="primary" className={classes.seeMoreButton} >
+                  Let's Work Together
+                </Button>
+              </Link>
+
+            </div>
+          </div>
+        </TimelineSection>
+
+        <TimelineSection scroll={this.state.scroll} sectionHeight={800} type="left" order="top" logoSource="logos/BITS.svg">
+          <div className={classes.wrapper} id="current-work">
             <div className={classes.headerWrapper}>
               <Typography variant="h4" className={classes.header}>
                 UI / UX Developer
@@ -160,9 +198,11 @@ class Timeline extends React.Component {
               </Typography>
             </div>
             <div className={classes.textWrapper}>
-              <Typography variant="body1" className={classes.blurb}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dapibus sapien eget eleifend lacinia. In sagittis in risus non dictum. Ut sit amet lorem arcu. Proin sed nulla feugiat, blandit eros eu, tempor ex. Etiam non condimentum ex. Vivamus dapibus ante sed rhoncus vehicula. Cras dictum porttitor leo, ac sodales mauris scelerisque sed. Donec odio neque, consectetur nec pulvinar eu, maximus id arcu. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-              </Typography>
+              <Paper className={classes.paper} elevation={1}>
+                <Typography variant="body1">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dapibus sapien eget eleifend lacinia. In sagittis in risus non dictum. Ut sit amet lorem arcu. Proin sed nulla feugiat, blandit eros eu, tempor ex. Etiam non condimentum ex. Vivamus dapibus ante sed rhoncus vehicula. Cras dictum porttitor leo, ac sodales mauris scelerisque sed. Donec odio neque, consectetur nec pulvinar eu, maximus id arcu. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                </Typography>
+              </Paper>
               <Button
                  aria-owns={open ? 'bits-popover' : undefined}
                  aria-haspopup="true"
@@ -197,7 +237,8 @@ class Timeline extends React.Component {
             </div>
           </div>
         </TimelineSection>
-        <TimelineSection scroll={this.state.scroll} sectionHeight={800} type="left" order='top' logoSource="logos/QUESTION.svg">
+
+        <TimelineSection scroll={this.state.scroll} sectionHeight={800} type="right" order='top' logoSource="logos/QUESTION.svg">
           <div className={classes.wrapper}>
             <div className={classes.headerWrapper}>
               <Typography variant="h4" className={classes.header}>
@@ -205,9 +246,11 @@ class Timeline extends React.Component {
               </Typography>
             </div>
             <div className={classes.textWrapper}>
-              <Typography variant="body1" className={classes.blurb}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dapibus sapien eget eleifend lacinia. In sagittis in risus non dictum. Ut sit amet lorem arcu. Proin sed nulla feugiat, blandit eros eu, tempor ex. Etiam non condimentum ex. Vivamus dapibus ante sed rhoncus vehicula. Cras dictum porttitor leo, ac sodales mauris scelerisque sed. Donec odio neque, consectetur nec pulvinar eu, maximus id arcu. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-              </Typography>
+              <Paper className={classes.paper} elevation={1}>
+                <Typography variant="body1" >
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dapibus sapien eget eleifend lacinia. In sagittis in risus non dictum. Ut sit amet lorem arcu. Proin sed nulla feugiat, blandit eros eu, tempor ex. Etiam non condimentum ex. Vivamus dapibus ante sed rhoncus vehicula. Cras dictum porttitor leo, ac sodales mauris scelerisque sed. Donec odio neque, consectetur nec pulvinar eu, maximus id arcu. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                </Typography>
+              </Paper>
 
               <Link to="/contact" className={classes.link} onClick={()=>{this.props.updateActiveUrlHash('')}}>
                 <Button variant="contained" color="primary" className={classes.seeMoreButton} >

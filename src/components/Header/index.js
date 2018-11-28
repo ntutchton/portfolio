@@ -103,8 +103,14 @@ class Header extends React.Component{
     }
   };
 
-  smoothScroll = el => {
-    el.scrollIntoView({ behavior: 'smooth' })
+  smoothScroll = (el, subElementId) => {
+    if (subElementId){
+      let subEl = document.getElementById(subElementId)
+      subEl.scrollIntoView({ behavior: 'smooth' })
+    }
+    else {
+        el.scrollIntoView({ behavior: 'smooth' })
+    }
   }
 
 
@@ -122,7 +128,7 @@ class Header extends React.Component{
                 <SvgLogo type={this.determineLogoColor()} size={64}></SvgLogo>
               </div>
               <div className={classes.navButtons}>
-                <Link to="/#work" className={classes.link} scroll={this.smoothScroll}>
+                <Link to="/#work" className={classes.link} scroll={el => {this.smoothScroll(el, 'current-work')}}>
                   <Button size="medium" variant="text" className={classes.button} onClick={()=>{this.updateActiveUrlHash('#work')}}>
                     <span style={ this.isActive('work') }> Work </span>
                   </Button>
@@ -178,7 +184,7 @@ class Header extends React.Component{
                     open={Boolean(anchorEl)}
                     onClose={this.handleBurgerMenuClose}
                   >
-                    <Link to="/#work" className={classes.link} scroll={this.smoothScroll}>
+                    <Link to="/#work" className={classes.link} scroll={el => {this.smoothScroll(el, 'current-work')}}>
                       <MenuItem onClick={()=>{this.handleBurgerMenuClose('#work')}}>
                         <span style={ this.isActive('work') }> Work </span>
                       </MenuItem>
