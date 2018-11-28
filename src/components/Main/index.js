@@ -20,7 +20,7 @@ const styles = theme => ({
     textDecoration: 'none',
   },
   section: {
-    minHeight: '100vh',
+    // minHeight: '100vh',
     // width:'100%',
     // zIndex: '2',
   },
@@ -51,6 +51,7 @@ const styles = theme => ({
     },
   },
   heroText: {
+    transition: 'all 1s ease-in-out',
     gridColumnStart: '2',
     gridColumnEnd: '5',
     display: 'flex',
@@ -60,6 +61,7 @@ const styles = theme => ({
     marginBottom: '-750px',
     [theme.breakpoints.down('sm')]: {
       gridColumnEnd: '12',
+      marginTop: '-6em',
     },
   },
   heroName: {
@@ -90,7 +92,15 @@ const styles = theme => ({
   skillsHeader: {
     color: 'white',
     background: '#313131',
-    padding: '1em 5% 0 1em'
+    padding: '1em 5% 0 1em',
+    textAlign: 'center',
+  },
+  projectHeader: {
+    padding: '1em 5% 0 1em',
+    textAlign: 'center',
+  },
+  emoji:{
+    paddingRight:  '.5em',
   },
 })
 
@@ -145,20 +155,20 @@ function Main(props) {
 
         <div id="skills" className={classes.skillSection}>
           <Typography variant="h3" className={classes.skillsHeader}>
-            I like to work with...
+            I use tools like these...
           </Typography>
           <Skills />
+        </div>
+
+        <div id="projects" className={classes.section}>
+          <Typography variant="h3" className={classes.projectHeader}>
+            <span>... to build stuff like this</span> <span role="img" aria-label="thumbs-up" className={classes.emoji}>👇🏻</span>
+          </Typography>
         </div>
 
         <div className={classes.blurb}>
           <Typography variant="h2">
             blurb
-          </Typography>
-        </div>
-
-        <div id="projects" className={classes.section}>
-          <Typography variant="h2">
-            projects
           </Typography>
         </div>
 

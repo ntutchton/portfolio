@@ -1,27 +1,34 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles';
+import classNames from 'classnames';
 import Typography from '@material-ui/core/Typography';
-// import { Parallax } from 'react-scroll-parallax';
 
 const styles = theme => ({
   root: {
-    // background: 'white'
-    // display: 'flex',
-    // flexDirection: 'column',
-    // justifyContent: 'center',
     height: '100%',
     textAlign: 'center',
-    // display: 'flex',
-    // justifyContent: 'space-around',
-    // flexDirection: 'column',
+    transition: 'all .35s cubic-bezier(.39,.64,.63,.9)',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: '1px', //to stop slight shift after transform
+  },
+  hidden:{
+    transform: 'scale3d(0, 0, 1)',
+  },
+  transition: {
+    transform: 'scale3d(1.03, 1.03, 1)',
+  },
+  active: {
+    transform: 'scale3d(1, 1, 1)',
+    transition: 'all .1s cubic-bezier(.1,.69,.97,.09)',
   },
   circle: {
     background: '#535353',
-    // background: #888888;
     boxShadow: '-2px 7px 6px 0 rgba(0,0,0,0.30)',
     borderRadius: '50%',
-    margin: '0 auto',
     display: 'flex',
     justifyContent: 'center',
     flexDirection: 'column',
@@ -34,111 +41,112 @@ const styles = theme => ({
     marginTop: '10px',
     color: '#fafafa',
   },
-  // outerCircle: {
-  //   borderRadius: '50%',
-  //   background: 'gold',
-  //   // display: 'flex',
-  //   // flexDirection: 'column',
-  //   // justifyContent: 'center',
-  // },
-  // imgWrapper: {
-    // display: 'flex',
-    // justifyContent: 'center',
-    // flexDirection: 'column'
-  // },
-  // logoImg: {
-  //   maxWidth: '100%',
-  //   maxHeight: '100%',
-  //   objectFit: 'cover',
-  //   overflow: 'hidden',
-  //   margin: '0 auto',
-  // }
 })
 
+let lastScrollY = 0;
 
-const SkillCircle = (props) => {
-  const { classes } = props;
-  const largestSquare = Math.floor((props.height * Math.sqrt(2))/2)
-  // const circle = React.createRef()
-  //
+class SkillCircle extends React.Component{
 
-  return (
-    <div className={classes.root}>
-      <div className={classes.circle} style={{width: `${props.height}px`, height: `${props.height}px`}}>
-        <div>
-          <img
-            className={classes.logoImg}
-            src={props.logo}
-            alt="logo"
-            style={{
-              maxWidth: `${largestSquare}px`,
-              maxHeight:  `${largestSquare}px`,
-            }}/>
+  constructor(props){
+    super(props)
+    this.circleWrapper = React.createRef()
+  }
+  state = {
+    hidden: true,
+    transitioning: false,
+    active: false,
+    largestSquare: (Math.floor((this.props.height * Math.sqrt(2))/2)),
+    delay: (Math.random() * 300),
+    ticking: false,
+  }
+
+  componentWillMount(){
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+  componentWillUnmount(){
+      window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  componentDidMount(){
+    let bodyRect = document.getElementById('root').getBoundingClientRect();
+    let elemRect = this.circleWrapper.current.getBoundingClientRect();
+    this.setState({
+      startTransitionScroll: (elemRect.top - bodyRect.top) - (window.innerHeight * 0.9),  //start when element top is < 80% screen
+    })
+  }
+
+  handleScroll = () => {
+    lastScrollY = window.scrollY;
+    if (!this.state.ticking) {
+      window.requestAnimationFrame(() => {
+        if (lastScrollY > this.state.startTransitionScroll){
+          this.startTransition()
+        }
+        this.state.ticking = false;
+      });
+      this.state.ticking = true;
+    }
+  };
+
+  //two timeouts that set state flags that conditionally apply "transitioning" and "active" classes to root div (mounts with "hidden")
+  startTransition = () => {
+    if (!this.state.active){
+      setTimeout( () => {
+        this.setState({
+          transitioning: true,
+          hidden: false,
+        })
+        setTimeout( () => {
+          this.setState({
+            active: true,
+            transitioning: false,
+          })
+          window.removeEventListener('scroll', this.handleScroll);
+        }, 370);
+      }, 1 * this.state.delay);
+    }
+  }
+
+
+  render() {
+    const { classes } = this.props;
+
+    return (
+      <div ref={this.circleWrapper} className={classNames([
+          classes.root,
+            (this.state.hidden
+            ? classes.hidden
+            : this.state.transitioning
+              ? classes.transition
+              : this.state.active
+                ? classes.active
+                : {}),
+        ])}>
+        <div className={classes.circle} style={{width: `${this.props.height}px`, height: `${this.props.height}px`}}>
+          <div>
+            <img
+              className={classes.logoImg}
+              src={this.props.logo}
+              alt="logo"
+              style={{
+                maxWidth: `${this.state.largestSquare}px`,
+                maxHeight:  `${this.state.largestSquare}px`,
+              }}/>
+          </div>
         </div>
+        <Typography className={classes.label} variant="subtitle2" >
+          {this.props.name}
+        </Typography>
       </div>
-      <Typography className={classes.label} variant="subtitle2" >
-        {props.name}
-      </Typography>
-    </div>
-  );
+    );
+  }
 }
 
 SkillCircle.propTypes = {
-  // xMax: PropTypes.number,
-  // yMax: PropTypes.number,
-  // xMin: PropTypes.number,
-  // yMin: PropTypes.number,
-  // delay: PropTypes.number.isRequired,
-  // active: PropTypes.boolean.isRequired,
   height: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
-  // parentHeight: PropTypes.number.isRequired,
   logo: PropTypes.string.isRequired,
-  // opposite: PropTypes.bool,
 }
-
-SkillCircle.defaultProps = {
-  // xMax: 0,
-  // yMax: 0,
-  // xMin: 0,
-  // yMin: 0,
-  // size: 1,
-  // opposite: false,
-};
-
-// <Parallax
-//   ref={this.circle}
-//   className={classes.paralaxWrapper}
-//   offsetYMax={props.yMan}
-//   offsetYMin={props.yMin}
-//   offsetXMax={props.xMax}
-//   offsetXMin={props.xMin}
-//   slowerScrollRate={props.opposite}
-//   tag="figure">
-//     <div className={classes.logoWrapper} style={{ width: `${props.size * 100}px`, height:  `${props.size * 100}px` }}>
-//       <img className={classes.logoImg} src={props.logo} atl="logo" />
-//     </div>
-// </Parallax>
-
-// <table className={classes.outerCircle} style={{ width: `${props.height}px`, height:  `${props.height}px` }}>
-//   <tbody style={{ width: `${largestSquare}px`, height:  `${largestSquare}px`}}>
-//     <tr className={classes.imgWrapper}>
-//       <td style={{ width: `${largestSquare}px`, height:  `${largestSquare}px`, verticalAlign: 'middle'}}>
-//         <img
-//           className={classes.logoImg}
-//           src={props.logo}
-//           alt="logo"
-//           style={{
-//             maxWidth: `${largestSquare}px`,
-//             maxHeight:  `${largestSquare}px`,
-//           }}/>
-//       </td>
-//     </tr>
-//   </tbody>
-//   <Typography variant="subtitle1">
-//     {props.name}
-//   </Typography>
-// </table>
-
 
 export default withStyles(styles)(SkillCircle);
