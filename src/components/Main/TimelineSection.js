@@ -153,7 +153,7 @@ class TimelineSection extends React.Component {
 
         <svg ref={this.timelineWrapper} className={classes.animatedSvg} width={`${this.state.width}px`} height={`${this.state.sectionHeight}px`} viewBox="0 0 196 854" version="1.1" >
             <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd" strokeLinecap="round">
-                <g id="Artboard" transform="translate(-84.000000, -1654.000000)" fillRule="nonzero" stroke="#F44336" strokeWidth="10" strokeDasharray={`${this.state.pathLength}`} strokeDashoffset={`${this.state.pathLength * this.getProgress(this.props.scroll)}`}>
+                <g id="Artboard" transform="translate(-84.000000, -1654.000000)" fillRule="nonzero" stroke="#F44336" strokeWidth="13" strokeDasharray={`${this.state.pathLength}`} strokeDashoffset={`${this.state.pathLength * this.getProgress(this.props.scroll)}`}>
                     <g id="TIMELINE" transform="translate(89.000000, 1659.000000)">
                         <g id="RIGHT" transform="translate(92.000000, 0.000000)">
                             <path id="RIGHT-PATH"  d="M0.845513826,0.163037186 L1,325 C62.8970092,325 93.8455138,355.666667 93.8455138,417 C93.8455138,478.333333 62.8970092,509.333333 1,510 L1,843"></path>
