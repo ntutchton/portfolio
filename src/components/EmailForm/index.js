@@ -109,7 +109,7 @@ class EmailForm extends React.Component{
           })
         }
         else {
-          //probably expired although ot necesarrily
+          //probably expired, although not necesarily
           this.toggleErrorText()
           this.setErrorText('The ReCaptcha has expired.  Please recomplete the ReCaptcha.')
           recaptchaRef.current.reset();
@@ -230,7 +230,6 @@ class EmailForm extends React.Component{
   }
 
   triggerSendEmail = (name, email, message) => {
-    // console.log('TODO SEND ->', name, email, message)
     sendEmail(name, email, message)
       .then( res => {
         let data = JSON.parse(res.data.body)
