@@ -83,9 +83,13 @@ class SkillCircle extends React.Component{
         if (lastScrollY > this.state.startTransitionScroll){
           this.startTransition()
         }
-        this.state.ticking = false;
+        this.setState({
+          ticking: false
+        })
       });
-      this.state.ticking = true;
+      this.setState({
+        ticking: true
+      })
     }
   };
 
