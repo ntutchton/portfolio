@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles';
+import classNames from 'classnames'
 import Typography from '@material-ui/core/Typography';
 import SvgLogo from '../../Logo'
 
@@ -14,37 +15,55 @@ const styles = theme => ({
     [theme.breakpoints.down('md')]: {
       maxWidth: '45vw'
     },
+    [theme.breakpoints.down('sm')]: {
+      overflow: 'hidden'
+    },
   },
   img: {
-    // flex: '1',
-    // height: '10em',
     background: 'url(https://purr.objects-us-west-1.dream.io/i/rQIjIKH.jpg)',
     backgroundImage: 'contain',
     display: 'flex',
     overflow: 'hidden',
-    // '&:after':{
-    //   content: '""',
-    //   display:'block',
-    //   paddingBottom: '100%',
-    // }
+    transition: 'filter 1s cubic-bezier(.19,1,.22,1)',
   },
   overlay: {
     display: 'flex',
     justifyContent: 'center',
     flexDirection: 'column',
     width: '100%',
-    backgroundColor: 'rgba(27,27,27,.7)'
+    backgroundColor: 'rgba(27,27,27,.5)',
+    opacity: '0',
+    transition: 'opacity 1s cubic-bezier(.19,1,.22,1)',
+  },
+  activeOverlay:{
+    // cursor: 'pointer',//TEMP
+    opacity: '1!important',
   },
   overlaySvgWrapper: {
-    transform: 'scale(1.15) translateX(-4.5vw)',
-    opacity: '.2',
+    transform: 'translateX(15vw)',
+    opacity: '.3',
+    [theme.breakpoints.down('md')]: {
+      transform: 'translateX(25vw)',
+    },
+    [theme.breakpoints.down('sm')]: {
+      transform: 'scale(1.6)translateX(25vw)',
+    },
+    // filter: 'blur(-5px)'
   },
   projectName: {
     color: '#fafafa',
     textAlign: 'center',
     fontWeight: '700',
+    // pointerEvents: 'none',
+    transition: 'opacity 1s cubic-bezier(.19,1,.22,1)',
+    opacity: '0',
   },
-
+  blurred: {
+    filter: 'blur(30px)',
+    [theme.breakpoints.down('sm')]: {
+      filter: 'blur(5px)'
+    },
+  },
 })
 
 class ProjectCard extends React.Component {
@@ -52,7 +71,8 @@ class ProjectCard extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      imgHeight: 0
+      imgHeight: 0,
+      activeOverlay: false,
     }
     this.cardRoot = React.createRef()
   }
@@ -69,20 +89,52 @@ class ProjectCard extends React.Component {
     })
   }
 
+
   render() {
     const { classes } = this.props;
     return (
-      <div ref={this.cardRoot} className={classes.root}>
-        <div className={classes.img} style={{height: `${this.state.imgHeight}px`}}>
-          <div className={classes.overlay}>
-            <div className={classes.overlaySvgWrapper}>
-              <SvgLogo type={'light'} size={this.state.imgHeight}></SvgLogo>
-            </div>
+      <div
+        ref={this.cardRoot}
+        className={classes.root}
+        style={{maxHeight: `${this.state.imgHeight*1.3}px`}}
+        onMouseEnter={()=>{this.setState({activeOverlay:true})}}
+        onMouseLeave={()=>{this.setState({activeOverlay:false})}}>
+        <div
+          style={{height: `${this.state.imgHeight}px`}}
+          className={classNames([
+            classes.img,
+            ( this.state.activeOverlay
+              ? classes.blurred
+              : {}
+            ),
+          ])}>
+          <div className={classNames([
+              classes.overlay,
+              ( this.state.activeOverlay
+                ? classes.activeOverlay
+                : {}
+              ),
+            ])}>
           </div>
         </div>
-        <div  >
-          <Typography variant="h4" className={classes.projectName}>
+        <div style={{transform: `translateY(-${this.state.imgHeight/2}px)`}} >
+          <Typography variant="h4" className={classNames([
+              classes.projectName,
+              ( this.state.activeOverlay
+                ? classes.activeOverlay
+                : {}
+              ),
+            ])}>
             Placeholder
+            <div
+              className={classes.overlaySvgWrapper}
+              style={{
+                margin: `-${this.state.imgHeight/2}px`,
+                height: `${this.state.imgHeight}px`,
+                width: `${this.state.imgHeight/2}px`,
+              }}>
+              <SvgLogo type={'light'} size={this.state.imgHeight}></SvgLogo>
+            </div>
           </Typography>
         </div>
       </div>

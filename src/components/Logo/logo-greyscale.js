@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 function LogoGreyscale(props) {
   return (
 
-    <svg width={props.size + 'px'} height={props.size + 'px'} viewBox="0 0 276 565" version="1.1">
+    <svg  height={props.size + 'px'} viewBox="0 0 276 565" version="1.1">
         <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
             <g id="logo" transform="translate(-503.000000, -138.000000)" fillRule="nonzero">
                 <g id="logo-greyscale" transform="translate(521.000000, 157.000000)">
