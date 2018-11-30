@@ -67,10 +67,6 @@ const styles = theme => ({
       margin: '0',
     },
   },
-  filtered: {
-    visibility: 'hidden',
-    order: '3',
-  },
 })
 
 class ProjectCard extends React.Component {
@@ -80,21 +76,8 @@ class ProjectCard extends React.Component {
     this.state = {
       imgHeight: 0,
       activeOverlay: false,
-      filtered: false
     }
     this.cardRoot = React.createRef()
-  }
-
-  componentWillMount(){
-    //init state.fiiltered based on tags matching parent's array of filter strings
-    let filter = this.props.tags.filter( tag => {
-      if (this.props.FILTER.includes(tag)){
-        return tag
-      } else return null
-    })
-    filter.length >= 1
-      ? this.setFilter(true)
-      : this.setFilter(false)
   }
 
   componentDidMount(){
@@ -109,75 +92,68 @@ class ProjectCard extends React.Component {
     })
   }
 
-  //setter for filter to ensure it does not get overwritten by tags in componentWillMount
-  setFilter = boolean => {
-    this.setState({
-      filtered: boolean
-    })
-  }
-
   render() {
     const { classes } = this.props;
 
     return (
-      <div
-        ref={this.cardRoot}
-        className={classNames([
-          classes.root,
-          (this.state.filtered
-            ? classes.filtered
-            : {}
-          ),
-        ])}
-        style={{maxHeight: `${this.state.imgHeight*1.3}px`}}
-        onMouseEnter={()=>{this.setState({activeOverlay:true})}}
-        onMouseLeave={()=>{this.setState({activeOverlay:false})}}>
-        <div
-          style={{height: `${this.state.imgHeight}px`, background: `url(${this.props.imageUrl})`}}
-          className={classNames([
-            classes.img,
-            ( this.state.activeOverlay
-              ? classes.blurred
-              : {}
-            ),
-          ])}>
-          <div className={classNames([
-              classes.overlay,
-              ( this.state.activeOverlay
-                ? classes.activeOverlay
-                : {}
-              ),
-            ])}>
-          </div>
-        </div>
-        <div style={{transform: `translateY(-${this.state.imgHeight/2}px)`}} >
-          <Typography variant="h4" className={classNames([
-              classes.projectName,
-              ( this.state.activeOverlay
-                ? classes.activeOverlay
-                : {}
-              ),
-            ])}>
-            Placeholder
+        this.props.visibility
+        ? <div
+            ref={this.cardRoot}
+            className={classNames([
+              classes.root,
+              {}
+            ])}
+            style={{maxHeight: `${this.state.imgHeight*1.3}px`}}
+            onMouseEnter={()=>{this.setState({activeOverlay:true})}}
+            onMouseLeave={()=>{this.setState({activeOverlay:false})}}>
             <div
-              className={classes.overlaySvgWrapper}
-              style={{
-                margin: `-${this.state.imgHeight/2}px`,
-                height: `${this.state.imgHeight}px`,
-                width: `${this.state.imgHeight/2}px`,
-              }}>
-              <SvgLogo type={'light'} size={this.state.imgHeight}></SvgLogo>
+              style={{height: `${this.state.imgHeight}px`, background: `url(${this.props.imageUrl})`}}
+              className={classNames([
+                classes.img,
+                ( this.state.activeOverlay
+                  ? classes.blurred
+                  : {}
+                ),
+              ])}>
+              <div className={classNames([
+                  classes.overlay,
+                  ( this.state.activeOverlay
+                    ? classes.activeOverlay
+                    : {}
+                  ),
+                ])}>
+              </div>
             </div>
-          </Typography>
-        </div>
-      </div>
+            <div style={{transform: `translateY(-${this.state.imgHeight/2}px)`}} >
+              <Typography variant="h4" className={classNames([
+                  classes.projectName,
+                  ( this.state.activeOverlay
+                    ? classes.activeOverlay
+                    : {}
+                  ),
+                ])}>
+                Placeholder
+                <div
+                  className={classes.overlaySvgWrapper}
+                  style={{
+                    margin: `-${this.state.imgHeight/2}px`,
+                    height: `${this.state.imgHeight}px`,
+                    width: `${this.state.imgHeight/2}px`,
+                  }}>
+                  <SvgLogo type={'light'} size={this.state.imgHeight}></SvgLogo>
+                </div>
+              </Typography>
+            </div>
+          </div>
+        : null
     );
   }
 }
 
 ProjectCard.propType = {
   imageUrl: PropTypes.string.isRequired,
-  FILTER: PropTypes.array.isRequired,
+  // FILTER: PropTypes.array.isRequired,
+  visibility: PropTypes.bool.isRequired,
   tags: PropTypes.array.isRequired,
 }
 

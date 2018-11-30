@@ -162,7 +162,7 @@ function Main(props) {
           <Typography variant="h3" className={classes.projectHeader}>
              <span>to build stuff like this</span><span role="img" aria-label="point-down" style={{paddingLeft: '.5em'}}>👇🏻</span>
           </Typography>
-          <Projects />
+          <Projects theme={props.theme}/>
         </div>
 
         <div className={classes.blurb}>
