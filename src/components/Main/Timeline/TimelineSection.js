@@ -44,7 +44,7 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    transition: 'filter 1s ease-in-out',
+    // transition: 'filter 1s ease-in-out',
     [theme.breakpoints.down('md')]: {
       gridColumn: '7 / span 2',
     },
@@ -83,7 +83,7 @@ const styles = theme => ({
     },
   },
   animatedSvg: {
-    transition: 'filter 1s ease-in-out',
+    transition: 'all .25s ease-in-out',
     gridColumnStart: '6',
     gridColumnEnd: '8',
     margin: '0 auto',

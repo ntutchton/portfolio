@@ -58,6 +58,7 @@ class SkillCircle extends React.Component{
     largestSquare: (Math.floor((this.props.height * Math.sqrt(2))/2)),
     delay: (Math.random() * 300),
     ticking: false,
+    startSrollListeners: 3000,
   }
 
   componentWillMount(){
@@ -78,7 +79,7 @@ class SkillCircle extends React.Component{
 
   handleScroll = () => {
     lastScrollY = window.scrollY;
-    if (!this.state.ticking) {
+    if (!this.state.ticking && window.scrollY > this.state.startSrollListeners) {
       window.requestAnimationFrame(() => {
         if (lastScrollY > this.state.startTransitionScroll){
           this.startTransition()

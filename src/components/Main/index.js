@@ -152,7 +152,7 @@ function Main(props) {
         </div>
 
         <div id="skills" className={classes.skillSection}>
-          <Skills />
+            <Skills />
             <Typography variant="h3" className={classes.skillsHeader}>
               <span role="img" aria-label="point-up" style={{paddingRight: '.5em'}}>☝🏻</span><span style={{paddingRight: '13px'}}>I use tools like these</span>
             </Typography>
