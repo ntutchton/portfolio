@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 function LogoLight(props) {
   return (
-    <svg width={props.size + 'px'} height={props.size + 'px'} viewBox="0 0 70 142" version="1.1" >
+    <svg  height={props.size + 'px'} viewBox="0 0 70 142" version="1.1" >
         <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
             <g id="logo" transform="translate(-183.000000, -401.000000)" fillRule="nonzero" stroke="#E6E6E6" strokeWidth="9.2">
                 <g id="logo-white" transform="translate(188.000000, 406.000000)">

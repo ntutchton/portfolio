@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 function LogoDark(props) {
 
   return (
-    <svg width={props.size + 'px'} height={props.size + 'px'} viewBox="0 0 70 142" version="1.1">
+    <svg  height={props.size + 'px'} viewBox="0 0 70 142" version="1.1">
         <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
             <g id="logo" transform="translate(-314.000000, -401.000000)" fillRule="nonzero" stroke="#424242" strokeWidth="9.2">
                 <g transform="translate(319.000000, 406.000000)">
