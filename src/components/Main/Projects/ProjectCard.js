@@ -28,7 +28,8 @@ const styles = theme => ({
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     display: 'flex',
-    overflow: 'hidden',
+    // overflow: 'hidden',
+    borderRadius: '5px',
     transition: 'all 1s cubic-bezier(.19,1,.22,1)',
   },
   overlay: {
@@ -89,6 +90,7 @@ const styles = theme => ({
     filter: 'blur(30px)',
     '-webkit-filter': 'blur(30px)',
     margin: ' 0 1em',
+    opacity: '.7',
     [theme.breakpoints.down('sm')]: {
       filter: 'blur(5px)',
       '-webkit-filter': 'blur(5px)',
@@ -125,12 +127,15 @@ class ProjectCard extends React.Component {
   render() {
     const { classes } = this.props;
 
+    //TODO define these in projectInfo.js and just render the component without this logic
     const icons = type => (
       type === 'site'
       ? <LaptopWindow />
-    : type ===   'github'
-      ? <SvgLogo type="github" size={24} />
-    : null
+      : type ===   'github'
+        ? <SvgLogo type="github" size={24} />
+      : type === 'dribbble'
+          ? <SvgLogo type='dribbble' size={24} />
+          : null
     )
 // style={{maxHeight: `${this.state.imgHeight*1.3}px`}}
     return (
@@ -183,7 +188,7 @@ class ProjectCard extends React.Component {
                   {
                     this.props.links.map( (link, index) => (
                       // Link
-                      <Button className={classes.linkButton} component={Link} variant="contained" color="primary" key={index} to={link.to}>
+                      <Button className={classes.linkButton} component={Link} variant="contained" key={index} to={link.to}>
                         { icons(link.type) }
                         <span className={classes.linkText}>{link.text}</span>
                       </Button>

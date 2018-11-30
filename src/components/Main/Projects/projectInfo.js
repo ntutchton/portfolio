@@ -2,7 +2,7 @@ export default [
   {
     tags: ['backend', 'frontend', 'application' ],
     imageUrl: 'https://i.imgur.com/MFPafGN.jpg',
-    name: 'Carbos App',
+    name: 'Carbos',
     description: 'LOREM',
     links: [
       {
@@ -13,7 +13,7 @@ export default [
       {
         to: '/',
         type: 'site',
-        text: 'visit',
+        text: 'visit site',
       },
     ]
   },
@@ -34,6 +34,13 @@ export default [
     imageUrl: 'https://i.imgur.com/MFPafGN.jpg',
     name: 'Placeholder',
     description: 'LOREM',
+    links: [
+      {
+        to: '/',
+        type: 'dribbble',
+        text: 'see concept',
+      },
+    ]
   },
   {
     tags: ['backend'],
