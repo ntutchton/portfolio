@@ -79,7 +79,7 @@ const styles = theme => ({
     marginBottom: '15em',
   },
   paralaxWrapper: {
-    transform: 'translateY(-430px)translateX(-50px)',
+    transform: 'translateY(-430px)translateX(100px)',
     zIndex: '-1',
   },
   paralaxDark: {

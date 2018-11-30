@@ -20,11 +20,13 @@ const styles = theme => ({
     },
   },
   img: {
-    background: 'url(https://purr.objects-us-west-1.dream.io/i/rQIjIKH.jpg)',
-    backgroundImage: 'contain',
+    // background: 'url(https://purr.objects-us-west-1.dream.io/i/rQIjIKH.jpg)',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
     display: 'flex',
     overflow: 'hidden',
-    transition: 'filter 1s cubic-bezier(.19,1,.22,1)',
+    transition: 'all 1s cubic-bezier(.19,1,.22,1)',
   },
   overlay: {
     display: 'flex',
@@ -36,7 +38,6 @@ const styles = theme => ({
     transition: 'opacity 1s cubic-bezier(.19,1,.22,1)',
   },
   activeOverlay:{
-    // cursor: 'pointer',//TEMP
     opacity: '1!important',
   },
   overlaySvgWrapper: {
@@ -48,21 +49,27 @@ const styles = theme => ({
     [theme.breakpoints.down('sm')]: {
       transform: 'scale(1.6)translateX(25vw)',
     },
-    // filter: 'blur(-5px)'
   },
   projectName: {
     color: '#fafafa',
     textAlign: 'center',
     fontWeight: '700',
-    // pointerEvents: 'none',
     transition: 'opacity 1s cubic-bezier(.19,1,.22,1)',
     opacity: '0',
   },
   blurred: {
     filter: 'blur(30px)',
+    '-webkit-filter': 'blur(30px)',
+    margin: ' 0 1em',
     [theme.breakpoints.down('sm')]: {
-      filter: 'blur(5px)'
+      filter: 'blur(5px)',
+      '-webkit-filter': 'blur(5px)',
+      margin: '0',
     },
+  },
+  filtered: {
+    visibility: 'hidden',
+    order: '3',
   },
 })
 
@@ -73,8 +80,21 @@ class ProjectCard extends React.Component {
     this.state = {
       imgHeight: 0,
       activeOverlay: false,
+      filtered: false
     }
     this.cardRoot = React.createRef()
+  }
+
+  componentWillMount(){
+    //init state.fiiltered based on tags matching parent's array of filter strings
+    let filter = this.props.tags.filter( tag => {
+      if (this.props.FILTER.includes(tag)){
+        return tag
+      } else return null
+    })
+    filter.length >= 1
+      ? this.setFilter(true)
+      : this.setFilter(false)
   }
 
   componentDidMount(){
@@ -89,18 +109,31 @@ class ProjectCard extends React.Component {
     })
   }
 
+  //setter for filter to ensure it does not get overwritten by tags in componentWillMount
+  setFilter = boolean => {
+    this.setState({
+      filtered: boolean
+    })
+  }
 
   render() {
     const { classes } = this.props;
+
     return (
       <div
         ref={this.cardRoot}
-        className={classes.root}
+        className={classNames([
+          classes.root,
+          (this.state.filtered
+            ? classes.filtered
+            : {}
+          ),
+        ])}
         style={{maxHeight: `${this.state.imgHeight*1.3}px`}}
         onMouseEnter={()=>{this.setState({activeOverlay:true})}}
         onMouseLeave={()=>{this.setState({activeOverlay:false})}}>
         <div
-          style={{height: `${this.state.imgHeight}px`}}
+          style={{height: `${this.state.imgHeight}px`, background: `url(${this.props.imageUrl})`}}
           className={classNames([
             classes.img,
             ( this.state.activeOverlay
@@ -143,7 +176,9 @@ class ProjectCard extends React.Component {
 }
 
 ProjectCard.propType = {
-  // height: PropTypes.number.isRequired,
+  imageUrl: PropTypes.string.isRequired,
+  FILTER: PropTypes.array.isRequired,
+  tags: PropTypes.array.isRequired,
 }
 
 export default withStyles(styles)(ProjectCard);
