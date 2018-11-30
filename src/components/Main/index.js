@@ -93,11 +93,11 @@ const styles = theme => ({
   skillsHeader: {
     color: 'white',
     background: '#313131',
-    padding: '1em 5% 1em 1em',
+    padding: '2% 5% 1em 2%',
     textAlign: 'center',
   },
   projectHeader: {
-    padding: '1em 5% 1em 1em',
+    padding: '2% 5% 1em 2%',
     textAlign: 'center',
   },
 })

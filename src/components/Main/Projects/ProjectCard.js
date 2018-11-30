@@ -3,7 +3,10 @@ import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames'
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import { Link }from 'react-router-dom'
 import SvgLogo from '../../Logo'
+import LaptopWindow from '@material-ui/icons/LaptopMacTwoTone';
 
 const styles = theme => ({
   root: {
@@ -47,15 +50,40 @@ const styles = theme => ({
       transform: 'translateX(25vw)',
     },
     [theme.breakpoints.down('sm')]: {
-      transform: 'scale(1.6)translateX(25vw)',
+      transform: 'scale(1.1)translateX(25vw)',
     },
   },
-  projectName: {
+  projectButtons: {
     color: '#fafafa',
     textAlign: 'center',
     fontWeight: '700',
     transition: 'opacity 1s cubic-bezier(.19,1,.22,1)',
     opacity: '0',
+  },
+  linkButtonWrapper: {
+    [theme.breakpoints.down('sm')]: {
+      display: 'flex',
+      justifyContent:'center',
+      flexDirection: 'column',
+    },
+  },
+  linkButton: {
+    zIndex : '50',
+    margin: '0 1em',
+    [theme.breakpoints.down('sm')]: {
+      margin: '2px'
+    },
+  },
+  linkText: {
+    marginLeft: '7px',
+  },
+  projectText: {
+    textAlign: 'center',
+    [theme.breakpoints.down('sm')]: { //compensate for stacking link buttons
+      paddingBottom: '50px',
+      marginBottom: '-50px',
+      marginTop: '-50px',
+    },
   },
   blurred: {
     filter: 'blur(30px)',
@@ -97,6 +125,14 @@ class ProjectCard extends React.Component {
   render() {
     const { classes } = this.props;
 
+    const icons = type => (
+      type === 'site'
+      ? <LaptopWindow />
+    : type ===   'github'
+      ? <SvgLogo type="github" size={24} />
+    : null
+    )
+// style={{maxHeight: `${this.state.imgHeight*1.3}px`}}
     return (
         this.props.visibility
         ? <div
@@ -105,11 +141,11 @@ class ProjectCard extends React.Component {
               classes.root,
               {}
             ])}
-            style={{maxHeight: `${this.state.imgHeight*1.3}px`}}
+
             onMouseEnter={()=>{this.setState({activeOverlay:true})}}
             onMouseLeave={()=>{this.setState({activeOverlay:false})}}>
             <div
-              style={{height: `${this.state.imgHeight}px`, background: `url(${this.props.imageUrl})`}}
+              style={{height: `${this.state.imgHeight}px`, backgroundImage: `url(${this.props.imageUrl})`}}
               className={classNames([
                 classes.img,
                 ( this.state.activeOverlay
@@ -126,15 +162,14 @@ class ProjectCard extends React.Component {
                 ])}>
               </div>
             </div>
-            <div style={{transform: `translateY(-${this.state.imgHeight/1.7}px)`}} >
-              <Typography variant="h4" className={classNames([
-                  classes.projectName,
+            <div style={{transform: `translateY(-${this.state.imgHeight/2}px)`}} >
+              <div className={classNames([
+                  classes.projectButtons,
                   ( this.state.activeOverlay
                     ? classes.activeOverlay
                     : {}
                   ),
                 ])}>
-                {this.props.name}
                 <div
                   className={classes.overlaySvgWrapper}
                   style={{
@@ -144,6 +179,25 @@ class ProjectCard extends React.Component {
                   }}>
                   <SvgLogo type={'light'} size={this.state.imgHeight}></SvgLogo>
                 </div>
+                <div className={classes.linkButtonWrapper}>
+                  {
+                    this.props.links.map( (link, index) => (
+                      // Link
+                      <Button className={classes.linkButton} component={Link} variant="contained" color="primary" key={index} to={link.to}>
+                        { icons(link.type) }
+                        <span className={classes.linkText}>{link.text}</span>
+                      </Button>
+                    ))
+                  }
+                </div>
+              </div>
+            </div>
+            <div className={classes.projectText}>
+              <Typography variant="h6" className={classes.projectName}>
+                {this.props.name}
+              </Typography>
+              <Typography variant="body1" className={classes.projectDescription}>
+                {this.props.description}
               </Typography>
             </div>
           </div>
@@ -158,6 +212,11 @@ ProjectCard.propTypes = {
   visibility: PropTypes.bool.isRequired,
   tags: PropTypes.array.isRequired,
   name: PropTypes.string.isRequired,
+  links: PropTypes.array.isRequired,
+}
+
+ProjectCard.defaultProps = {
+  links: [],
 }
 
 export default withStyles(styles)(ProjectCard);

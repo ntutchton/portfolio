@@ -8,7 +8,7 @@ const styles = theme => ({
     flex: '1',
     margin: '3% 10%',
     [theme.breakpoints.down('md')]: {
-      margin: '5% 10%',
+      margin: '5% 5%',
     },
   },
   circleWrapper: {
@@ -25,7 +25,7 @@ const styles = theme => ({
 
 class Skills extends React.Component{
   state = {
-    defaultHeight: 150,
+    defaultHeight: 120,
   }
 
   componentDidMount(){

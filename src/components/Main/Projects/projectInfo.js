@@ -1,9 +1,21 @@
 export default [
   {
-    tags: ['backend', 'frontend', 'application', 'design'],
+    tags: ['backend', 'frontend', 'application' ],
     imageUrl: 'https://i.imgur.com/MFPafGN.jpg',
     name: 'Carbos App',
     description: 'LOREM',
+    links: [
+      {
+        to: '/',
+        type: 'github',
+        text: 'view code'
+      },
+      {
+        to: '/',
+        type: 'site',
+        text: 'visit',
+      },
+    ]
   },
   {
     tags: ['frontend', 'backend', 'website'],
@@ -12,7 +24,7 @@ export default [
     description: 'LOREM',
   },
   {
-    tags: ['design', 'application', 'frontend'],
+    tags: [ 'application', 'frontend'],
     imageUrl: 'https://purr.objects-us-west-1.dream.io/i/rQIjIKH.jpg',
     name: 'GEOINT Self Service',
     description: 'LOREM',
