@@ -87,9 +87,11 @@ class ProjectCard extends React.Component {
 
   //set height to width of element after sudtracting horizontal padding from width (i.e. innerWidth or element)
   recalculateImgHeight = () => {
-    this.setState({
-      imgHeight : this.cardRoot.current.clientWidth - (parseFloat(getComputedStyle(this.cardRoot.current).paddingLeft) + parseFloat(getComputedStyle(this.cardRoot.current).paddingRight))
-    })
+    if (this.cardRoot.current){ //if filtered the ref will not be rendered
+      this.setState({
+        imgHeight : this.cardRoot.current.clientWidth - (parseFloat(getComputedStyle(this.cardRoot.current).paddingLeft) + parseFloat(getComputedStyle(this.cardRoot.current).paddingRight))
+      })
+    }
   }
 
   render() {
@@ -124,7 +126,7 @@ class ProjectCard extends React.Component {
                 ])}>
               </div>
             </div>
-            <div style={{transform: `translateY(-${this.state.imgHeight/2}px)`}} >
+            <div style={{transform: `translateY(-${this.state.imgHeight/1.7}px)`}} >
               <Typography variant="h4" className={classNames([
                   classes.projectName,
                   ( this.state.activeOverlay
@@ -132,7 +134,7 @@ class ProjectCard extends React.Component {
                     : {}
                   ),
                 ])}>
-                Placeholder
+                {this.props.name}
                 <div
                   className={classes.overlaySvgWrapper}
                   style={{
@@ -150,11 +152,12 @@ class ProjectCard extends React.Component {
   }
 }
 
-ProjectCard.propType = {
+ProjectCard.propTypes = {
   imageUrl: PropTypes.string.isRequired,
   // FILTER: PropTypes.array.isRequired,
   visibility: PropTypes.bool.isRequired,
   tags: PropTypes.array.isRequired,
+  name: PropTypes.string.isRequired,
 }
 
 export default withStyles(styles)(ProjectCard);
