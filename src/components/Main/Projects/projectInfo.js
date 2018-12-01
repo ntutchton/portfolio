@@ -1,7 +1,7 @@
 export default [
   {
     tags: ['backend', 'frontend', 'application' ],
-    labels: ['ethereum', 'react', 'PSQL', 'python', 'redux'],
+    labels: [ 'react', 'redux', 'PSQL', 'python'],
     imageUrl: 'https://i.imgur.com/MFPafGN.jpg',
     name: 'Carbos',
     description: 'Carbos leverages the Ethereum blockchain to increase access and accountability in carbon trading markets.',
@@ -21,10 +21,10 @@ export default [
   },
   {
     tags: ['frontend', 'backend', 'website'],
-    labels: ['react', 'aws', 'material ui', 'sketch', 'webpack'],
+    labels: ['react', 'aws', 'material', 'sketch', ],
     imageUrl: 'https://purr.objects-us-west-1.dream.io/i/rQIjIKH.jpg',
     name: 'This Site',
-    description: 'My personal site. Configured for auto-magical builds and deployments.  Hosted from a static AWS S3 bucket.',
+    description: 'My personal site. Configured for auto-magical builds, deployments, and static hosting from an s3 bucket.',
     links: [
       {
         to: 'https://github.com/ntutchton/nathan.tutchton.rocks',
@@ -35,7 +35,7 @@ export default [
   },
   {
     tags: [ 'application', 'frontend'],
-    labels: [ 'angular', 'node', 'mongo', 'docker', 'jenkins'],
+    labels: [ 'angular', 'node', 'mongo', 'docker', ],
     imageUrl: 'https://purr.objects-us-west-1.dream.io/i/rQIjIKH.jpg',
     name: 'GEOINT Self Service',
     description: 'A tool to provision and permission DevOps resources across NGA (National Geospacial Administration) and NGA contractor networks.',

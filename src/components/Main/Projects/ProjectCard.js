@@ -5,6 +5,7 @@ import classNames from 'classnames'
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Chip from '@material-ui/core/Chip';
+import Avatar from '@material-ui/core/Avatar';
 // import { Link }from 'react-router-dom'
 import SvgLogo from '../../Logo'
 import LaptopWindow from '@material-ui/icons/LaptopMacTwoTone';
@@ -99,6 +100,9 @@ const styles = theme => ({
   },
   chip: {
     margin: '3px 5px',
+  },
+  avatar: {
+    backgroundColor: 'transparent'
   },
   blurred: {
     filter: 'blur(30px)',
@@ -224,7 +228,17 @@ class ProjectCard extends React.Component {
               </Typography>
               {
                 this.props.labels.map( (label, index) => (
-                  <Chip className={classes.chip} label={label.toUpperCase()} key={index} />
+                    <Chip
+                       avatar={
+                         <Avatar className={classes.avatar}>
+                           <div style={{ backgroundImage: `url(logos/${label}.png)`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}></div>
+                         </Avatar>
+                       }
+                       classes={{label: 'chipLabel'}}
+                       key={index}
+                       label={label.toUpperCase()}
+                       className={classes.chip}
+                     /> //.chipLabel is defined globally in App.css, not ideal but works for now
                 ))
               }
               <Typography variant="body1" className={classes.projectDescription}>
