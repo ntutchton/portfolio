@@ -228,7 +228,7 @@ class Timeline extends React.Component {
                  }}
                >
                   <div className={classes.popover}>
-                    <Typography variant="subtitle1" >You will need an active security clearence to view this content.</Typography>
+                    <Typography variant="subtitle1" >You will need NGA login credentials to view this content.</Typography>
                     <Button style={{marginTop: '1em'}} href={'https://my.gs.mil/login'}>
                       No Problem <ArrowForward style={{marginLeft: '5px'}}/>
                     </Button>

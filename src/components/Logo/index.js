@@ -3,6 +3,9 @@ import PropTypes from 'prop-types'
 import LogoDark from './logo-dark'
 import LogoLight from './logo-light'
 import LogoGreyscale from './logo-greyscale'
+import Github from './github'
+import Dribbble from './dribbble'
+import Gitlab from './gitlab'
 
 function SvgLogo(props) {
   if (props.type === 'dark'){
@@ -13,6 +16,15 @@ function SvgLogo(props) {
   }
   else if (props.type === 'greyscale'){
     return ( <LogoGreyscale size={props.size}></LogoGreyscale> )
+  }
+  else if (props.type === 'github'){
+    return ( <Github size={props.size} /> )
+  }
+  else if (props.type === 'dribbble'){
+    return ( <Dribbble size={props.size} /> )
+  }
+  else if (props.type === 'gitlab'){
+    return ( <Gitlab size={props.size} /> )
   }
   else return ( <LogoDark size={props.size}></LogoDark> )
 }

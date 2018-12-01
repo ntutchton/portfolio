@@ -8,7 +8,7 @@ const styles = theme => ({
     flex: '1',
     margin: '3% 10%',
     [theme.breakpoints.down('md')]: {
-      margin: '5% 10%',
+      margin: '5% 5%',
     },
   },
   circleWrapper: {
@@ -25,7 +25,7 @@ const styles = theme => ({
 
 class Skills extends React.Component{
   state = {
-    defaultHeight: 150,
+    defaultHeight: 120,
   }
 
   componentDidMount(){
@@ -54,15 +54,15 @@ class Skills extends React.Component{
           <SkillCircle height={this.state.defaultHeight} name="Webpack" logo="logos/WEBPACK.png"/>
           <SkillCircle height={this.state.defaultHeight} name="Sketch" logo="logos/SKETCH.png"/>
           <SkillCircle height={this.state.defaultHeight} name="Docker" logo="logos/DOCKER.png"/>
-          <SkillCircle height={this.state.defaultHeight} name="Illustrator" logo="logos/AI.png"/>
+          <SkillCircle height={this.state.defaultHeight} name="Illustrator" logo="logos/ILLUSTRATOR.png"/>
           <SkillCircle height={this.state.defaultHeight} name="PostgreSQL" logo="logos/PSQL.png"/>
           <SkillCircle height={this.state.defaultHeight} name="MongoDB" logo="logos/MONGO.png"/>
           <SkillCircle height={this.state.defaultHeight} name="Angular" logo="logos/ANGULAR.png"/>
           <SkillCircle height={this.state.defaultHeight} name="Python" logo="logos/PYTHON.png"/>
           <SkillCircle height={this.state.defaultHeight} name="Vue" logo="logos/VUE.png"/>
-          <SkillCircle height={this.state.defaultHeight} name="Photoshop" logo="logos/PS.png"/>
+          <SkillCircle height={this.state.defaultHeight} name="Photoshop" logo="logos/PHOTOSHOP.png"/>
           <SkillCircle height={this.state.defaultHeight} name="AWS" logo="logos/AWS.png"/>
-          <SkillCircle height={this.state.defaultHeight} name="Material Design" logo="logos/MD.png"/>
+          <SkillCircle height={this.state.defaultHeight} name="Material Design" logo="logos/MATERIAL.png"/>
           <SkillCircle height={this.state.defaultHeight} name="Jenkins" logo="logos/JENKINS.png"/>
         </div>
       </div>
