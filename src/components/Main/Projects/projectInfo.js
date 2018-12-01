@@ -1,7 +1,7 @@
 export default [
   {
     tags: ['backend', 'frontend', 'application' ],
-    labels: [ 'react', 'redux', 'PSQL', 'python'],
+    labels: [ 'REACT', 'REDUX', 'PSQL', 'PYTHON'],
     imageUrl: 'https://i.imgur.com/MFPafGN.jpg',
     name: 'Carbos',
     description: 'Carbos leverages the Ethereum blockchain to increase access and accountability in carbon trading markets.',
@@ -21,7 +21,7 @@ export default [
   },
   {
     tags: ['frontend', 'backend', 'website'],
-    labels: ['react', 'aws', 'material', 'sketch', ],
+    labels: ['REACT', 'AWS', 'MATERIAL', 'SKETCH', ],
     imageUrl: 'https://purr.objects-us-west-1.dream.io/i/rQIjIKH.jpg',
     name: 'This Site',
     description: 'My personal site. Configured for auto-magical builds, deployments, and static hosting from an s3 bucket.',
@@ -35,7 +35,7 @@ export default [
   },
   {
     tags: [ 'application', 'frontend'],
-    labels: [ 'angular', 'node', 'mongo', 'docker', ],
+    labels: [ 'ANGULAR', 'NODE', 'MONGO', 'DOCKER', ],
     imageUrl: 'https://purr.objects-us-west-1.dream.io/i/rQIjIKH.jpg',
     name: 'GEOINT Self Service',
     description: 'A tool to provision and permission DevOps resources across NGA (National Geospacial Administration) and NGA contractor networks.',
@@ -56,7 +56,7 @@ export default [
   },
   {
     tags: ['design'],
-    labels: ['photoshop', 'illustrator', ],
+    labels: ['PHOTOSHOP', 'ILLUSTRATOR', ],
     imageUrl: 'https://i.imgur.com/MFPafGN.jpg',
     name: 'Scapegoat',
     description: 'A digital recreation of one of my drawings.',
@@ -70,7 +70,7 @@ export default [
   },
   {
     tags: ['backend'],
-    labels: ['python', ],
+    labels: ['PYTHON', ],
     imageUrl: 'https://i.imgur.com/IU4ud2Q.jpg',
     name: 'Ye Olde Bot (OSRS)',
     description: 'A simple click-bot for Old School Runescape.',
