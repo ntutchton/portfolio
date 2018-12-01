@@ -4,7 +4,8 @@ import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames'
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import { Link }from 'react-router-dom'
+import Chip from '@material-ui/core/Chip';
+// import { Link }from 'react-router-dom'
 import SvgLogo from '../../Logo'
 import LaptopWindow from '@material-ui/icons/LaptopMacTwoTone';
 
@@ -60,12 +61,16 @@ const styles = theme => ({
     fontWeight: '700',
     transition: 'opacity 1s cubic-bezier(.19,1,.22,1)',
     opacity: '0',
+    [theme.breakpoints.down('sm')]: {
+      // minHeight: '215px',
+    },
   },
   linkButtonWrapper: {
     [theme.breakpoints.down('sm')]: {
       display: 'flex',
       justifyContent:'center',
       flexDirection: 'column',
+      height: '90px',
     },
   },
   linkButton: {
@@ -85,6 +90,15 @@ const styles = theme => ({
       marginBottom: '-50px',
       marginTop: '-50px',
     },
+  },
+  projectName: {
+    marginBottom: '.5em',
+  },
+  projectDescription: {
+    marginTop: '.8em',
+  },
+  chip: {
+    margin: '3px 5px',
   },
   blurred: {
     filter: 'blur(30px)',
@@ -133,9 +147,11 @@ class ProjectCard extends React.Component {
       ? <LaptopWindow />
       : type ===   'github'
         ? <SvgLogo type="github" size={24} />
-      : type === 'dribbble'
+        : type === 'dribbble'
           ? <SvgLogo type='dribbble' size={24} />
-          : null
+          : type === 'gitlab'
+            ? <SvgLogo type='gitlab' size={24} />
+            : null
     )
 // style={{maxHeight: `${this.state.imgHeight*1.3}px`}}
     return (
@@ -187,8 +203,13 @@ class ProjectCard extends React.Component {
                 <div className={classes.linkButtonWrapper}>
                   {
                     this.props.links.map( (link, index) => (
-                      // Link
-                      <Button className={classes.linkButton} component={Link} variant="contained" key={index} to={link.to}>
+                      // Link?
+                      <Button
+                        className={classes.linkButton}
+                        variant="contained"
+                        key={index}
+                        disabled={link.inactive}
+                        href={link.to}>
                         { icons(link.type) }
                         <span className={classes.linkText}>{link.text}</span>
                       </Button>
@@ -201,6 +222,11 @@ class ProjectCard extends React.Component {
               <Typography variant="h6" className={classes.projectName}>
                 {this.props.name}
               </Typography>
+              {
+                this.props.labels.map( (label, index) => (
+                  <Chip className={classes.chip} label={label.toUpperCase()} key={index} />
+                ))
+              }
               <Typography variant="body1" className={classes.projectDescription}>
                 {this.props.description}
               </Typography>
@@ -213,15 +239,16 @@ class ProjectCard extends React.Component {
 
 ProjectCard.propTypes = {
   imageUrl: PropTypes.string.isRequired,
-  // FILTER: PropTypes.array.isRequired,
   visibility: PropTypes.bool.isRequired,
   tags: PropTypes.array.isRequired,
   name: PropTypes.string.isRequired,
   links: PropTypes.array.isRequired,
+  labels: PropTypes.array.isRequired,
 }
 
 ProjectCard.defaultProps = {
   links: [],
+  labels: [],
 }
 
 export default withStyles(styles)(ProjectCard);

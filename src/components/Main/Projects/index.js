@@ -160,6 +160,7 @@ class Projects extends React.Component{
                 tags={project.tags}
                 description={project.description}
                 links={project.links}
+                labels={project.labels}
                 visibility={this.setProjectVisibility(project.tags)}
                 imageUrl={project.imageUrl}
               />
