@@ -11,6 +11,8 @@ import { Parallax } from 'react-scroll-parallax';
 import Timeline from './Timeline/'
 import Skills from './Skills/'
 import Projects from './Projects/'
+import Certs from './Certs'
+import Blurb from './Blurb'
 
 
 const styles = theme => ({
@@ -20,11 +22,11 @@ const styles = theme => ({
   link: {
     textDecoration: 'none',
   },
-  section: {
+  // section: {
     // minHeight: '100vh',
     // width:'100%',
     // zIndex: '2',
-  },
+  // },
   hero: {
     display: 'grid',
     height: '870px',
@@ -100,6 +102,13 @@ const styles = theme => ({
     padding: '2% 5% 1em 2%',
     textAlign: 'center',
   },
+  blurbSection: {
+    margin: '4em 0',
+    // backgroundColor: '#e0e0e0',
+  },
+  blurbSectionDark: {
+
+  },
 })
 
 function Main(props) {
@@ -147,7 +156,7 @@ function Main(props) {
 
         </div>
 
-        <div id="work" className={classes.section}>
+        <div id="work">
           <Timeline theme={props.theme} updateActiveUrlHash={props.updateActiveUrlHash}/>
         </div>
 
@@ -158,17 +167,19 @@ function Main(props) {
             </Typography>
         </div>
 
-        <div id="projects" className={classes.section}>
+        <div id="projects">
           <Typography variant="h3" className={classes.projectHeader}>
              <span>to build stuff like this</span><span role="img" aria-label="point-down" style={{paddingLeft: '.5em'}}>👇🏻</span>
           </Typography>
           <Projects theme={props.theme}/>
         </div>
 
-        <div className={classes.blurb}>
-          <Typography variant="h2">
-            blurb
-          </Typography>
+        <div className={classNames([classes.blurbSection, (props.currentTheme === 'dark' ? classes.blurSectionDark : null)])}>
+          <Blurb currentTheme={props.currentTheme}/>
+        </div>
+
+        <div className={classes.certsSection}>
+          <Certs />
         </div>
 
       </div>

@@ -43,7 +43,7 @@ const styles = theme => ({
     justifyContent: 'center',
     flexDirection: 'column',
     width: '100%',
-    backgroundColor: 'rgba(27,27,27,.5)',
+    backgroundColor: 'rgba(27,27,27,.3)',
     opacity: '0',
     transition: 'opacity 1s cubic-bezier(.19,1,.22,1)',
     [theme.breakpoints.down('sm')]: {

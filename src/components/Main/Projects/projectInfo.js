@@ -24,7 +24,7 @@ export default [
     labels: ['REACT', 'AWS', 'MATERIAL', 'SKETCH', ],
     imageUrl: 'images/nathan.tutchton.rocks.png',
     name: 'This Site',
-    description: 'My personal site. Configured for auto-magical builds, deployments, and static hosting from an S3 bucket.',
+    description: 'My personal site. Comletely serverless, with auto-magical builds, deployments, and static hosting from an S3 bucket.',
     links: [
       {
         to: 'https://github.com/ntutchton/nathan.tutchton.rocks',
@@ -59,7 +59,7 @@ export default [
     labels: ['PHOTOSHOP', 'ILLUSTRATOR', ],
     imageUrl: '',
     name: 'Scapegoat',
-    description: 'A digital recreation of one of my drawings.',
+    description: 'I like to draw. Sometimes I draw digitally.',
     links: [
       {
         to: '#',
