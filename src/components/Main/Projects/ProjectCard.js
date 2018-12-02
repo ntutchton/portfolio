@@ -165,10 +165,10 @@ class ProjectCard extends React.Component {
             className={classNames([
               classes.root,
               {}
-            ])}
+            ])}>
 
-            onMouseEnter={()=>{this.setState({activeOverlay:true})}}
-            onMouseLeave={()=>{this.setState({activeOverlay:false})}}>
+            <div onMouseEnter={()=>{this.setState({activeOverlay:true})}}
+              onMouseLeave={()=>{this.setState({activeOverlay:false})}}>
             <div
               style={{height: `${this.state.imgHeight}px`, backgroundImage: `url(${this.props.imageUrl})`}}
               className={classNames([
@@ -222,6 +222,9 @@ class ProjectCard extends React.Component {
                 </div>
               </div>
             </div>
+
+            </div>
+
             <div className={classes.projectText}>
               <Typography variant="h6" className={classes.projectName}>
                 {this.props.name}
