@@ -2,7 +2,7 @@ export default [
   {
     tags: ['backend', 'frontend', 'application' ],
     labels: [ 'REACT', 'REDUX', 'PSQL', 'PYTHON'],
-    imageUrl: 'https://i.imgur.com/MFPafGN.jpg',
+    imageUrl: 'images/carbos.png',
     name: 'Carbos',
     description: 'Carbos leverages the Ethereum blockchain to increase access and accountability in carbon trading markets.',
     links: [
@@ -22,9 +22,9 @@ export default [
   {
     tags: ['frontend', 'backend', 'website'],
     labels: ['REACT', 'AWS', 'MATERIAL', 'SKETCH', ],
-    imageUrl: 'https://purr.objects-us-west-1.dream.io/i/rQIjIKH.jpg',
+    imageUrl: 'images/nathan.tutchton.rocks.png',
     name: 'This Site',
-    description: 'My personal site. Configured for auto-magical builds, deployments, and static hosting from an s3 bucket.',
+    description: 'My personal site. Configured for auto-magical builds, deployments, and static hosting from an S3 bucket.',
     links: [
       {
         to: 'https://github.com/ntutchton/nathan.tutchton.rocks',
@@ -36,7 +36,7 @@ export default [
   {
     tags: [ 'application', 'frontend'],
     labels: [ 'ANGULAR', 'NODE', 'MONGO', 'DOCKER', ],
-    imageUrl: 'https://purr.objects-us-west-1.dream.io/i/rQIjIKH.jpg',
+    imageUrl: 'images/SServ.png',
     name: 'GEOINT Self Service',
     description: 'A tool to provision and permission DevOps resources across NGA (National Geospacial Administration) and NGA contractor networks.',
     links: [
@@ -57,26 +57,26 @@ export default [
   {
     tags: ['design'],
     labels: ['PHOTOSHOP', 'ILLUSTRATOR', ],
-    imageUrl: 'https://i.imgur.com/MFPafGN.jpg',
+    imageUrl: '',
     name: 'Scapegoat',
     description: 'A digital recreation of one of my drawings.',
     links: [
       {
         to: '#',
         type: 'dribbble',
-        text: 'see concept',
+        text: 'see it',
       },
     ]
   },
   {
     tags: ['backend'],
     labels: ['PYTHON', ],
-    imageUrl: 'https://i.imgur.com/IU4ud2Q.jpg',
-    name: 'Ye Olde Bot (OSRS)',
+    imageUrl: 'images/OSRS.png',
+    name: 'Mr Clicky (OSRS)',
     description: 'A simple click-bot for Old School Runescape.',
     links: [
       {
-        to: 'https://github.com/ntutchton/ye-olde-bot',
+        to: 'https://github.com/ntutchton/mr-clicky',
         type: 'github',
         text: 'view code'
       },
