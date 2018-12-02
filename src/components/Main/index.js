@@ -103,11 +103,11 @@ const styles = theme => ({
     textAlign: 'center',
   },
   blurbSection: {
-    margin: '4em 0',
-    // backgroundColor: '#e0e0e0',
+    margin: '4em 0 0 0',
+    backgroundColor: '#ebebeb',
   },
   blurbSectionDark: {
-
+    backgroundColor: '#303030',
   },
 })
 
@@ -174,7 +174,7 @@ function Main(props) {
           <Projects theme={props.theme}/>
         </div>
 
-        <div className={classNames([classes.blurbSection, (props.currentTheme === 'dark' ? classes.blurSectionDark : null)])}>
+        <div className={classNames([classes.blurbSection, (props.currentTheme === 'dark' ? classes.blurbSectionDark : null)])}>
           <Blurb currentTheme={props.currentTheme}/>
         </div>
 

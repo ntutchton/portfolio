@@ -257,7 +257,7 @@ class ProjectCard extends React.Component {
                      /> //.chipLabel is defined globally in App.css, not ideal but works for now
                 ))
               }
-              <Typography variant="body1" className={classes.projectDescription}>
+              <Typography variant="body2" className={classes.projectDescription}>
                 {this.props.description}
               </Typography>
             </div>

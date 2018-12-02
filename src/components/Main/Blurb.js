@@ -8,21 +8,22 @@ const styles = theme => ({
     gridTemplateColumns: '1fr 1fr 1fr',
     gridColumnGap: '4em',
     margin: '0 15%',
-    padding: '8em 0',
+    padding: '6em 0',
     [theme.breakpoints.down('lg')]: {
       margin: '0 5%',
     },
     [theme.breakpoints.down('md')]: {
     gridTemplateColumns: '1fr',
+    gridRowGap: '2em',
     },
   },
   blurbWrapper: {
     display: 'flex',
     flexDirection: 'column',
-    // justifyContent: 'center',
   },
   blurbTitle: {
-    // textAlign:'center',
+    fontWeight:'600',
+    marginBottom: '.8em',
   },
   blurbText: {
     margin: '1em 0',
@@ -35,31 +36,31 @@ const Blurb = props => {
       <div className={classes.root}>
 
         <div className={classes.blurbWrapper}>
-          <Typography className={classes.blurbTitle} variant="h6">
-            Blurb
+          <Typography className={classes.blurbTitle} variant="h5">
+            My Passion
           </Typography>
-          <Typography className={classes.blurbText} variant="body2">
+          <Typography className={classes.blurbText} variant="body1">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis bibendum iaculis. Morbi vel ornare ante. Integer dignissim dapibus sem. In hac habitasse platea dictumst. Fusce vehicula sodales orci, at faucibus sem consequat sit amet. Nam sodales nibh vitae maximus rhoncus.
           </Typography>
-          <Typography className={classes.blurbText} variant="body2">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis bibendum iaculis. Morbi vel ornare ante. Integer dignissim dapibus sem. In hac habitasse platea dictumst. Fusce vehicula sodales orci, at faucibus sem consequat sit amet. Nam sodales nibh vitae maximus rhoncus.
-          </Typography>
-        </div>
-
-        <div className={classes.blurbWrapper}>
-          <Typography className={classes.blurbTitle} variant="h6">
-            Blurb
-          </Typography>
-          <Typography className={classes.blurbText} variant="body2">
+          <Typography className={classes.blurbText} variant="body1">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis bibendum iaculis. Morbi vel ornare ante. Integer dignissim dapibus sem. In hac habitasse platea dictumst. Fusce vehicula sodales orci, at faucibus sem consequat sit amet. Nam sodales nibh vitae maximus rhoncus.
           </Typography>
         </div>
 
         <div className={classes.blurbWrapper}>
-          <Typography className={classes.blurbTitle} variant="h6">
-            Blurb
+          <Typography className={classes.blurbTitle} variant="h5">
+            My Vision
           </Typography>
-          <Typography className={classes.blurbText} variant="body2">
+          <Typography className={classes.blurbText} variant="body1">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis bibendum iaculis. Morbi vel ornare ante. Integer dignissim dapibus sem. In hac habitasse platea dictumst. Fusce vehicula sodales orci, at faucibus sem consequat sit amet. Nam sodales nibh vitae maximus rhoncus.
+          </Typography>
+        </div>
+
+        <div className={classes.blurbWrapper}>
+          <Typography className={classes.blurbTitle} variant="h5">
+            My Impact
+          </Typography>
+          <Typography className={classes.blurbText} variant="body1">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis bibendum iaculis. Morbi vel ornare ante. Integer dignissim dapibus sem. In hac habitasse platea dictumst. Fusce vehicula sodales orci, at faucibus sem consequat sit amet. Nam sodales nibh vitae maximus rhoncus.
           </Typography>
         </div>

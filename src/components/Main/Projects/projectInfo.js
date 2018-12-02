@@ -73,7 +73,7 @@ export default [
     labels: ['PYTHON', ],
     imageUrl: 'images/OSRS.png',
     name: 'Mr Clicky',
-    description: 'A simple click-bot for "Old School" Runescape.',
+    description: 'A simple bot for training skills in "Old School" Runescape.',
     links: [
       {
         to: 'https://github.com/ntutchton/mr-clicky',
