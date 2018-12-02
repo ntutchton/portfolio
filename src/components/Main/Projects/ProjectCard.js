@@ -33,6 +33,10 @@ const styles = theme => ({
     // overflow: 'hidden',
     borderRadius: '5px',
     transition: 'all 1s cubic-bezier(.19,1,.22,1)',
+
+  },
+  activeOverlay:{
+    opacity: '1!important',
   },
   overlay: {
     display: 'flex',
@@ -42,9 +46,14 @@ const styles = theme => ({
     backgroundColor: 'rgba(27,27,27,.5)',
     opacity: '0',
     transition: 'opacity 1s cubic-bezier(.19,1,.22,1)',
+    [theme.breakpoints.down('sm')]: {
+      opacity: '0 !important',
+    },
   },
-  activeOverlay:{
-    opacity: '1!important',
+  overlayTransformLayer: {
+    [theme.breakpoints.down('sm')]: {
+      transform: 'none !important',
+    },
   },
   overlaySvgWrapper: {
     transform: 'translateX(15vw)',
@@ -53,7 +62,9 @@ const styles = theme => ({
       transform: 'translateX(25vw)',
     },
     [theme.breakpoints.down('sm')]: {
-      transform: 'scale(1.1)translateX(25vw)',
+      // transform: 'scale(1.1)translateX(25vw)',
+      display: 'none',
+      margin: '0 !important',
     },
   },
   projectButtons: {
@@ -64,12 +75,14 @@ const styles = theme => ({
     opacity: '0',
     [theme.breakpoints.down('sm')]: {
       // minHeight: '215px',
+      opacity: '1',
+      margin: '1em 0'
     },
   },
   linkButtonWrapper: {
     [theme.breakpoints.down('sm')]: {
       display: 'flex',
-      justifyContent:'center',
+      // justifyContent:'center',
       flexDirection: 'column',
       height: '90px',
     },
@@ -78,7 +91,7 @@ const styles = theme => ({
     zIndex : '50',
     margin: '0 1em',
     [theme.breakpoints.down('sm')]: {
-      margin: '2px'
+      margin: '5px'
     },
   },
   linkText: {
@@ -87,9 +100,9 @@ const styles = theme => ({
   projectText: {
     textAlign: 'center',
     [theme.breakpoints.down('sm')]: { //compensate for stacking link buttons
-      paddingBottom: '50px',
-      marginBottom: '-50px',
-      marginTop: '-50px',
+      // paddingBottom: '50px',
+      // marginBottom: '-50px',
+      // marginTop: '-50px',
     },
   },
   projectName: {
@@ -110,8 +123,9 @@ const styles = theme => ({
     margin: ' 0 1em',
     opacity: '.7',
     [theme.breakpoints.down('sm')]: {
-      filter: 'blur(5px)',
-      '-webkit-filter': 'blur(5px)',
+      // filter: 'blur(5px)',
+      // '-webkit-filter': 'blur(5px)',
+      filter: 'none',
       margin: '0',
     },
   },
@@ -166,7 +180,6 @@ class ProjectCard extends React.Component {
               classes.root,
               {}
             ])}>
-
             <div onMouseEnter={()=>{this.setState({activeOverlay:true})}}
               onMouseLeave={()=>{this.setState({activeOverlay:false})}}>
             <div
@@ -187,7 +200,7 @@ class ProjectCard extends React.Component {
                 ])}>
               </div>
             </div>
-            <div style={{transform: `translateY(-${this.state.imgHeight/2}px)`}} >
+            <div className={classes.overlayTransformLayer} style={{transform: `translateY(-${this.state.imgHeight/2}px)`}} >
               <div className={classNames([
                   classes.projectButtons,
                   ( this.state.activeOverlay
