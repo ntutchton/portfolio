@@ -6,7 +6,6 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Chip from '@material-ui/core/Chip';
 import Avatar from '@material-ui/core/Avatar';
-// import { Link }from 'react-router-dom'
 import SvgLogo from '../../Logo'
 import LaptopWindow from '@material-ui/icons/LaptopMacTwoTone';
 
@@ -25,12 +24,10 @@ const styles = theme => ({
     },
   },
   img: {
-    // background: 'url(https://purr.objects-us-west-1.dream.io/i/rQIjIKH.jpg)',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     display: 'flex',
-    // overflow: 'hidden',
     borderRadius: '5px',
     transition: 'all 1s cubic-bezier(.19,1,.22,1)',
 
@@ -62,7 +59,6 @@ const styles = theme => ({
       transform: 'translateX(25vw)',
     },
     [theme.breakpoints.down('sm')]: {
-      // transform: 'scale(1.1)translateX(25vw)',
       display: 'none',
       margin: '0 !important',
     },
@@ -74,7 +70,6 @@ const styles = theme => ({
     transition: 'opacity 1s cubic-bezier(.19,1,.22,1)',
     opacity: '0',
     [theme.breakpoints.down('sm')]: {
-      // minHeight: '215px',
       opacity: '1',
       margin: '1em 0'
     },
@@ -82,7 +77,6 @@ const styles = theme => ({
   linkButtonWrapper: {
     [theme.breakpoints.down('sm')]: {
       display: 'flex',
-      // justifyContent:'center',
       flexDirection: 'column',
       height: '90px',
     },
@@ -99,11 +93,6 @@ const styles = theme => ({
   },
   projectText: {
     textAlign: 'center',
-    [theme.breakpoints.down('sm')]: { //compensate for stacking link buttons
-      // paddingBottom: '50px',
-      // marginBottom: '-50px',
-      // marginTop: '-50px',
-    },
   },
   projectName: {
     marginBottom: '.5em',
@@ -123,8 +112,6 @@ const styles = theme => ({
     margin: ' 0 1em',
     opacity: '.7',
     [theme.breakpoints.down('sm')]: {
-      // filter: 'blur(5px)',
-      // '-webkit-filter': 'blur(5px)',
       filter: 'none',
       margin: '0',
     },

@@ -43,9 +43,9 @@ const Certs = props => {
          </a>
        </div>
        <div className={classes.certWrapper}>
-         <div className={classes.cert}>
-           <span>TODO: COMPTIA</span>
-         </div>
+         <a className={classes.certLink} href="#">
+           <div className={classes.cert} style={{backgroundImage: `url(${'certs/COMPTIA.png'})`}}></div>
+         </a>
        </div>
        <div className={classes.certWrapper}>
          <a className={classes.certLink} href="https://gocode.colorado.gov/media-advisory-announcing-the-2018-go-code-colorado-winners/">
@@ -53,9 +53,9 @@ const Certs = props => {
          </a>
        </div>
        <div className={classes.certWrapper}>
-         <div className={classes.cert}>
-           <span>TODO SCRUM</span>
-         </div>
+         <a className={classes.certLink} href="#">
+           <div className={classes.cert} style={{backgroundImage: `url(${'certs/SCRUM.png'})`, height: '150px'}}></div>
+         </a>
        </div>
      </div>
    )
