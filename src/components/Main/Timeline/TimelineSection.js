@@ -15,22 +15,46 @@ const styles = theme => ({
     display: 'flex',
     justifyContent: 'center',
     flexDirection: 'column',
+    borderRadius: '5px',
     [theme.breakpoints.down('md')]: {
-      display: 'none'
+      gridColumnStart: '1',
+      borderRadius: '0',
     },
   },
   timelineImage: {
     transition: 'all 1s ease-in-out',
     height: '650px',
-    background: '#9E9E9E',
+    borderRadius: '5px',
+    marginTop: '5px',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  },
+  timelineImageOverlay:{
+    height: '100%',
+    width: '100%',
+    borderRadius: '5px',
+    [theme.breakpoints.down('md')]: {
+      borderRadius: '0',
+    },
   },
   imageLeft:{
     gridColumnStart: '1',
     gridColumnEnd: '8',
+    [theme.breakpoints.down('md')]: {
+      gridColumnEnd: '13',
+      borderRadius: '0',
+      opacity: '.3',
+    },
   },
   imageRight: {
     gridColumnStart: '6',
     gridColumnEnd: '13',
+    [theme.breakpoints.down('md')]: {
+      gridColumnStart: '1',
+      borderRadius: '0',
+      opacity: '.3',
+    },
   },
   top: {
     justifyContent: 'flex-start !important'
@@ -197,7 +221,9 @@ class TimelineSection extends React.Component {
                   ? classes.bottom
                   : {})
             ])} style={{marginTop: `-${this.state.sectionHeight}px`}}>
-            <img className={classes.timelineImage} alt=""/>
+            <div className={classes.timelineImage} style={{ backgroundImage: `url(${this.props.backgroundImageUrl})` }}>
+              <div className={classes.timelineImageOverlay} style={{ background: `linear-gradient(to ${this.props.type === 'right' ? 'left' : 'right'},  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%)` }}></div>
+            </div>
           </div>
 
 
@@ -211,6 +237,7 @@ TimelineSection.propTypes = {
   sectionHeight: PropTypes.number.isRequired,
   type: PropTypes.string.isRequired,
   logoSource: PropTypes.string.isRequired,
+  backgroundImageUrl: PropTypes.string.isRequired,
 }
 
 export default withStyles(styles)(TimelineSection)

@@ -25,7 +25,7 @@ const styles = theme => ({
 
 class Skills extends React.Component{
   state = {
-    defaultHeight: 120,
+    defaultHeight: 80,
   }
 
   componentDidMount(){

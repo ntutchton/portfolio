@@ -11,7 +11,7 @@ import projectInfo from './projectInfo'
 const styles = theme => ({
   projectWrapper: {
     display: 'grid',
-    gridTemplateColumns: '1fr 1fr 1fr',
+    gridTemplateColumns: '1fr 1fr 1fr 1fr',
     margin: '1em 10%',
     // gridRowGap: '10vw',
     [theme.breakpoints.down('lg')]: {

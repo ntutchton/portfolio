@@ -9,12 +9,12 @@ export default [
       {
         to: 'https://github.com/carbos-workshop',
         type: 'github',
-        text: 'view code'
+        // text: 'view code'
       },
       {
         to: 'http://carbos.co/',
         type: 'site',
-        text: 'visit site',
+        // text: 'visit site',
         inactive: true,
       },
     ]
@@ -29,7 +29,7 @@ export default [
       {
         to: 'https://github.com/ntutchton/nathan.tutchton.rocks',
         type: 'github',
-        text: 'view code'
+        // text: 'view code'
       },
     ]
   },
@@ -43,13 +43,13 @@ export default [
       {
         to: 'https://gitlab.devops.geointservices.io/SelfService2/selfservice2',
         type: 'gitlab',
-        text: 'view code',
+        // text: 'view code',
         warning: 'You will need NGA login credentials to view this content.',
       },
       {
         to: 'https://my.gs.mil/login',
         type: 'site',
-        text: 'visit site',
+        // text: 'visit site',
         warning: 'You will need NGA login credentials to view this content.',
       },
     ]
@@ -64,7 +64,7 @@ export default [
       {
         to: '#',
         type: 'dribbble',
-        text: 'see it',
+        // text: 'see it',
       },
     ]
   },
@@ -78,7 +78,7 @@ export default [
       {
         to: 'https://github.com/ntutchton/mr-clicky',
         type: 'github',
-        text: 'view code'
+        // text: 'view code'
       },
     ]
   },

@@ -34,7 +34,7 @@ const styles = theme => ({
       padding: '1em 0',
       display: 'flex',
       flexDirection: 'column',
-      justifyContent: 'space-around',
+      justifyContent: 'space-evenly',
       flexGrow: '1',
     },
   },
@@ -51,6 +51,7 @@ const styles = theme => ({
     [theme.breakpoints.down('md')]: {
       width: '60%',
       padding: '0',
+      fontSize: '130%',
       textAlign: 'left',
     },
   },
@@ -137,7 +138,7 @@ class Timeline extends React.Component {
     return (
       <div className={classes.root}>
 
-        <TimelineSection scroll={this.state.scroll} sectionHeight={800} type="left" order='top' logoSource="logos/DISH.svg">
+        <TimelineSection scroll={this.state.scroll} sectionHeight={800} type="left" order='top' logoSource="logos/DISH.svg" backgroundImageUrl={'images/satellite.jpg'}>
           <div className={classes.wrapper}>
             <div className={classes.headerWrapper}>
               <Typography variant="h4" className={classes.header}>
@@ -158,7 +159,7 @@ class Timeline extends React.Component {
           </div>
         </TimelineSection>
 
-        <TimelineSection scroll={this.state.scroll} sectionHeight={800} type="right" order='top' logoSource="logos/DU.svg">
+        <TimelineSection scroll={this.state.scroll} sectionHeight={800} type="right" order='top' logoSource="logos/DU.svg" backgroundImageUrl={'images/laptops.jpg'}>
           <div className={classes.wrapper}>
             <div className={classes.headerWrapper}>
               <div className={classes.headerWrapper}>
@@ -177,11 +178,7 @@ class Timeline extends React.Component {
                 </Typography>
               </Paper>
 
-              <Link to="/contact" className={classes.link} onClick={()=>{this.props.updateActiveUrlHash('')}}>
-                <Button variant="contained" color="primary" className={classes.seeMoreButton} >
-                  Let's Work Together
-                </Button>
-              </Link>
+              <span></span>
 
             </div>
           </div>
@@ -238,7 +235,7 @@ class Timeline extends React.Component {
           </div>
         </TimelineSection>
 
-        <TimelineSection scroll={this.state.scroll} sectionHeight={800} type="right" order='top' logoSource="logos/FUTURE.svg">
+        <TimelineSection scroll={this.state.scroll} sectionHeight={800} type="right" order='top' logoSource="logos/FUTURE.svg" backgroundImageUrl={'images/cliff.jpg'}>
           <div className={classes.wrapper}>
             <div className={classes.headerWrapper}>
               <Typography variant="h4" className={classes.header}>
