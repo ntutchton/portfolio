@@ -5,20 +5,13 @@ const styles = theme => ({
   root: {
     height: '100%',
     width: '100%',
-    // opacity: '.8',
     borderRadius: '4px',
-    // backgroundSize: 'cover',
-    // backgroundRepeat: 'no-repeat',
-    // backgroundPosition: 'right',
-    // transition: 'all 1s fade',
   },
   image: {
     height: '100%',
     width: '100%',
-    // margin:'-100%',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
-    // backgroundPosition: 'right',
     transition: 'all .8s cubic-bezier(.29,0,.15,.9)',
   }
 })
@@ -85,10 +78,6 @@ class HeroImage extends React.Component {
         url: 'images/hero/6.jpg',
         position: 'right'
       },
-      // {
-      //   url: 'images/hero/7.jpg',
-      //   position: 'right'
-      // },
     ]
 
     return (

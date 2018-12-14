@@ -23,14 +23,8 @@ const styles = theme => ({
   link: {
     textDecoration: 'none',
   },
-  // section: {
-    // minHeight: '100vh',
-    // width:'100%',
-    // zIndex: '2',
-  // },
   hero: {
     display: 'grid',
-    // height: '870px',
     overflow: 'hidden',
     gridTemplateColumns: 'repeat(12, 1fr)',
   },
@@ -38,15 +32,9 @@ const styles = theme => ({
     height:'750px',
     gridColumnStart: '5',
     gridColumnEnd: '13',
-    // backgroundColor: 'grey',
-    // backgroundSize: 'cover',
-    // backgroundRepeat: 'no-repeat',
-    // backgroundPosition: 'right',
     marginBottom: '100px',
     zIndex: '3',
-    // backgroundImage: 'url(/images/talk.jpg)',
     display: 'flex',
-    // zIndex: '2',
     transition: 'all 1s ease-in-out',
     [theme.breakpoints.down('md')]: {
       marginLeft: '5em',
@@ -80,10 +68,6 @@ const styles = theme => ({
   heroName: {
     marginBottom: '1.3em',
     fontWeight: '700',
-    // width:'200%',
-    // [theme.breakpoints.down('sm')]: {
-      // width: '100%',
-    // },
   },
   heroContactButton: {
     width: '15em',
@@ -113,7 +97,6 @@ const styles = theme => ({
     textAlign: 'center',
   },
   blurbSection: {
-    // margin: '4em 0 0 0',
     backgroundColor: '#ebebeb',
   },
   blurbSectionDark: {
