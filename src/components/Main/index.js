@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import SvgLogo from '../Logo'
 import { Parallax } from 'react-scroll-parallax';
 
+import HeroImage from './HeroImage'
 import Timeline from './Timeline/'
 import Skills from './Skills/'
 import Projects from './Projects/'
@@ -38,21 +39,25 @@ const styles = theme => ({
     gridColumnStart: '5',
     gridColumnEnd: '13',
     // backgroundColor: 'grey',
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'right',
+    // backgroundSize: 'cover',
+    // backgroundRepeat: 'no-repeat',
+    // backgroundPosition: 'right',
     marginBottom: '100px',
-    backgroundImage: 'url(/images/talk.jpg)',
+    zIndex: '3',
+    // backgroundImage: 'url(/images/talk.jpg)',
     display: 'flex',
-    zIndex: '2',
+    // zIndex: '2',
     transition: 'all 1s ease-in-out',
+    [theme.breakpoints.down('md')]: {
+      marginLeft: '5em',
+    },
     [theme.breakpoints.down('sm')]: {
       gridColumnStart: '1',
       zIndex: '3',
-      marginLeft: '0'
-    },
-    [theme.breakpoints.down('md')]: {
-      marginLeft: '5em',
+      marginLeft: '0',
+      marginTop: '-50px',
+      marginBottom: '0',
+      height: '400px',
     },
     [theme.breakpoints.up('lg')]: {
       gridColumnEnd: '12',
@@ -75,10 +80,10 @@ const styles = theme => ({
   heroName: {
     marginBottom: '1.3em',
     fontWeight: '700',
-    width:'200%',
-    [theme.breakpoints.down('sm')]: {
-      width: '100%',
-    },
+    // width:'200%',
+    // [theme.breakpoints.down('sm')]: {
+      // width: '100%',
+    // },
   },
   heroContactButton: {
     width: '15em',
@@ -156,7 +161,7 @@ function Main(props) {
           </div>
 
           <div className={classes.heroImage}>
-
+            <HeroImage />
           </div>
 
         </div>

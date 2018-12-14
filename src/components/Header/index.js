@@ -16,6 +16,9 @@ import SvgLogo from '../Logo'
 import ThemeToggle from './ThemeToggle'
 
 const styles = theme => ({
+  root: {
+        zIndex: '10',
+  },
   container: {
     width: '100%',
     display: 'grid',
