@@ -60,8 +60,16 @@ const styles = theme => ({
       flexDirection: 'column',
       flexGrow: '1',
       justifyContent: 'space-between',
+      [theme.breakpoints.down('md')]: {
+        flexGrow: '2',
+        maxWidth: '50%',
+        justifyContent: 'flex-start',
+      },
       [theme.breakpoints.down('sm')]: {
         flexGrow: '2',
+        justifyContent: 'space-evenly',
+        maxWidth: '70%',
+        marginTop: '1em',
       },
   },
   paper: {
@@ -69,6 +77,7 @@ const styles = theme => ({
     padding: '1em 1.5em',
     [theme.breakpoints.down('md')]: {
       padding: '1em',
+      marginTop: '1em',
       order: '2',
       margin:  '0 0 0 0', //TODO tweak for blurb height
     },
@@ -139,7 +148,7 @@ class Timeline extends React.Component {
     return (
       <div className={classes.root}>
 
-        <TimelineSection scroll={this.state.scroll} sectionHeight={this.state.defaultSectionHeight} type="left" order='top' logoSource="logos/DISH.svg" backgroundImageUrl={'images/satellite.jpg'}>
+        <TimelineSection scroll={this.state.scroll} sectionHeight={this.state.defaultSectionHeight} type="left" order='top' logoSource="logos/DISH.svg" backgroundImageUrl={'images/mobo.jpg'}>
           <div className={classes.wrapper}>
             <div className={classes.headerWrapper}>
               <Typography variant="h4" className={classes.header}>
@@ -152,7 +161,7 @@ class Timeline extends React.Component {
             <div className={classes.textWrapper}>
               <Paper className={classes.paper} elevation={1}>
                 <Typography variant="body1" >
-                  I started my development career with a homegrown Colorado business – DISH.  I helped build large scale internal applications to manage software update processes.  My team was primarily responsible for configuring updates and bugfixes prior to release to satellite uplink channels.
+                  I started my development career with a homegrown Colorado business – DISH.  I helped build large scale internal applications to manage software update processes.  My team was primarily responsible for configuring updates and bugfixes prior to release in satellite uplink channels.
                 </Typography>
               </Paper>
               <span></span>
@@ -198,7 +207,7 @@ class Timeline extends React.Component {
             <div className={classes.textWrapper}>
               <Paper className={classes.paper} elevation={1}>
                 <Typography variant="body1">
-                  Currently, I work as full stack developer on a contract project for the National Geospacial Administration for BIT Systems.  Our tool manages DevOps pipelines and processes for NGA groups.  I primarily work on the frontend as the UI/UX lead.
+                  Currently, I work as full stack developer on a  BIT Systems contract for the National Geospacial Administration.  Our tool manages DevOps pipelines and processes for NGA groups.  I primarily work on the frontend as the UI/UX lead, using industry standard tools to create seamless user experiences.
                 </Typography>
               </Paper>
               <Button

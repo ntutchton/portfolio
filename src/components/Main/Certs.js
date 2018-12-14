@@ -1,5 +1,6 @@
 import React from 'react'
 import { withStyles } from '@material-ui/core/styles';
+import classNames from 'classnames'
 import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
@@ -29,6 +30,9 @@ const styles = theme => ({
       margin: '20px',
     },
   },
+  noLink: {
+    pointerEvents: 'none',
+  },
   cert: {
     width: '100%',
     height: '125px',
@@ -49,7 +53,7 @@ const Certs = props => {
          </a>
        </div>
        <div className={classes.certWrapper}>
-         <a className={classes.certLink} href="#">
+         <a className={classNames([ classes.certLink, classes.noLink ])} href="#">
            <div className={classes.cert} style={{backgroundImage: `url(${'certs/COMPTIA.png'})`}}></div>
          </a>
        </div>
@@ -59,8 +63,8 @@ const Certs = props => {
          </a>
        </div>
        <div className={classes.certWrapper}>
-         <a className={classes.certLink} href="#">
-           <div className={classes.cert} style={{backgroundImage: `url(${'certs/SCRUM.png'})`}}></div>
+         <a className={classNames([ classes.certLink, classes.noLink ])} href="#">
+           <div className={classes.cert} style={{backgroundImage: `url(${'certs/Clearence.png'})`}}></div>
          </a>
        </div>
      </div>
