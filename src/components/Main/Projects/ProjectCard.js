@@ -53,7 +53,7 @@ const styles = theme => ({
     },
   },
   overlaySvgWrapper: {
-    transform: 'translateX(15vw)',
+    transform: 'translateX(12vw)',
     opacity: '.3',
     [theme.breakpoints.down('md')]: {
       transform: 'translateX(25vw)',

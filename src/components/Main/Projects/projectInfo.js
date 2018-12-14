@@ -54,32 +54,32 @@ export default [
       },
     ]
   },
-  {
-    tags: ['design'],
-    labels: ['PHOTOSHOP', 'ILLUSTRATOR', ],
-    imageUrl: '',
-    name: 'Scapegoat',
-    description: 'I like to draw. Sometimes I draw digitally.',
-    links: [
-      {
-        to: '#',
-        type: 'dribbble',
-        // text: 'see it',
-      },
-    ]
-  },
-  {
-    tags: ['backend'],
-    labels: ['PYTHON', ],
-    imageUrl: 'images/OSRS.png',
-    name: 'Mr Clicky',
-    description: 'A simple bot for training skills in "Old School" Runescape.',
-    links: [
-      {
-        to: 'https://github.com/ntutchton/mr-clicky',
-        type: 'github',
-        // text: 'view code'
-      },
-    ]
-  },
+  // {
+  //   tags: ['design'],
+  //   labels: ['PHOTOSHOP', 'ILLUSTRATOR', ],
+  //   imageUrl: '',
+  //   name: 'Scapegoat',
+  //   description: 'I like to draw. Sometimes I draw digitally.',
+  //   links: [
+  //     {
+  //       to: '#',
+  //       type: 'dribbble',
+  //       // text: 'see it',
+  //     },
+  //   ]
+  // },
+  // {
+  //   tags: ['backend'],
+  //   labels: ['PYTHON', ],
+  //   imageUrl: 'images/OSRS.png',
+  //   name: 'Mr Clicky',
+  //   description: 'A simple bot for training skills in "Old School" Runescape.',
+  //   links: [
+  //     {
+  //       to: 'https://github.com/ntutchton/mr-clicky',
+  //       type: 'github',
+  //       // text: 'view code'
+  //     },
+  //   ]
+  // },
 ]

@@ -95,8 +95,7 @@ class Projects extends React.Component{
     const { classes } = this.props
 
     return (
-      <div className={classes.root}>
-
+      <div>
         <div className={classes.filterWrapper}>
           <Button
             onClick={()=>{this.setFilter('website')}}

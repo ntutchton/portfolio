@@ -23,7 +23,7 @@ const styles = theme => ({
   },
   timelineImage: {
     transition: 'all 1s ease-in-out',
-    height: '650px',
+    height: '568px',
     borderRadius: '5px',
     marginTop: '5px',
     backgroundRepeat: 'no-repeat',
@@ -221,9 +221,10 @@ class TimelineSection extends React.Component {
                   ? classes.bottom
                   : {})
             ])} style={{marginTop: `-${this.state.sectionHeight}px`}}>
-            <div className={classes.timelineImage} style={{ backgroundImage: `url(${this.props.backgroundImageUrl})` }}>
-              <div className={classes.timelineImageOverlay} style={{ background: `linear-gradient(to ${this.props.type === 'right' ? 'left' : 'right'},  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%)` }}></div>
-            </div>
+              <div className={classes.timelineImage} style={{ backgroundImage: `url(${this.props.backgroundImageUrl})` }}>
+                <div className={classes.timelineImageOverlay} style={{ background: `linear-gradient(to ${this.props.type === 'right' ? 'left' : 'right'},  rgba(0,0,0,0) 0%,rgba(0,0,0,0.45) 100%)` }}>
+                </div>
+              </div>
           </div>
 
 
