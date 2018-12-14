@@ -5,16 +5,22 @@ import Typography from '@material-ui/core/Typography';
 const styles = theme => ({
   root: {
     display: 'grid',
+    padding: '0 8.3%',
+        background: '#fff',
     gridTemplateColumns: '1fr 1fr 1fr 1fr',
     [theme.breakpoints.down('sm')]: {
       gridTemplateColumns: '1fr 1fr',
+    },
+    [theme.breakpoints.down('md')]: {
+      padding: '0',
     },
   },
   certWrapper: {
     display: 'flex',
     justifyContent: 'center',
     flexDirection: 'column',
-    background: '#fff'
+    // background: '#fff',
+    padding: '24px 0',
   },
   certLink: {
     display: 'flex',
@@ -25,7 +31,7 @@ const styles = theme => ({
   },
   cert: {
     width: '100%',
-    height: '200px',
+    height: '125px',
     textAlign: 'center',
     backgroundPosition: 'center',
     backgroundSize: 'contain',
@@ -54,7 +60,7 @@ const Certs = props => {
        </div>
        <div className={classes.certWrapper}>
          <a className={classes.certLink} href="#">
-           <div className={classes.cert} style={{backgroundImage: `url(${'certs/SCRUM.png'})`, height: '150px'}}></div>
+           <div className={classes.cert} style={{backgroundImage: `url(${'certs/SCRUM.png'})`}}></div>
          </a>
        </div>
      </div>

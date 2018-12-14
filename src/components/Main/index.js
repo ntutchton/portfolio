@@ -95,15 +95,15 @@ const styles = theme => ({
   skillsHeader: {
     color: 'white',
     background: '#313131',
-    padding: '2% 5% 1em 2%',
+    padding: '.8em 5% 0 5%',
     textAlign: 'center',
   },
   projectHeader: {
-    padding: '2% 5% 1em 2%',
+    padding: '0 2% 1em 2%',
     textAlign: 'center',
   },
   blurbSection: {
-    margin: '4em 0 0 0',
+    // margin: '4em 0 0 0',
     backgroundColor: '#ebebeb',
   },
   blurbSectionDark: {
@@ -161,25 +161,25 @@ function Main(props) {
         </div>
 
         <div id="skills" className={classes.skillSection}>
-            <Skills />
-            <Typography variant="h3" className={classes.skillsHeader}>
-              <span role="img" aria-label="point-up" style={{paddingRight: '.5em'}}>☝🏻</span><span style={{paddingRight: '13px'}}>I use tools like these</span>
-            </Typography>
+          <Typography variant="h3" className={classes.skillsHeader}>
+            <span style={{paddingRight: ''}}>I like to work with</span><span role="img" aria-label="point-down" style={{paddingLeft: '.5em'}}>👇🏻</span>
+          </Typography>
+          <Skills />
         </div>
 
-        <div id="projects">
-          <Typography variant="h3" className={classes.projectHeader}>
-             <span>to build stuff like this</span><span role="img" aria-label="point-down" style={{paddingLeft: '.5em'}}>👇🏻</span>
-          </Typography>
-          <Projects theme={props.theme}/>
+        <div className={classes.certsSection}>
+          <Certs currentTheme={props.currentTheme}/>
         </div>
 
         <div className={classNames([classes.blurbSection, (props.currentTheme === 'dark' ? classes.blurbSectionDark : null)])}>
           <Blurb currentTheme={props.currentTheme}/>
         </div>
 
-        <div className={classes.certsSection}>
-          <Certs />
+        <div id="projects">
+          <Typography variant="h3" className={classes.projectHeader}>
+            My Projects
+          </Typography>
+          <Projects theme={props.theme}/>
         </div>
 
       </div>

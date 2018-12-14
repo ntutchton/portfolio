@@ -6,26 +6,26 @@ import SkillCircle from './SkillCircle'
 const styles = theme => ({
   root: {
     flex: '1',
-    margin: '3% 10%',
+    margin: '5% 10%',
     [theme.breakpoints.down('md')]: {
       margin: '5% 5%',
     },
   },
   circleWrapper: {
     display: 'grid',
-    gridTemplateColumns: '1fr 1fr 1fr 1fr',
-    gridTemplateRows: '1fr 1fr 1fr 1fr',
+    gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr 1fr',
+    gridTemplateRows: '1fr 1fr 1fr',
     gridColumnGap: '1em',
     gridRowGap: '3em',
     [theme.breakpoints.down('sm')]: {
-      gridTemplateColumns: '1fr 1fr',
+      gridTemplateColumns: '1fr 1fr 1fr',
     },
   }
 })
 
 class Skills extends React.Component{
   state = {
-    defaultHeight: 120,
+    defaultHeight: 80,
   }
 
   componentDidMount(){
@@ -64,6 +64,8 @@ class Skills extends React.Component{
           <SkillCircle height={this.state.defaultHeight} name="AWS" logo="logos/AWS.png"/>
           <SkillCircle height={this.state.defaultHeight} name="Material Design" logo="logos/MATERIAL.png"/>
           <SkillCircle height={this.state.defaultHeight} name="Jenkins" logo="logos/JENKINS.png"/>
+          <SkillCircle height={this.state.defaultHeight} name="inVision" logo="logos/INVISION.png"/>
+          <SkillCircle height={this.state.defaultHeight} name="SCSS" logo="logos/SASS.png"/>
         </div>
       </div>
     )

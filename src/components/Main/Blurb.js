@@ -8,9 +8,9 @@ const styles = theme => ({
     gridTemplateColumns: '1fr 1fr 1fr',
     gridColumnGap: '4em',
     margin: '0 15%',
-    padding: '6em 0',
+    padding: '3em 0',
     [theme.breakpoints.down('lg')]: {
-      margin: '0 5%',
+      margin: '10em 5%',
     },
     [theme.breakpoints.down('md')]: {
     gridTemplateColumns: '1fr',

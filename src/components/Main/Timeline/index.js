@@ -34,7 +34,7 @@ const styles = theme => ({
       padding: '1em 0',
       display: 'flex',
       flexDirection: 'column',
-      justifyContent: 'space-around',
+      justifyContent: 'space-evenly',
       flexGrow: '1',
     },
   },
@@ -51,6 +51,7 @@ const styles = theme => ({
     [theme.breakpoints.down('md')]: {
       width: '60%',
       padding: '0',
+      fontSize: '130%',
       textAlign: 'left',
     },
   },
@@ -94,6 +95,7 @@ class Timeline extends React.Component {
   state = {
     scroll: 0,
     anchorEl: null,
+    defaultSectionHeight: 700,
   }
 
   componentWillMount(){
@@ -137,7 +139,7 @@ class Timeline extends React.Component {
     return (
       <div className={classes.root}>
 
-        <TimelineSection scroll={this.state.scroll} sectionHeight={800} type="left" order='top' logoSource="logos/DISH.svg">
+        <TimelineSection scroll={this.state.scroll} sectionHeight={this.state.defaultSectionHeight} type="left" order='top' logoSource="logos/DISH.svg" backgroundImageUrl={'images/satellite.jpg'}>
           <div className={classes.wrapper}>
             <div className={classes.headerWrapper}>
               <Typography variant="h4" className={classes.header}>
@@ -150,7 +152,7 @@ class Timeline extends React.Component {
             <div className={classes.textWrapper}>
               <Paper className={classes.paper} elevation={1}>
                 <Typography variant="body1" >
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dapibus sapien eget eleifend lacinia. In sagittis in risus non dictum. Ut sit amet lorem arcu. Proin sed nulla feugiat, blandit eros eu, tempor ex. Etiam non condimentum ex. Vivamus dapibus ante sed rhoncus vehicula. Cras dictum porttitor leo, ac sodales mauris scelerisque sed. Donec odio neque, consectetur nec pulvinar eu, maximus id arcu. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                  I started my development career with a homegrown Colorado business – DISH.  I helped build large scale internal applications to manage software update processes.  My team was primarily responsible for configuring updates and bugfixes prior to release to satellite uplink channels.
                 </Typography>
               </Paper>
               <span></span>
@@ -158,7 +160,7 @@ class Timeline extends React.Component {
           </div>
         </TimelineSection>
 
-        <TimelineSection scroll={this.state.scroll} sectionHeight={800} type="right" order='top' logoSource="logos/DU.svg">
+        <TimelineSection scroll={this.state.scroll} sectionHeight={this.state.defaultSectionHeight} type="right" order='top' logoSource="logos/DU.svg" backgroundImageUrl={'images/laptop.jpg'}>
           <div className={classes.wrapper}>
             <div className={classes.headerWrapper}>
               <div className={classes.headerWrapper}>
@@ -166,28 +168,24 @@ class Timeline extends React.Component {
                   M.S. in Software Engineering
                 </Typography>
                 <Typography variant="subtitle2" className={classes.date}>
-                  2017 - 2019
+                  2018 - 2020
                 </Typography>
               </div>
             </div>
             <div className={classes.textWrapper}>
               <Paper className={classes.paper} elevation={1}>
                 <Typography variant="body1" >
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dapibus sapien eget eleifend lacinia. In sagittis in risus non dictum. Ut sit amet lorem arcu. Proin sed nulla feugiat, blandit eros eu, tempor ex. Etiam non condimentum ex. Vivamus dapibus ante sed rhoncus vehicula. Cras dictum porttitor leo, ac sodales mauris scelerisque sed. Donec odio neque, consectetur nec pulvinar eu, maximus id arcu. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                  After leaving DISH I began work on a Software Engineering Master's Degree at University of Denver.  This program has expanded my abilities beyond web development and into other ares of the software management lifecycle. Working alongside students with different personal and educational backgrounds has allowed me to build a diverse and valuable professional network.
                 </Typography>
               </Paper>
 
-              <Link to="/contact" className={classes.link} onClick={()=>{this.props.updateActiveUrlHash('')}}>
-                <Button variant="contained" color="primary" className={classes.seeMoreButton} >
-                  Let's Work Together
-                </Button>
-              </Link>
+              <span></span>
 
             </div>
           </div>
         </TimelineSection>
 
-        <TimelineSection scroll={this.state.scroll} sectionHeight={800} type="left" order="top" logoSource="logos/BITS.svg">
+        <TimelineSection scroll={this.state.scroll} sectionHeight={this.state.defaultSectionHeight} type="left" order="top" logoSource="logos/BITS.svg" backgroundImageUrl={'images/UX.jpg'}>
           <div className={classes.wrapper} id="current-work">
             <div className={classes.headerWrapper}>
               <Typography variant="h4" className={classes.header}>
@@ -200,7 +198,7 @@ class Timeline extends React.Component {
             <div className={classes.textWrapper}>
               <Paper className={classes.paper} elevation={1}>
                 <Typography variant="body1">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dapibus sapien eget eleifend lacinia. In sagittis in risus non dictum. Ut sit amet lorem arcu. Proin sed nulla feugiat, blandit eros eu, tempor ex. Etiam non condimentum ex. Vivamus dapibus ante sed rhoncus vehicula. Cras dictum porttitor leo, ac sodales mauris scelerisque sed. Donec odio neque, consectetur nec pulvinar eu, maximus id arcu. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                  Currently, I work as full stack developer on a contract project for the National Geospacial Administration for BIT Systems.  Our tool manages DevOps pipelines and processes for NGA groups.  I primarily work on the frontend as the UI/UX lead.
                 </Typography>
               </Paper>
               <Button
@@ -228,7 +226,7 @@ class Timeline extends React.Component {
                  }}
                >
                   <div className={classes.popover}>
-                    <Typography variant="subtitle1" >You will need NGA login credentials to view this content.</Typography>
+                    <Typography variant="subtitle1" >You will need TS/SCI NGA login credentials to view this content.</Typography>
                     <Button style={{marginTop: '1em'}} href={'https://my.gs.mil/login'}>
                       No Problem <ArrowForward style={{marginLeft: '5px'}}/>
                     </Button>
@@ -238,7 +236,7 @@ class Timeline extends React.Component {
           </div>
         </TimelineSection>
 
-        <TimelineSection scroll={this.state.scroll} sectionHeight={800} type="right" order='top' logoSource="logos/FUTURE.svg">
+        <TimelineSection scroll={this.state.scroll} sectionHeight={this.state.defaultSectionHeight} type="right" order='top' logoSource="logos/FUTURE.svg" backgroundImageUrl={'images/cliff.jpg'}>
           <div className={classes.wrapper}>
             <div className={classes.headerWrapper}>
               <Typography variant="h4" className={classes.header}>
@@ -248,13 +246,13 @@ class Timeline extends React.Component {
             <div className={classes.textWrapper}>
               <Paper className={classes.paper} elevation={1}>
                 <Typography variant="body1" >
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dapibus sapien eget eleifend lacinia. In sagittis in risus non dictum. Ut sit amet lorem arcu. Proin sed nulla feugiat, blandit eros eu, tempor ex. Etiam non condimentum ex. Vivamus dapibus ante sed rhoncus vehicula. Cras dictum porttitor leo, ac sodales mauris scelerisque sed. Donec odio neque, consectetur nec pulvinar eu, maximus id arcu. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                  As long as there are new and exciting ideas out there, I will be developing them.  I'm always looking for new challenges – freelance or full-time.  Let's create something awesone, together.
                 </Typography>
               </Paper>
 
               <Link to="/contact" className={classes.link} onClick={()=>{this.props.updateActiveUrlHash('')}}>
                 <Button variant="contained" color="primary" className={classes.seeMoreButton} >
-                  Let's Work Together
+                  Get in touch
                 </Button>
               </Link>
 

@@ -53,7 +53,7 @@ const styles = theme => ({
     },
   },
   overlaySvgWrapper: {
-    transform: 'translateX(15vw)',
+    transform: 'translateX(12vw)',
     opacity: '.3',
     [theme.breakpoints.down('md')]: {
       transform: 'translateX(25vw)',
@@ -89,7 +89,7 @@ const styles = theme => ({
     },
   },
   linkText: {
-    marginLeft: '7px',
+    // marginLeft: '7px',
   },
   projectText: {
     textAlign: 'center',
@@ -198,7 +198,7 @@ class ProjectCard extends React.Component {
                 <div
                   className={classes.overlaySvgWrapper}
                   style={{
-                    margin: `-${this.state.imgHeight/2}px`,
+                    margin: `-${(this.state.imgHeight/2)+10}px`,
                     height: `${this.state.imgHeight}px`,
                     width: `${this.state.imgHeight/2}px`,
                   }}>

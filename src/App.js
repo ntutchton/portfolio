@@ -14,27 +14,48 @@ import Main from './components/Main'
 import Content from './components/Content'
 import Contact from './components/Contact'
 
+// fetchThemePreference = () => {
+//   let themePreference = localStorage.getItem('themePreference');
+//   console.log(themePreference);
+//   if (themePreference) {
+//     return JSON.parse(themePreference)
+//   } else return 'light' //default if no pref set
+// }
 
 class App extends Component {
 
+  fetchThemePreference = () => {
+    let themePreference = localStorage.getItem('themePreference');
+    console.log(themePreference);
+    if (themePreference) {
+      return JSON.parse(themePreference)
+    } else return 'light' //default if no pref set
+  }
+
   state = {
-    currentTheme: 'light',
+    currentTheme: this.fetchThemePreference(),
     activeUrlHash: window.location.hash
   }
 
   componentWillMount = () => {
     smoothscroll.polyfill();
+    // this.setState({
+    //   currentTheme: this.fetchThemePreference()
+    // })
   }
+
 
   // switches currentTheme type between dark and light
   switchTheme = currentTheme => {
     switch (currentTheme) {
       case 'dark':
+       localStorage.setItem('themePreference', JSON.stringify('light'));
         this.setState({
           currentTheme: 'light'
         })
         break;
       case 'light':
+       localStorage.setItem('themePreference', JSON.stringify('dark'));
         this.setState({
           currentTheme: 'dark'
         })
