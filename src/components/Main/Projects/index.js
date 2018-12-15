@@ -12,10 +12,10 @@ const styles = theme => ({
   projectWrapper: {
     display: 'grid',
     gridTemplateColumns: '1fr 1fr 1fr 1fr',
-    margin: '1em 10%',
+    margin: '1em 10% 5em 10%',
     // gridRowGap: '10vw',
     [theme.breakpoints.down('lg')]: {
-      margin: '1em 5%',
+      margin: '1em 5% 5em 5%',
       gridRowGap: '1em'
     },
     [theme.breakpoints.down('md')]: {

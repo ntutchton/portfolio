@@ -82,14 +82,14 @@ const styles = theme => ({
     opacity: '.2'
   },
   skillSection: {
-      background: '#313131',
+      // background: '#313131',
       display: 'flex',
       flexDirection: 'column',
   },
   skillsHeader: {
-    color: 'white',
-    background: '#313131',
-    padding: '.8em 5% 0 5%',
+    // color: 'white',
+    // background: '#313131',
+    padding: '0 5% 0 5%',
     textAlign: 'center',
   },
   projectHeader: {
@@ -153,17 +153,6 @@ function Main(props) {
           <Timeline theme={props.theme} updateActiveUrlHash={props.updateActiveUrlHash}/>
         </div>
 
-        <div id="skills" className={classes.skillSection}>
-          <Typography variant="h3" className={classes.skillsHeader}>
-            <span style={{paddingRight: ''}}>I like to work with</span><span role="img" aria-label="point-down" style={{paddingLeft: '.5em'}}>👇🏻</span>
-          </Typography>
-          <Skills />
-        </div>
-
-        <div className={classes.certsSection}>
-          <Certs currentTheme={props.currentTheme}/>
-        </div>
-
         <div className={classNames([classes.blurbSection, (props.currentTheme === 'dark' ? classes.blurbSectionDark : null)])}>
           <Blurb currentTheme={props.currentTheme}/>
         </div>
@@ -173,6 +162,18 @@ function Main(props) {
             My Projects
           </Typography>
           <Projects theme={props.theme}/>
+        </div>
+
+        <div id="skills" className={classes.skillSection}>
+          <Typography variant="h3" className={classes.skillsHeader}>
+            <span> I built those <span role="img" aria-label="point-down" >☝🏻</span> with these <span role="img" aria-label="point-down">👇🏻</span></span>
+          </Typography>
+          <Skills theme={props.theme}/>
+        </div>
+
+
+        <div className={classes.certsSection}>
+          <Certs currentTheme={props.currentTheme}/>
         </div>
 
       </div>

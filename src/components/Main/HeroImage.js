@@ -6,6 +6,7 @@ const styles = theme => ({
     height: '100%',
     width: '100%',
     borderRadius: '4px',
+    overflow: 'hidden',
   },
   image: {
     height: '100%',

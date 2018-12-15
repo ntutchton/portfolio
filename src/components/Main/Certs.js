@@ -46,7 +46,7 @@ const styles = theme => ({
 const Certs = props => {
   const { classes } = props
    return (
-     <div className={classes.root}>
+     <div className={classes.root} style={ props.currentTheme === 'dark' ? {opacity: '.7'} : null }>
        <div className={classes.certWrapper}>
          <a className={classes.certLink} href="certs/AWS_Certified_Developer.pdf">
            <div className={classes.cert} style={{backgroundImage: `url(${'certs/AWSCERT.png'})`}}></div>
