@@ -42,7 +42,6 @@ const styles = theme => ({
   },
   label: {
     marginTop: '10px',
-    // color: '#fafafa',
   },
 })
 
