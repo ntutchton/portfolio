@@ -222,7 +222,11 @@ class TimelineSection extends React.Component {
                   : {})
             ])} style={{marginTop: `-${this.state.sectionHeight}px`}}>
               <div className={classes.timelineImage} style={{ backgroundImage: `url(${this.props.backgroundImageUrl})` }}>
-                <div className={classes.timelineImageOverlay} style={{ background: `linear-gradient(to ${this.props.type === 'right' ? 'left' : 'right'},  rgba(0,0,0,0) 0%,rgba(0,0,0,0.45) 100%)` }}>
+                <div className={classes.timelineImageOverlay} style={
+                    this.props.currentTheme === 'dark'
+                    ? { background: `linear-gradient(to ${this.props.type === 'right' ? 'left' : 'right'},  rgba(0,0,0,0) 0%,rgba(0,0,0,0.45) 100%)` }
+                    : { background: `linear-gradient(to ${this.props.type === 'right' ? 'left' : 'right'},  rgba(255,255,255,0) 0%,rgba(255,255,255,0.70) 100%)` }
+                  }>
                 </div>
               </div>
           </div>

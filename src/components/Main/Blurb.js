@@ -10,7 +10,7 @@ const styles = theme => ({
     margin: '0 15%',
     padding: '3em 0',
     [theme.breakpoints.down('lg')]: {
-      margin: '10em 5%',
+      margin: '0 5% 5em 5%',
     },
     [theme.breakpoints.down('md')]: {
     gridTemplateColumns: '1fr',
@@ -40,10 +40,10 @@ const Blurb = props => {
             My Passion
           </Typography>
           <Typography className={classes.blurbText} variant="body1">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis bibendum iaculis. Morbi vel ornare ante. Integer dignissim dapibus sem. In hac habitasse platea dictumst. Fusce vehicula sodales orci, at faucibus sem consequat sit amet. Nam sodales nibh vitae maximus rhoncus.
+            Act like an artist... think like a scientist.
           </Typography>
           <Typography className={classes.blurbText} variant="body1">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis bibendum iaculis. Morbi vel ornare ante. Integer dignissim dapibus sem. In hac habitasse platea dictumst. Fusce vehicula sodales orci, at faucibus sem consequat sit amet. Nam sodales nibh vitae maximus rhoncus.
+            Scaffolding applications from new ideas or restructuring aging systems allows for tremendous creative freedom.  I express myself through my designs, and bring them to life with my code.
           </Typography>
         </div>
 
@@ -52,7 +52,10 @@ const Blurb = props => {
             My Vision
           </Typography>
           <Typography className={classes.blurbText} variant="body1">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis bibendum iaculis. Morbi vel ornare ante. Integer dignissim dapibus sem. In hac habitasse platea dictumst. Fusce vehicula sodales orci, at faucibus sem consequat sit amet. Nam sodales nibh vitae maximus rhoncus.
+            I believe that excellent UX and memorable interfaces are the most important part of any application.  I try to leverage my experiences to modernize legacy systems using modern frameworks.
+          </Typography>
+          <Typography className={classes.blurbText} variant="body1">
+            With new ideas, I hope to build a foundation of intelligent design standards and a flexible code base to guides future development.
           </Typography>
         </div>
 
@@ -61,7 +64,10 @@ const Blurb = props => {
             My Impact
           </Typography>
           <Typography className={classes.blurbText} variant="body1">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis bibendum iaculis. Morbi vel ornare ante. Integer dignissim dapibus sem. In hac habitasse platea dictumst. Fusce vehicula sodales orci, at faucibus sem consequat sit amet. Nam sodales nibh vitae maximus rhoncus.
+            I design from scratch when no design team exists, or translate UX decisions into working code.
+          </Typography>
+          <Typography className={classes.blurbText} variant="body1">
+            I enjoy taking on multiple roles, acting as a liaison between either designers and engineers, or clients and products. I bring the desire to create lasting, enjoyable UX (and the technical ability to do it) to any team.
           </Typography>
         </div>
 

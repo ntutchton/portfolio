@@ -26,12 +26,15 @@ const styles = theme => ({
     transition: 'all .1s cubic-bezier(.1,.69,.97,.09)',
   },
   circle: {
-    background: '#535353',
-    boxShadow: '-2px 7px 6px 0 rgba(0,0,0,0.30)',
+    background: '#fff',
+    boxShadow: '0px 1px 6px 0 rgba(0,0,0,0.30)',
     borderRadius: '50%',
     display: 'flex',
     justifyContent: 'center',
     flexDirection: 'column',
+  },
+  darkCircleBackground: {
+    background: '#535353',
   },
   logoImg: {
     margin: '0 auto',
@@ -39,7 +42,6 @@ const styles = theme => ({
   },
   label: {
     marginTop: '10px',
-    color: '#fafafa',
   },
 })
 
@@ -128,7 +130,12 @@ class SkillCircle extends React.Component{
                 ? classes.active
                 : {}),
         ])}>
-        <div className={classes.circle} style={{width: `${this.props.height}px`, height: `${this.props.height}px`}}>
+        <div className={classNames([
+            classes.circle,
+            (this.props.theme.palette.type === 'dark'
+              ? classes.darkCircleBackground
+              : null)
+          ])} style={{width: `${this.props.height}px`, height: `${this.props.height}px`}}>
           <div>
             <img
               className={classes.logoImg}

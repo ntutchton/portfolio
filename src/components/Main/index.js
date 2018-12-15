@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import SvgLogo from '../Logo'
 import { Parallax } from 'react-scroll-parallax';
 
+import HeroImage from './HeroImage'
 import Timeline from './Timeline/'
 import Skills from './Skills/'
 import Projects from './Projects/'
@@ -22,14 +23,8 @@ const styles = theme => ({
   link: {
     textDecoration: 'none',
   },
-  // section: {
-    // minHeight: '100vh',
-    // width:'100%',
-    // zIndex: '2',
-  // },
   hero: {
     display: 'grid',
-    height: '870px',
     overflow: 'hidden',
     gridTemplateColumns: 'repeat(12, 1fr)',
   },
@@ -37,17 +32,20 @@ const styles = theme => ({
     height:'750px',
     gridColumnStart: '5',
     gridColumnEnd: '13',
-    backgroundColor: 'grey',
+    marginBottom: '100px',
+    zIndex: '3',
     display: 'flex',
-    zIndex: '2',
     transition: 'all 1s ease-in-out',
+    [theme.breakpoints.down('md')]: {
+      marginLeft: '5em',
+    },
     [theme.breakpoints.down('sm')]: {
       gridColumnStart: '1',
       zIndex: '3',
-      marginLeft: '0'
-    },
-    [theme.breakpoints.down('md')]: {
-      marginLeft: '5em',
+      marginLeft: '0',
+      marginTop: '-50px',
+      marginBottom: '0',
+      height: '400px',
     },
     [theme.breakpoints.up('lg')]: {
       gridColumnEnd: '12',
@@ -70,10 +68,6 @@ const styles = theme => ({
   heroName: {
     marginBottom: '1.3em',
     fontWeight: '700',
-    width:'200%',
-    [theme.breakpoints.down('sm')]: {
-      width: '100%',
-    },
   },
   heroContactButton: {
     width: '15em',
@@ -88,14 +82,11 @@ const styles = theme => ({
     opacity: '.2'
   },
   skillSection: {
-      background: '#313131',
       display: 'flex',
       flexDirection: 'column',
   },
   skillsHeader: {
-    color: 'white',
-    background: '#313131',
-    padding: '.8em 5% 0 5%',
+    padding: '0 5% 0 5%',
     textAlign: 'center',
   },
   projectHeader: {
@@ -103,7 +94,6 @@ const styles = theme => ({
     textAlign: 'center',
   },
   blurbSection: {
-    // margin: '4em 0 0 0',
     backgroundColor: '#ebebeb',
   },
   blurbSectionDark: {
@@ -151,24 +141,13 @@ function Main(props) {
           </div>
 
           <div className={classes.heroImage}>
-
+            <HeroImage />
           </div>
 
         </div>
 
         <div id="work">
           <Timeline theme={props.theme} updateActiveUrlHash={props.updateActiveUrlHash}/>
-        </div>
-
-        <div id="skills" className={classes.skillSection}>
-          <Typography variant="h3" className={classes.skillsHeader}>
-            <span style={{paddingRight: ''}}>I like to work with</span><span role="img" aria-label="point-down" style={{paddingLeft: '.5em'}}>👇🏻</span>
-          </Typography>
-          <Skills />
-        </div>
-
-        <div className={classes.certsSection}>
-          <Certs currentTheme={props.currentTheme}/>
         </div>
 
         <div className={classNames([classes.blurbSection, (props.currentTheme === 'dark' ? classes.blurbSectionDark : null)])}>
@@ -180,6 +159,18 @@ function Main(props) {
             My Projects
           </Typography>
           <Projects theme={props.theme}/>
+        </div>
+
+        <div id="skills" className={classes.skillSection}>
+          <Typography variant="h3" className={classes.skillsHeader}>
+            <span> I built those <span role="img" aria-label="point-down" >☝🏻</span> with these <span role="img" aria-label="point-down">👇🏻</span></span>
+          </Typography>
+          <Skills theme={props.theme}/>
+        </div>
+
+
+        <div className={classes.certsSection}>
+          <Certs currentTheme={props.currentTheme}/>
         </div>
 
       </div>

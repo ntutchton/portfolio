@@ -16,6 +16,9 @@ import SvgLogo from '../Logo'
 import ThemeToggle from './ThemeToggle'
 
 const styles = theme => ({
+  root: {
+        zIndex: '10',
+  },
   container: {
     width: '100%',
     display: 'grid',
@@ -143,21 +146,23 @@ class Header extends React.Component{
                     <span style={ this.isActive('projects') }> Projects </span>
                   </Button>
                 </Link>
-                <Link to="/content#featured" className={classes.link} scroll={this.smoothScroll}>
-                  <Button size="medium" variant="text" className={classes.button} onClick={()=>{this.updateActiveUrlHash('#featured')}}>
-                    <span style={ this.isActive('featured') }> Life </span>
-                  </Button>
-                </Link>
-                <Link to="/content#podcasts" className={classes.link} scroll={this.smoothScroll}>
-                  <Button size="medium" variant="text" className={classes.button} onClick={()=>{this.updateActiveUrlHash('#podcasts')}}>
-                    <span style={ this.isActive('podcasts') }> Podcasts </span>
-                  </Button>
-                </Link>
-                <Link to="/content#media" className={classes.link} scroll={this.smoothScroll}>
-                  <Button size="medium" variant="text" className={classes.button} onClick={()=>{this.updateActiveUrlHash('#media')}}>
-                    <span style={ this.isActive('media') }> Media </span>
-                  </Button>
-                </Link>
+{ /*
+  <Link to="/content#featured" className={classes.link} scroll={this.smoothScroll}>
+    <Button size="medium" variant="text" className={classes.button} onClick={()=>{this.updateActiveUrlHash('#featured')}}>
+      <span style={ this.isActive('featured') }> Life </span>
+    </Button>
+  </Link>
+  <Link to="/content#podcasts" className={classes.link} scroll={this.smoothScroll}>
+    <Button size="medium" variant="text" className={classes.button} onClick={()=>{this.updateActiveUrlHash('#podcasts')}}>
+      <span style={ this.isActive('podcasts') }> Podcasts </span>
+    </Button>
+  </Link>
+  <Link to="/content#media" className={classes.link} scroll={this.smoothScroll}>
+    <Button size="medium" variant="text" className={classes.button} onClick={()=>{this.updateActiveUrlHash('#media')}}>
+      <span style={ this.isActive('media') }> Media </span>
+    </Button>
+  </Link> */ null
+}
               </div>
               <div className={classes.themeToggle}>
                 <ThemeToggle currentTheme={this.props.currentTheme} changeTheme={this.props.changeTheme}></ThemeToggle>
@@ -199,21 +204,24 @@ class Header extends React.Component{
                         <span style={ this.isActive('projects') }> Projects </span>
                       </MenuItem>
                     </Link>
-                    <Link to="/content#featured" className={classes.link} scroll={this.smoothScroll}>
-                      <MenuItem onClick={()=>{this.handleBurgerMenuClose('#featured')}}>
-                        <span style={ this.isActive('featured') }> Life </span>
-                      </MenuItem>
-                    </Link>
-                    <Link to="/content#podcasts" className={classes.link} scroll={this.smoothScroll}>
-                      <MenuItem onClick={()=>{this.handleBurgerMenuClose('#podcasts')}}>
-                        <span style={ this.isActive('podcasts') }> Podcasts </span>
-                      </MenuItem>
-                    </Link>
-                    <Link to="/content#media" className={classes.link} scroll={this.smoothScroll}>
-                      <MenuItem onClick={()=>{this.handleBurgerMenuClose('#media')}}>
-                        <span style={ this.isActive('media') }> Media </span>
-                      </MenuItem>
-                    </Link>
+{/*
+  <Link to="/content#featured" className={classes.link} scroll={this.smoothScroll}>
+    <MenuItem onClick={()=>{this.handleBurgerMenuClose('#featured')}}>
+      <span style={ this.isActive('featured') }> Life </span>
+    </MenuItem>
+  </Link>
+  <Link to="/content#podcasts" className={classes.link} scroll={this.smoothScroll}>
+    <MenuItem onClick={()=>{this.handleBurgerMenuClose('#podcasts')}}>
+      <span style={ this.isActive('podcasts') }> Podcasts </span>
+    </MenuItem>
+  </Link>
+  <Link to="/content#media" className={classes.link} scroll={this.smoothScroll}>
+    <MenuItem onClick={()=>{this.handleBurgerMenuClose('#media')}}>
+      <span style={ this.isActive('media') }> Media </span>
+    </MenuItem>
+  </Link>
+  */ null
+}
                     <Link to="/contact" className={classes.link} scroll={this.smoothScroll}>
                       <MenuItem onClick={()=>{this.handleBurgerMenuClose('')}}>
                         <span style={ this.isActive('contact') }> Contact Me </span>
