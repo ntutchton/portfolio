@@ -14,22 +14,31 @@ import Main from './components/Main'
 import Content from './components/Content'
 import Contact from './components/Contact'
 
-// fetchThemePreference = () => {
-//   let themePreference = localStorage.getItem('themePreference');
-//   console.log(themePreference);
-//   if (themePreference) {
-//     return JSON.parse(themePreference)
-//   } else return 'light' //default if no pref set
-// }
+const easterEgg = () => {
+  console.log(
+`
+|\\  |  /|
+| \\ | / |
+|  \\|/  |
+|  /|\\  |
+| / | \\ |
+|/ _|_ \\|
+|  |_|  |
+|   |   |
+|   |   |
+    |
+    |
+`)
+}
 
 class App extends Component {
 
+  //grab theme pref from local storage, if set. otherwise return light theme
   fetchThemePreference = () => {
     let themePreference = localStorage.getItem('themePreference');
-    console.log(themePreference);
     if (themePreference) {
       return JSON.parse(themePreference)
-    } else return 'light' //default if no pref set
+    } else return 'light'
   }
 
   state = {
@@ -39,9 +48,7 @@ class App extends Component {
 
   componentWillMount = () => {
     smoothscroll.polyfill();
-    // this.setState({
-    //   currentTheme: this.fetchThemePreference()
-    // })
+    easterEgg()
   }
 
 
