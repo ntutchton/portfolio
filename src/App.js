@@ -14,6 +14,23 @@ import Main from './components/Main'
 import Content from './components/Content'
 import Contact from './components/Contact'
 
+const easterEgg = () => {
+  console.log(
+`
+|\\  |  /|
+| \\ | / |
+|  \\|/  |
+|  /|\\  |
+| / | \\ |
+|/ _|_ \\|
+|  |_|  |
+|   |   |
+|   |   |
+    |
+    |
+`)
+}
+
 class App extends Component {
 
   //grab theme pref from local storage, if set. otherwise return light theme
@@ -31,6 +48,7 @@ class App extends Component {
 
   componentWillMount = () => {
     smoothscroll.polyfill();
+    easterEgg()
   }
 
 
