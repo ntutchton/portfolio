@@ -14,6 +14,7 @@ import Skills from './Skills/'
 import Projects from './Projects/'
 import Certs from './Certs'
 import Blurb from './Blurb'
+import About from './About'
 
 
 const styles = theme => ({
@@ -98,6 +99,9 @@ const styles = theme => ({
   blurbSectionDark: {
     backgroundColor: '#303030',
   },
+  aboutSection: {
+    marginTop: '6em',
+  },
 })
 
 function Main(props) {
@@ -172,6 +176,10 @@ function Main(props) {
 
         <div className={classes.certsSection}>
           <Certs currentTheme={props.currentTheme}/>
+        </div>
+
+        <div id="about" className={classes.aboutSection}>
+          <About />
         </div>
 
       </div>

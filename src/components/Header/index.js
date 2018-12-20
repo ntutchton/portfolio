@@ -136,14 +136,19 @@ class Header extends React.Component{
                     <span style={ this.isActive('history') }> History </span>
                   </Button>
                 </Link>
+                <Link to="/#work" className={classes.link} scroll={this.smoothScroll} >
+                  <Button size="medium" variant="text" className={classes.button} onClick={()=>{this.updateActiveUrlHash('#work')}} >
+                    <span style={ this.isActive('work') }> Work </span>
+                  </Button>
+                </Link>
                 <Link to="/#skills" className={classes.link} scroll={this.smoothScroll}>
                   <Button size="medium" variant="text" className={classes.button} onClick={()=>{this.updateActiveUrlHash('#skills')}}>
                     <span style={ this.isActive('skills') }> Skills </span>
                   </Button>
                 </Link>
-                <Link to="/#work" className={classes.link} scroll={this.smoothScroll} >
-                  <Button size="medium" variant="text" className={classes.button} onClick={()=>{this.updateActiveUrlHash('#work')}} >
-                    <span style={ this.isActive('work') }> Work </span>
+                <Link to="/#about" className={classes.link} scroll={this.smoothScroll}>
+                  <Button size="medium" variant="text" className={classes.button} onClick={()=>{this.updateActiveUrlHash('#about')}}>
+                    <span style={ this.isActive('about') }> About </span>
                   </Button>
                 </Link>
 { /*
@@ -194,14 +199,19 @@ class Header extends React.Component{
                         <span style={ this.isActive('history') }> History </span>
                       </MenuItem>
                     </Link>
+                    <Link to="/#work" className={classes.link} scroll={this.smoothScroll}>
+                      <MenuItem onClick={()=>{this.handleBurgerMenuClose('#work')}}>
+                        <span style={ this.isActive('work') }> Work </span>
+                      </MenuItem>
+                    </Link>
                     <Link to="/#skills" className={classes.link} scroll={this.smoothScroll}>
                       <MenuItem onClick={()=>{this.handleBurgerMenuClose('#skills')}}>
                         <span style={ this.isActive('skills') }> Skills </span>
                       </MenuItem>
                     </Link>
-                    <Link to="/#work" className={classes.link} scroll={this.smoothScroll}>
-                      <MenuItem onClick={()=>{this.handleBurgerMenuClose('#work')}}>
-                        <span style={ this.isActive('work') }> Work </span>
+                    <Link to="/#about" className={classes.link} scroll={this.smoothScroll}>
+                      <MenuItem onClick={()=>{this.handleBurgerMenuClose('#about')}}>
+                        <span style={ this.isActive('about') }> About </span>
                       </MenuItem>
                     </Link>
 {/*
