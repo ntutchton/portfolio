@@ -72,7 +72,6 @@ const styles = theme => ({
   heroContactButton: {
     width: '15em',
     height: '4em',
-    marginBottom: '15em',
   },
   paralaxWrapper: {
     transform: 'translateY(-430px)translateX(100px)',
@@ -123,11 +122,13 @@ function Main(props) {
             <Typography variant="h6" color="textSecondary" style={{marginBottom: '4em', width: '150%'}}>
               full-stack applications.
             </Typography>
-            <Link to="/contact" className={classes.link} onClick={()=>{props.updateActiveUrlHash('')}}>
-              <Button variant="contained" color="primary" className={classes.heroContactButton}>
-                Contact Me
-              </Button>
-            </Link>
+            <div style={{paddingBottom: '15em'}}>
+              <Link to="/contact" className={classes.link} onClick={()=>{props.updateActiveUrlHash('')}}>
+                <Button variant="contained" color="primary" className={classes.heroContactButton} >
+                  Contact Me
+                </Button>
+              </Link>
+            </div>
 
             <Parallax
               className={classNames([classes.paralaxWrapper, (props.currentTheme === 'dark' ? classes.paralaxDark: null)])}
@@ -141,7 +142,7 @@ function Main(props) {
           </div>
 
           <div className={classes.heroImage}>
-            <HeroImage />
+            <HeroImage theme={props.theme} />
           </div>
 
         </div>
