@@ -133,7 +133,7 @@ class Header extends React.Component{
               <div className={classes.navButtons}>
                 <Link to="/#history" className={classes.link} scroll={el => {this.smoothScroll(el, 'current-history')}}>
                   <Button size="medium" variant="text" className={classes.button} onClick={()=>{this.updateActiveUrlHash('#history')}}>
-                    <span style={ this.isActive('work') }> History </span>
+                    <span style={ this.isActive('history') }> History </span>
                   </Button>
                 </Link>
                 <Link to="/#skills" className={classes.link} scroll={this.smoothScroll}>
@@ -143,7 +143,7 @@ class Header extends React.Component{
                 </Link>
                 <Link to="/#work" className={classes.link} scroll={this.smoothScroll} >
                   <Button size="medium" variant="text" className={classes.button} onClick={()=>{this.updateActiveUrlHash('#work')}} >
-                    <span style={ this.isActive('projects') }> Work </span>
+                    <span style={ this.isActive('work') }> Work </span>
                   </Button>
                 </Link>
 { /*
@@ -191,7 +191,7 @@ class Header extends React.Component{
                   >
                     <Link to="/#history" className={classes.link} scroll={el => {this.smoothScroll(el, 'current-history')}}>
                       <MenuItem onClick={()=>{this.handleBurgerMenuClose('#history')}}>
-                        <span style={ this.isActive('work') }> History </span>
+                        <span style={ this.isActive('history') }> History </span>
                       </MenuItem>
                     </Link>
                     <Link to="/#skills" className={classes.link} scroll={this.smoothScroll}>
@@ -201,7 +201,7 @@ class Header extends React.Component{
                     </Link>
                     <Link to="/#work" className={classes.link} scroll={this.smoothScroll}>
                       <MenuItem onClick={()=>{this.handleBurgerMenuClose('#work')}}>
-                        <span style={ this.isActive('projects') }> Work </span>
+                        <span style={ this.isActive('work') }> Work </span>
                       </MenuItem>
                     </Link>
 {/*
