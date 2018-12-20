@@ -100,7 +100,7 @@ const styles = theme => ({
     backgroundColor: '#303030',
   },
   aboutSection: {
-    marginTop: '6em',
+    // marginTop: '6em',
   },
 })
 
@@ -167,7 +167,7 @@ function Main(props) {
         </div>
 
         <div id="skills" className={classes.skillSection}>
-          <Typography variant="h3" className={classes.skillsHeader}>
+          <Typography variant="h4" className={classes.skillsHeader}>
             <span> I built those <span role="img" aria-label="point-down" >☝🏻</span> with these <span role="img" aria-label="point-down">👇🏻</span></span>
           </Typography>
           <Skills theme={props.theme}/>
@@ -179,7 +179,7 @@ function Main(props) {
         </div>
 
         <div id="about" className={classes.aboutSection}>
-          <About />
+          <About currentTheme={props.currentTheme}/>
         </div>
 
       </div>
