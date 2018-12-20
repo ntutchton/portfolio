@@ -141,7 +141,7 @@ function Main(props) {
           </div>
 
           <div className={classes.heroImage}>
-            <HeroImage />
+            <HeroImage theme={props.theme} />
           </div>
 
         </div>
