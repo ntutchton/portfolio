@@ -4,6 +4,9 @@ import classNames from 'classnames';
 import Typography from '@material-ui/core/Typography';
 import Typed from 'react-typed';
 
+import testimonials from './testimonials'
+import TestimonialCard from './TestimonialCard'
+
 const styles = theme => ({
   root: {
     display: 'flex',
@@ -15,7 +18,7 @@ const styles = theme => ({
     textAlign: 'center',
     width: '50%',
     paddingTop: '6em',
-    minHeight: '500px',
+    minHeight: '750px',
     [theme.breakpoints.down('md')]: {
       width: '100%',
       padding: '3em 1em 0 1em',
@@ -26,9 +29,17 @@ const styles = theme => ({
     flexDirection: 'column',
   },
   rightWrapper: {
-    background: '#fff'
+    background: '#fafafa',
+    display: 'flex',
+    flexDirection: 'column',
   },
   leftContent: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    flexGrow: '1',
+  },
+  rightContent: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -37,9 +48,20 @@ const styles = theme => ({
   contentRed: {
     background: theme.palette.primary.light,
     color: '#fff',
+    borderTopRightRadius: '5px',
+    borderBottomRightRadius: '5px',
+  },
+  contentDark: {
+    background: '#303030',
+    color: '#fff',
+    borderTopLeftRadius: '5px',
+    borderBottomLeftRadius: '5px',
   },
   typedWrapper: {
-    fontSize: '150%',
+    fontSize: '300%',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '150%',
+    },
   },
 })
 
@@ -79,6 +101,8 @@ const About= props => {
                   'I like pizza.',
                   'I like video games.',
                   'I like drawing.',
+                  'I like cooking.',
+                  'I like camping.',
                   'I like my dogs.',]}
                 typeSpeed={80}
                 backSpeed={50}
@@ -92,15 +116,27 @@ const About= props => {
           classes.rightWrapper,
           classes.aboutSection,
           (props.currentTheme === 'dark'
-            ? classes.contentRed
+            ? classes.contentDark
             : null)
         ])}>
         <Typography variant="h4" className={
           (props.currentTheme === 'dark'
-            ? classes.contentRed
+            ? classes.contentDark
             : null)}>
           Things other people say about me
         </Typography>
+        <div className={classes.rightContent}>
+          {
+            testimonials.map( (testimonial, index) => (
+              <TestimonialCard
+                key={index}
+                author={testimonial.author}
+                authorTitle={testimonial.authorTitle}
+                quote={testimonial.quote}
+              />
+            ))
+          }
+        </div>
       </div>
     </div>
   )

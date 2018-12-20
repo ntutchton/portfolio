@@ -6,7 +6,7 @@ const styles = theme => ({
   root: {
     display: 'grid',
     padding: '0 8.3%',
-        background: '#fff',
+    background: '#fff',
     gridTemplateColumns: '1fr 1fr 1fr 1fr',
     [theme.breakpoints.down('sm')]: {
       gridTemplateColumns: '1fr 1fr',
@@ -19,7 +19,6 @@ const styles = theme => ({
     display: 'flex',
     justifyContent: 'center',
     flexDirection: 'column',
-    // background: '#fff',
     padding: '24px 0',
   },
   certLink: {
@@ -42,10 +41,12 @@ const styles = theme => ({
   },
 })
 
+// style={ props.currentTheme === 'dark' ? {opacity: '.7'} : null }
+
 const Certs = props => {
   const { classes } = props
    return (
-     <div className={classes.root} style={ props.currentTheme === 'dark' ? {opacity: '.7'} : null }>
+     <div className={classes.root}>
        <div className={classes.certWrapper}>
          <a className={classes.certLink} href="certs/AWS_Certified_Developer.pdf">
            <div className={classes.cert} style={{backgroundImage: `url(${'certs/AWSCERT.png'})`}}></div>

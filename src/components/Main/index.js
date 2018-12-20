@@ -100,7 +100,7 @@ const styles = theme => ({
     backgroundColor: '#303030',
   },
   aboutSection: {
-    // marginTop: '6em',
+    paddingBottom: '6em',
   },
 })
 
@@ -173,13 +173,12 @@ function Main(props) {
           <Skills theme={props.theme}/>
         </div>
 
+        <div id="about" className={classes.aboutSection}>
+          <About currentTheme={props.currentTheme}/>
+        </div>
 
         <div className={classes.certsSection}>
           <Certs currentTheme={props.currentTheme}/>
-        </div>
-
-        <div id="about" className={classes.aboutSection}>
-          <About currentTheme={props.currentTheme}/>
         </div>
 
       </div>
