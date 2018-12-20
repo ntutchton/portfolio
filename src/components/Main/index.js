@@ -146,7 +146,7 @@ function Main(props) {
 
         </div>
 
-        <div id="work">
+        <div id="history">
           <Timeline theme={props.theme} updateActiveUrlHash={props.updateActiveUrlHash}/>
         </div>
 
@@ -154,9 +154,9 @@ function Main(props) {
           <Blurb currentTheme={props.currentTheme}/>
         </div>
 
-        <div id="projects">
+        <div id="work">
           <Typography variant="h3" className={classes.projectHeader}>
-            My Projects
+            My Work
           </Typography>
           <Projects theme={props.theme}/>
         </div>

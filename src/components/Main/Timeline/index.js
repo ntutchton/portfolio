@@ -195,7 +195,7 @@ class Timeline extends React.Component {
         </TimelineSection>
 
         <TimelineSection scroll={this.state.scroll} sectionHeight={this.state.defaultSectionHeight} type="left" order="top" logoSource="logos/BITS.svg" backgroundImageUrl={'images/UX.jpg'} currentTheme={this.props.theme.palette.type}>
-          <div className={classes.wrapper} id="current-work">
+          <div className={classes.wrapper} id="current-history">
             <div className={classes.headerWrapper}>
               <Typography variant="h4" className={classes.header}>
                 UI / UX Developer
