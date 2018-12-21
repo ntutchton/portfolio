@@ -85,7 +85,8 @@ const styles = theme => ({
   },
 })
 
-const About= props => {
+const About = props => {
+
   const { classes } = props
 
   return (
@@ -116,14 +117,14 @@ const About= props => {
                   'I like backpacking.',
                   'I like coffee.',
                   'I like woodworking.',
-                  'I like music.',
-                  'I like running.',
+                  'I like exploring.',
+                  'I like drawing.',
                   'I like pizza.',
                   'I like video games.',
-                  'I like drawing.',
+                  'I like running.',
                   'I like cooking.',
                   'I like writing.',
-                  'I like camping.',
+                  'I like live music.',
                   'I like my dogs.',]}
                 typeSpeed={80}
                 backSpeed={50}

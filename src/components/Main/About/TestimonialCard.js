@@ -12,6 +12,7 @@ const styles = theme => ({
     textAlign: 'left',
     padding:  '0 10%',
     display: 'flex',
+    marginBottom: '10%',
   },
   card: {
     flex:'1',
