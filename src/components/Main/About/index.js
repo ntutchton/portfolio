@@ -2,6 +2,7 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import Typography from '@material-ui/core/Typography';
+
 import Typed from 'react-typed';
 
 import testimonials from './testimonials'
@@ -52,7 +53,7 @@ const styles = theme => ({
     borderBottomRightRadius: '5px',
   },
   contentDark: {
-    background: '#303030',
+    background: theme.palette.primary.main, //'#303030',
     color: '#fff',
     borderTopLeftRadius: '5px',
     borderBottomLeftRadius: '5px',
@@ -77,7 +78,7 @@ const About= props => {
             ? null
             : classes.contentRed)
         ])}>
-        <Typography variant="h4" className={
+        <Typography variant="h5" className={
           (props.currentTheme === 'dark'
             ? null
             : classes.contentRed)}>
@@ -97,6 +98,7 @@ const About= props => {
                   'I like coffee.',
                   'I like woodworking.',
                   'I like writing.',
+                  'I like music.',
                   'I like running.',
                   'I like pizza.',
                   'I like video games.',
@@ -106,7 +108,7 @@ const About= props => {
                   'I like my dogs.',]}
                 typeSpeed={80}
                 backSpeed={50}
-                backDelay={3500}
+                backDelay={2500}
                 smartBackspace={true}
                 loop />
           </Typography>
@@ -119,7 +121,7 @@ const About= props => {
             ? classes.contentDark
             : null)
         ])}>
-        <Typography variant="h4" className={
+        <Typography variant="h5" className={
           (props.currentTheme === 'dark'
             ? classes.contentDark
             : null)}>
