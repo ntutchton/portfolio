@@ -31,7 +31,7 @@ const styles = theme => ({
     backgroundPosition: 'center',
   },
   quote: {
-    margin: '0 5% 1em 5%',
+    margin: '2em 5% 2em 5%',
   },
   author: {
     textAlign: 'right',
@@ -50,10 +50,9 @@ class TestimonialCard extends React.Component{
             <div className={classes.avatarImageWrapper}>
               <div className={classes.avatarImage} style={{backgroundImage: `url(${this.props.image})`}}></div>
             </div>
-            <Typography className={classes.quote} variant="h5" component="h2">
+            <Typography className={classes.quote} variant="body1" component="h2">
               "{ this.props.quote }"
             </Typography>
-
             <Typography className={classes.author} color="textSecondary">
               - { this.props.author}
             </Typography>
