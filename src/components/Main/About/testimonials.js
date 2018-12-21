@@ -1,15 +1,21 @@
 const testimonials = [
   {
-    author: 'Lsrry',
-    authorTitle: 'Master of asdf Arts',
+    author: 'Tachi Rivera',
+    authorTitle: 'Product Manager, ICR',
     quote: 'gghfjhdjfgdfkghdfghjkdfg dfhkg dfkhjg kjdfhgkjfhkdhfgkj dfhkjgh fjkhdk fghkjdf',
-    image: null,
+    image: 'images/testimonials/tachi.png',
   },
   {
-    author: 'Lsrasdfasfry',
-    authorTitle: 'Master of asdf Arts',
+    author: 'Scott Stolzman',
+    authorTitle: 'Data Scientist, Consultant',
+    quote: 'gghfjhdjfgdfkghdfghjkdfg dfhkg dfkhjg kjdfhgkjfhkdhfgkj dfhkjgh fjkhdk fghkjdf',
+    image: 'images/testimonials/scott.png',
+  },
+  {
+    author: 'Cameron Castells',
+    authorTitle: 'Web Developer, INEO',
     quote: 'gghfjhdjfgdasdfasdf asdfasdf asdfasdf asdfasdf asdf asdf asdf asdf asfd asdf asdfasdffkghdfghjkdfg dfhkg dfkhjg kjdfhgkjfhkdhfgkj dfhkjgh fjkhdk fghkjdf',
-    image: null,
+    image: 'images/testimonials/cam.png',
   },
   {
     author: 'Cthulhu',

@@ -28,6 +28,14 @@ const styles = theme => ({
       width: '100%',
       padding: '3em 1em 0 1em',
     },
+    [theme.breakpoints.down('sm')]: {
+      minHeight: '200px',
+    },
+  },
+  aboutHeader: {
+    [theme.breakpoints.down('sm')]: {
+      marginBottom: '2em',
+    },
   },
   leftWrapper: {
     display: 'flex',
@@ -132,10 +140,12 @@ const About= props => {
             ? classes.contentDark
             : null)
         ])}>
-        <Typography variant="h5" className={
-          (props.currentTheme === 'dark'
-            ? classes.contentDark
-            : null)}>
+        <Typography variant="h5" className={classNames([
+            classes.aboutHeader,
+            (props.currentTheme === 'dark'
+              ? classes.contentDark
+              : null)
+          ])}>
           Things other people say about me
         </Typography>
         <div className={classes.rightContent}>
