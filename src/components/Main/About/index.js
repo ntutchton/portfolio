@@ -108,13 +108,13 @@ const About= props => {
                   'I like backpacking.',
                   'I like coffee.',
                   'I like woodworking.',
-                  'I like writing.',
                   'I like music.',
                   'I like running.',
                   'I like pizza.',
                   'I like video games.',
                   'I like drawing.',
                   'I like cooking.',
+                  'I like writing.',
                   'I like camping.',
                   'I like my dogs.',]}
                 typeSpeed={80}
@@ -150,8 +150,9 @@ const About= props => {
             swiping={true}
             wrapAround={true}
             autoplay={true}
-            autoplayInterval={5000}
+            autoplayInterval={6500}
             pauseOnHover={true}
+            easing={'easePolyInOut'}
             disableKeyboardControls={true}>
             {
               testimonials.map( (testimonial, index) => (

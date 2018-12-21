@@ -36,6 +36,7 @@ const styles = theme => ({
     justifyContent: 'center',
     flexDirection: 'column',
     cursor: 'pointer',
+    borderRadius: '0',
     '&:hover': {
       background: theme.palette.background.paper,
     },

@@ -85,6 +85,9 @@ const styles = theme => ({
       display: 'flex',
       flexDirection: 'column',
   },
+  section: {
+      minHeight: '100vh',
+  },
   skillsHeader: {
     padding: '0 5% 0 5%',
     textAlign: 'center',
@@ -100,7 +103,7 @@ const styles = theme => ({
     backgroundColor: '#303030',
   },
   aboutSection: {
-    paddingBottom: '6em',
+    padding: '6em 0',
   },
 })
 
@@ -151,7 +154,7 @@ function Main(props) {
 
         </div>
 
-        <div id="history">
+        <div id="history" className={classes.section}>
           <Timeline theme={props.theme} updateActiveUrlHash={props.updateActiveUrlHash}/>
         </div>
 
@@ -159,21 +162,26 @@ function Main(props) {
           <Blurb currentTheme={props.currentTheme}/>
         </div>
 
-        <div id="work">
+        <div id="work" className={classes.section}>
           <Typography variant="h3" className={classes.projectHeader}>
             My Work
           </Typography>
           <Projects theme={props.theme}/>
         </div>
 
-        <div id="skills" className={classes.skillSection}>
+        <div id="skills" className={classNames([
+            classes.skillSection
+          ])}>
           <Typography variant="h4" className={classes.skillsHeader}>
             <span> I built those <span role="img" aria-label="point-down" >☝🏻</span> with these <span role="img" aria-label="point-down">👇🏻</span></span>
           </Typography>
           <Skills theme={props.theme}/>
         </div>
 
-        <div id="about" className={classes.aboutSection}>
+        <div id="about" className={classNames([
+            classes.section,
+            classes.aboutSection
+          ])}>
           <About currentTheme={props.currentTheme}/>
         </div>
 
