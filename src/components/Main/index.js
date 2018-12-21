@@ -19,7 +19,7 @@ import About from './About'
 
 const styles = theme => ({
   root: {
-    flex: '1'
+    flex: '1',
   },
   link: {
     textDecoration: 'none',
@@ -187,7 +187,7 @@ function Main(props) {
   );
 }
 
-Main.ropTypes = {
+Main.propTypes = {
   updateActiveUrlHash: PropTypes.func.isRequired,
   currentTheme: PropTypes.string.isRequired,
 };

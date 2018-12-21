@@ -4,6 +4,10 @@ import classNames from 'classnames';
 import Typography from '@material-ui/core/Typography';
 
 import Typed from 'react-typed';
+import Carousel from 'nuka-carousel';
+import IconButton from '@material-ui/core/IconButton';
+import ArrowForward from '@material-ui/icons/ChevronRight'
+import ArrowBack from '@material-ui/icons/ChevronLeft'
 
 import testimonials from './testimonials'
 import TestimonialCard from './TestimonialCard'
@@ -45,6 +49,7 @@ const styles = theme => ({
     flexDirection: 'column',
     justifyContent: 'center',
     flexGrow: '1',
+    padding: '0 5%',
   },
   contentRed: {
     background: theme.palette.primary.light,
@@ -53,7 +58,7 @@ const styles = theme => ({
     borderBottomRightRadius: '5px',
   },
   contentDark: {
-    background: theme.palette.primary.main, //'#303030',
+    background: '#424242', //theme.palette.primary.main, //'#303030',
     color: '#fff',
     borderTopLeftRadius: '5px',
     borderBottomLeftRadius: '5px',
@@ -63,6 +68,12 @@ const styles = theme => ({
     [theme.breakpoints.down('sm')]: {
       fontSize: '150%',
     },
+  },
+  navButton: {
+    // display: 'flex',
+    [theme.breakpoints.down('sm')]: {
+      display: 'none'
+    }
   },
 })
 
@@ -128,16 +139,32 @@ const About= props => {
           Things other people say about me
         </Typography>
         <div className={classes.rightContent}>
-          {
-            testimonials.map( (testimonial, index) => (
-              <TestimonialCard
-                key={index}
-                author={testimonial.author}
-                authorTitle={testimonial.authorTitle}
-                quote={testimonial.quote}
-              />
-            ))
-          }
+          <Carousel
+            renderCenterLeftControls={({ previousSlide }) => (
+              <IconButton className={classes.navButton} onClick={previousSlide}><ArrowBack/></IconButton>
+            )}
+            renderCenterRightControls={({ nextSlide }) => (
+              <IconButton className={classes.navButton} onClick={nextSlide}><ArrowForward/></IconButton>
+            )}
+            renderBottomCenterControls={({ currentSlide }) => (null)}
+            swiping={true}
+            wrapAround={true}
+            autoplay={true}
+            autoplayInterval={5000}
+            pauseOnHover={true}
+            disableKeyboardControls={true}>
+            {
+              testimonials.map( (testimonial, index) => (
+                <TestimonialCard
+                  key={index}
+                  image={testimonial.image}
+                  author={testimonial.author}
+                  authorTitle={testimonial.authorTitle}
+                  quote={testimonial.quote}
+                />
+              ))
+            }
+          </Carousel>
         </div>
       </div>
     </div>
