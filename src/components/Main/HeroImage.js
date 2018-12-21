@@ -1,5 +1,6 @@
 import React from 'react'
 import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
   root: {
@@ -35,6 +36,9 @@ const styles = theme => ({
     justifyContent: 'center',
     flexDirection: 'column',
     cursor: 'pointer',
+    '&:hover': {
+      background: theme.palette.background.paper,
+    },
   },
 })
 
@@ -116,24 +120,24 @@ class HeroImage extends React.Component {
     const nextImage = (
       <div className={classes.nextImageWrapper}>
         <div className={classes.nextImageRow}>
-          <div
-            className={classes.nextImage}
-            onClick={()=>{this.changeHeroImage()}}
-            onMouseEnter={()=>{this.setState({activeIconHover:true})}}
-            onMouseLeave={()=>{this.setState({activeIconHover:false})}}>
-            <svg style={{margin: '0 auto'}} width="24px" height="24px" viewBox="0 0 16 16" version="1.1">
-                <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-                    <g id="Navigation" transform="translate(-340.000000, -52.000000)">
-                        <g id="ic_arrow_forward" transform="translate(336.000000, 48.000000)">
-                            <g id="Icon-24px">
-                                <polygon fill="none" id="Shape" points="0 0 24 0 24 24 0 24"></polygon>
-                                <polygon id="Shape" fill={ this.state.activeIconHover ? this.props.theme.palette.primary.main : this.props.theme.palette.text.primary} points="12 4 10.59 5.41 16.17 11 4 11 4 13 16.17 13 10.59 18.59 12 20 20 12"></polygon>
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </svg>
-          </div>
+            <Button
+              className={classes.nextImage}
+              onClick={()=>{this.changeHeroImage()}}
+              onMouseEnter={()=>{this.setState({activeIconHover:true})}}
+              onMouseLeave={()=>{this.setState({activeIconHover:false})}}>
+              <svg style={{margin: '0 auto'}} width="24px" height="24px" viewBox="0 0 16 16" version="1.1">
+                  <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+                      <g id="Navigation" transform="translate(-340.000000, -52.000000)">
+                          <g id="ic_arrow_forward" transform="translate(336.000000, 48.000000)">
+                              <g id="Icon-24px">
+                                  <polygon fill="none" id="Shape" points="0 0 24 0 24 24 0 24"></polygon>
+                                  <polygon id="Shape" fill={ this.state.activeIconHover ? this.props.theme.palette.primary.main : this.props.theme.palette.text.primary} points="12 4 10.59 5.41 16.17 11 4 11 4 13 16.17 13 10.59 18.59 12 20 20 12"></polygon>
+                              </g>
+                          </g>
+                      </g>
+                  </g>
+              </svg>
+            </Button>
         </div>
       </div>
     )
