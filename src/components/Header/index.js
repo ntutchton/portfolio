@@ -192,7 +192,7 @@ class Header extends React.Component{
                     id="burger-menu"
                     anchorEl={anchorEl}
                     open={Boolean(anchorEl)}
-                    onClose={this.handleBurgerMenuClose}
+                    onClose={() => {this.handleBurgerMenuClose()}}
                   >
                     <Link to="/#history" className={classes.link} scroll={el => {this.smoothScroll(el, 'current-history')}}>
                       <MenuItem onClick={()=>{this.handleBurgerMenuClose('#history')}}>
