@@ -56,7 +56,7 @@ class HeroImage extends React.Component {
   }
 
   componentWillUnmount(){
-      clearInterval(this.state.interval)
+    clearInterval(this.state.interval)
   }
 
   stopInterval = () => {
