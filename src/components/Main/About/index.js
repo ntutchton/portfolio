@@ -130,7 +130,7 @@ class About extends React.Component {
                     'I like backpacking.',
                     'I like coffee.',
                     'I like woodworking.',
-                    'I like exploring.',
+                    'I like hiking.',
                     'I like drawing.',
                     'I like pizza.',
                     'I like video games.',

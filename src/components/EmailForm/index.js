@@ -260,7 +260,7 @@ class EmailForm extends React.Component{
                 </span>
               </Typography>
               <div className={classes.hideConfirmation}>
-                <Close color={this.props.currentTheme === 'dark' ? 'primary' : null} onClick={()=>{this.setState({showConfirmation:false})}}/>
+                <Close color={this.props.currentTheme === 'dark' ? 'primary' : 'inherit'} onClick={()=>{this.setState({showConfirmation:false})}}/>
               </div>
             </div>
             :
