@@ -55,7 +55,7 @@ const Blurb = props => {
             I believe that excellent UX and memorable interfaces are the most important part of any application.  I try to leverage my experiences to modernize legacy systems using modern frameworks.
           </Typography>
           <Typography className={classes.blurbText} variant="body1">
-            With new ideas, I hope to build a foundation of intelligent design standards and a flexible code base to guides future development.
+            With new ideas, I try to build a foundation of intelligent design standards and a flexible code base that will guide future development.
           </Typography>
         </div>
 

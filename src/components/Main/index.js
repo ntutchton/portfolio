@@ -14,11 +14,12 @@ import Skills from './Skills/'
 import Projects from './Projects/'
 import Certs from './Certs'
 import Blurb from './Blurb'
+import About from './About'
 
 
 const styles = theme => ({
   root: {
-    flex: '1'
+    flex: '1',
   },
   link: {
     textDecoration: 'none',
@@ -84,6 +85,9 @@ const styles = theme => ({
       display: 'flex',
       flexDirection: 'column',
   },
+  section: {
+      minHeight: '100vh',
+  },
   skillsHeader: {
     padding: '0 5% 0 5%',
     textAlign: 'center',
@@ -97,6 +101,9 @@ const styles = theme => ({
   },
   blurbSectionDark: {
     backgroundColor: '#303030',
+  },
+  aboutSection: {
+    padding: '6em 0',
   },
 })
 
@@ -147,7 +154,7 @@ function Main(props) {
 
         </div>
 
-        <div id="history">
+        <div id="history" className={classes.section}>
           <Timeline theme={props.theme} updateActiveUrlHash={props.updateActiveUrlHash}/>
         </div>
 
@@ -155,20 +162,28 @@ function Main(props) {
           <Blurb currentTheme={props.currentTheme}/>
         </div>
 
-        <div id="work">
+        <div id="work" className={classes.section}>
           <Typography variant="h3" className={classes.projectHeader}>
             My Work
           </Typography>
           <Projects theme={props.theme}/>
         </div>
 
-        <div id="skills" className={classes.skillSection}>
-          <Typography variant="h3" className={classes.skillsHeader}>
+        <div id="skills" className={classNames([
+            classes.skillSection
+          ])}>
+          <Typography variant="h4" className={classes.skillsHeader}>
             <span> I built those <span role="img" aria-label="point-down" >☝🏻</span> with these <span role="img" aria-label="point-down">👇🏻</span></span>
           </Typography>
           <Skills theme={props.theme}/>
         </div>
 
+        <div id="about" className={classNames([
+            classes.section,
+            classes.aboutSection
+          ])}>
+          <About currentTheme={props.currentTheme}/>
+        </div>
 
         <div className={classes.certsSection}>
           <Certs currentTheme={props.currentTheme}/>
@@ -180,7 +195,7 @@ function Main(props) {
   );
 }
 
-Main.ropTypes = {
+Main.propTypes = {
   updateActiveUrlHash: PropTypes.func.isRequired,
   currentTheme: PropTypes.string.isRequired,
 };
