@@ -63,8 +63,8 @@ const Certs = props => {
          </a>
        </div>
        <div className={classes.certWrapper}>
-         <a className={classNames([ classes.certLink, classes.noLink ])} href="#!">
-           <div className={classes.cert} style={{backgroundImage: `url(${'certs/Clearence.png'})`}}></div>
+         <a className={classes.certLink} href="https://www.ethdenver.com/">
+           <div className={classes.cert} style={{backgroundImage: `url(${'certs/ethdenver.png'})`}}></div>
          </a>
        </div>
      </div>
