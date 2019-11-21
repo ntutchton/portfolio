@@ -177,7 +177,7 @@ class Timeline extends React.Component {
                   M.S. in Software Engineering
                 </Typography>
                 <Typography variant="subtitle2" className={classes.date}>
-                  2018 - 2020
+                  2018 - 2021
                 </Typography>
               </div>
             </div>
@@ -207,7 +207,7 @@ class Timeline extends React.Component {
             <div className={classes.textWrapper}>
               <Paper className={classes.paper} elevation={1}>
                 <Typography variant="body1">
-                  Currently, I work as full stack developer on a  BIT Systems contract for the National Geospacial Administration.  Our tool manages DevOps pipelines and processes for NGA groups.  I primarily work on the frontend as the UI/UX lead, using industry standard tools to create seamless user experiences.
+                  Currently, I work as full stack developer at BIT Systems/CACI on the National Geospatial Administration's GEOINT services FADE contract.  Our tool manages DevOps pipelines and processes for NGA groups.  I primarily work on the frontend as the UI/UX lead, using industry standard tools to create seamless user experiences.
                 </Typography>
               </Paper>
               <Button
@@ -235,7 +235,7 @@ class Timeline extends React.Component {
                  }}
                >
                   <div className={classes.popover}>
-                    <Typography variant="subtitle1" >You will need TS/SCI NGA login credentials to view this content.</Typography>
+                    <Typography variant="subtitle1" >You will need TS/SCI login credentials (CAC) to view this content.</Typography>
                     <Button style={{marginTop: '1em'}} href={'https://my.gs.mil/login'}>
                       No Problem <ArrowForward style={{marginLeft: '5px'}}/>
                     </Button>
@@ -255,7 +255,7 @@ class Timeline extends React.Component {
             <div className={classes.textWrapper}>
               <Paper className={classes.paper} elevation={1}>
                 <Typography variant="body1" >
-                  As long as there are new and exciting ideas out there, I will be developing them.  I'm always looking for new challenges – freelance or full-time.  Let's create something awesone, together.
+                  As long as there are new and exciting ideas out there, I will be developing them.  I'm always looking for new challenges – freelance or full-time.  Let's create something awesome, together.
                 </Typography>
               </Paper>
 
