@@ -54,6 +54,21 @@ export default [
       },
     ]
   },
+  {
+    tags: [ 'application', 'frontend', 'backend' ],
+    labels: [ 'SWIFT', 'ILLUSTRATOR', 'INVISION', 'AWS', ],
+    imageUrl: 'images/Klovis.png',
+    name: 'Klovis',
+    description: 'The continuation of my work on Carbos, Klovis is an iOS application empowers users to take contol of their carbon footprint.',
+    links: [
+      {
+        to: 'http://klovis.io/',
+        type: 'site',
+        // text: 'visit site',
+        inactive: true,
+      },
+    ]
+  },
   // {
   //   tags: ['design'],
   //   labels: ['PHOTOSHOP', 'ILLUSTRATOR', ],

@@ -24,7 +24,7 @@ const styles = theme => ({
   avatarImage: {
     borderRadius: '50%',
     margin: '0 auto',
-    background: '#DDD',
+    background: '#fff',
     height: '150px',
     width: '150px',
     backgroundSize: 'contain',

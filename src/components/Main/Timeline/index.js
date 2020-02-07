@@ -177,7 +177,7 @@ class Timeline extends React.Component {
                   M.S. in Software Engineering
                 </Typography>
                 <Typography variant="subtitle2" className={classes.date}>
-                  2018 - 2021
+                  2018 - 2020
                 </Typography>
               </div>
             </div>
@@ -245,7 +245,27 @@ class Timeline extends React.Component {
           </div>
         </TimelineSection>
 
-        <TimelineSection scroll={this.state.scroll} sectionHeight={this.state.defaultSectionHeight} type="right" order='top' logoSource="logos/FUTURE.svg" backgroundImageUrl={'images/cliff.jpg'} currentTheme={this.props.theme.palette.type}>
+        <TimelineSection scroll={this.state.scroll} sectionHeight={this.state.defaultSectionHeight} type="right" order='top' logoSource="logos/CARBOS.svg" backgroundImageUrl={'images/land.jpg'} currentTheme={this.props.theme.palette.type}>
+          <div className={classes.wrapper}>
+            <div className={classes.headerWrapper}>
+              <Typography variant="h4" className={classes.header}>
+                Carbos
+              </Typography>
+              <Typography variant="subtitle2" className={classes.date}>
+                2018 - Present
+              </Typography>
+            </div>
+            <div className={classes.textWrapper}>
+              <Paper className={classes.paper} elevation={1}>
+                <Typography variant="body1" >
+                  What started as a hackathon passion project grew into a small business? Carbos! This application gives landowners the ability to evaluate and take direct ownership of conservation-based carbon offset projects on their land, regardless of size.  Serving as CEO and Technical Lead, I worked with one other co-founder, to raise over $50,000 and monetize conservation efforts on over 640 acres in Southeast Colorado.
+                </Typography>
+              </Paper>
+            </div>
+          </div>
+        </TimelineSection>
+
+        <TimelineSection scroll={this.state.scroll} sectionHeight={this.state.defaultSectionHeight} type="left" order='top' logoSource="logos/FUTURE.svg" backgroundImageUrl={'images/cliff.jpg'} currentTheme={this.props.theme.palette.type}>
           <div className={classes.wrapper}>
             <div className={classes.headerWrapper}>
               <Typography variant="h4" className={classes.header}>
