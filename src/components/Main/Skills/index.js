@@ -59,7 +59,7 @@ class Skills extends React.Component{
           <SkillCircle theme={this.props.theme} height={this.state.defaultHeight} name="MongoDB" logo="logos/MONGO.png"/>
           <SkillCircle theme={this.props.theme} height={this.state.defaultHeight} name="Angular" logo="logos/ANGULAR.png"/>
           <SkillCircle theme={this.props.theme} height={this.state.defaultHeight} name="Python" logo="logos/PYTHON.png"/>
-          <SkillCircle theme={this.props.theme} height={this.state.defaultHeight} name="Vue" logo="logos/VUE.png"/>
+          <SkillCircle theme={this.props.theme} height={this.state.defaultHeight} name="Swift" logo="logos/SWIFT.png"/>
           <SkillCircle theme={this.props.theme} height={this.state.defaultHeight} name="Photoshop" logo="logos/PHOTOSHOP.png"/>
           <SkillCircle theme={this.props.theme} height={this.state.defaultHeight} name="AWS" logo="logos/AWS.png"/>
           <SkillCircle theme={this.props.theme} height={this.state.defaultHeight} name="Material Design" logo="logos/MATERIAL.png"/>
