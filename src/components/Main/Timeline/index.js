@@ -249,7 +249,7 @@ class Timeline extends React.Component {
           <div className={classes.wrapper}>
             <div className={classes.headerWrapper}>
               <Typography variant="h4" className={classes.header}>
-                Carbos
+                Technical Lead
               </Typography>
               <Typography variant="subtitle2" className={classes.date}>
                 2018 - Present
