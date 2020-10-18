@@ -116,7 +116,7 @@ class Projects extends React.Component{
             ])}>
             Application
           </Button>
-          {/* <Button
+          <Button
             onClick={()=>{this.setFilter('design')}}
             className={classNames([
               classes.button,
@@ -125,7 +125,7 @@ class Projects extends React.Component{
               : {}
             ])}>
             Design
-          </Button> */}
+          </Button>
           <Button
             onClick={()=>{this.setFilter('frontend')}}
             className={classNames([
