@@ -1,10 +1,10 @@
 export default [
   {
-    tags: ['backend', 'frontend', 'application' ],
+    tags: ['backend', 'frontend', 'application', 'design' ],
     labels: [ 'REACT', 'REDUX', 'PSQL', 'PYTHON'],
     imageUrl: 'images/carbos.png',
     name: 'Carbos',
-    description: 'Carbos leverages the Ethereum blockchain to increase access and accountability in carbon trading markets.',
+    description: 'Carbos was a project to leverage the Ethereum blockchain to increase access and accountability in carbon trading markets.',
     links: [
       {
         to: 'https://github.com/carbos-workshop',
@@ -59,13 +59,27 @@ export default [
     labels: [ 'SWIFT', 'ILLUSTRATOR', 'INVISION', 'AWS', ],
     imageUrl: 'images/Klovis.png',
     name: 'Klovis',
-    description: 'The continuation of my work on Carbos, Klovis is an iOS application empowers users to take contol of their carbon footprint.',
+    description: 'The continuation of my work on Carbos, Klovis is an in-the-works iOS application that empowers users to take contol of their carbon footprint.',
     links: [
       {
         to: 'http://klovis.io/',
         type: 'site',
         // text: 'visit site',
         inactive: true,
+      },
+    ]
+  },
+  {
+    tags: ['design'],
+    labels: ['SKETCH' ],
+    name: 'FUTHARK App Icons',
+    description: "A small library of runic app icons I used to give my iphone's home screen a makeover.",
+    imageUrl: 'images/FUTHARK.png',
+    links: [
+      {
+        to: '#',
+        type: 'sketch',
+        // text: 'see it',
       },
     ]
   },

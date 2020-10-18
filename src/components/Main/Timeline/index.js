@@ -177,7 +177,7 @@ class Timeline extends React.Component {
                   M.S. in Software Engineering
                 </Typography>
                 <Typography variant="subtitle2" className={classes.date}>
-                  2018 - 2020
+                  2018 - 2021
                 </Typography>
               </div>
             </div>
@@ -201,64 +201,33 @@ class Timeline extends React.Component {
                 UI / UX Developer
               </Typography>
               <Typography variant="subtitle2" className={classes.date}>
-                2018 - Present
+                2018 - 2020
               </Typography>
             </div>
             <div className={classes.textWrapper}>
               <Paper className={classes.paper} elevation={1}>
                 <Typography variant="body1">
-                  Currently, I work as full stack developer at BIT Systems/CACI on the National Geospatial Administration's GEOINT services FADE contract.  Our tool manages DevOps pipelines and processes for NGA groups.  I primarily work on the frontend as the UI/UX lead, using industry standard tools to create seamless user experiences.
+                  I worked as full stack developer at BIT Systems/CACI on the FADE and BODHI contracts.  I primarily worked as a fronotend lead on an application to manage DevOps pipelines and processes for NGA systems under FADE, but also provided assistance to developing and maintaining the frontend on BODHI.
                 </Typography>
               </Paper>
-              <Button
-                 aria-owns={open ? 'bits-popover' : undefined}
-                 aria-haspopup="true"
-                 variant="contained"
-                 className={classes.seeMoreButton}
-                 color="primary"
-                 onClick={this.handleClick}
-               >
-                 See More
-               </Button>
-               <Popover
-                 id="bits-popover"
-                 open={open}
-                 anchorEl={anchorEl}
-                 onClose={this.handleClose}
-                 anchorOrigin={{
-                   vertical: 'bottom',
-                   horizontal: 'center',
-                 }}
-                 transformOrigin={{
-                   vertical: 'top',
-                   horizontal: 'center',
-                 }}
-               >
-                  <div className={classes.popover}>
-                    <Typography variant="subtitle1" >You will need TS/SCI login credentials (CAC) to view this content.</Typography>
-                    <Button style={{marginTop: '1em'}} href={'https://my.gs.mil/login'}>
-                      No Problem <ArrowForward style={{marginLeft: '5px'}}/>
-                    </Button>
-                  </div>
-               </Popover>
             </div>
           </div>
         </TimelineSection>
 
-        <TimelineSection scroll={this.state.scroll} sectionHeight={this.state.defaultSectionHeight} type="right" order='top' logoSource="logos/CARBOS.svg" backgroundImageUrl={'images/land.jpg'} currentTheme={this.props.theme.palette.type}>
+        <TimelineSection scroll={this.state.scroll} sectionHeight={this.state.defaultSectionHeight} type="right" order='top' logoSource="logos/ICR.svg" backgroundImageUrl={'images/space.jpg'} currentTheme={this.props.theme.palette.type}>
           <div className={classes.wrapper}>
             <div className={classes.headerWrapper}>
               <Typography variant="h4" className={classes.header}>
-                Technical Lead
+                Software Engineer
               </Typography>
               <Typography variant="subtitle2" className={classes.date}>
-                2018 - Present
+                2020 - Present
               </Typography>
             </div>
             <div className={classes.textWrapper}>
               <Paper className={classes.paper} elevation={1}>
                 <Typography variant="body1" >
-                  What started as a hackathon passion project grew into a small business? Carbos! This application gives landowners the ability to evaluate and take direct ownership of conservation-based carbon offset projects on their land, regardless of size.  Serving as CEO and Technical Lead, I worked with one other co-founder, to raise over $50,000 and monetize conservation efforts on over 640 acres in Southeast Colorado.
+                  Since I joined ICR I've been working on DevSecOps processes in support of the ICEBREAKER effort.
                 </Typography>
               </Paper>
             </div>

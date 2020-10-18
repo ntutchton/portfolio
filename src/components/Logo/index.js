@@ -5,6 +5,8 @@ import LogoLight from './logo-light'
 import LogoGreyscale from './logo-greyscale'
 import Github from './github'
 import Dribbble from './dribbble'
+import Sketch from './sketch'
+
 import Gitlab from './gitlab'
 
 function SvgLogo(props) {
@@ -25,6 +27,9 @@ function SvgLogo(props) {
   }
   else if (props.type === 'gitlab'){
     return ( <Gitlab size={props.size} /> )
+  }
+  else if (props.type === 'sketch'){
+    return ( <Sketch size={props.size} /> )
   }
   else return ( <LogoDark size={props.size}></LogoDark> )
 }

@@ -156,7 +156,9 @@ class ProjectCard extends React.Component {
           ? <SvgLogo type='dribbble' size={24} />
           : type === 'gitlab'
             ? <SvgLogo type='gitlab' size={24} />
-            : null
+            : type === 'sketch'
+              ? <SvgLogo type='sketch' size={24} />
+              : null
     )
 // style={{maxHeight: `${this.state.imgHeight*1.3}px`}}
     return (
