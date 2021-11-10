@@ -227,7 +227,7 @@ class Timeline extends React.Component {
             <div className={classes.textWrapper}>
               <Paper className={classes.paper} elevation={1}>
                 <Typography variant="body1" >
-                  Since I joined ICR I've been working on DevSecOps processes in support of the ICEBREAKER effort.
+                  Since I joined ICR I've made contributions to many different projects, with the majority of my efforts supporting the ICEBREAKER.  Configuring, deploying, and hardening multiple applications across an operational kubernetes cluster has given me exposure to many different SIGINT processes.  Alongside DevSecOps work, I'm involved in rapid-prototyping and surge efforts for multiple javascript applications.
                 </Typography>
               </Paper>
             </div>
