@@ -7,7 +7,7 @@ const styles = theme => ({
     display: 'grid',
     gridTemplateColumns: '1fr 1fr 1fr',
     gridColumnGap: '4em',
-    margin: '0 15% 5em 0',
+    margin: '0 15% 5em 15%',
     padding: '3em 0',
     [theme.breakpoints.down('lg')]: {
       margin: '0 5% 5em 5%',
