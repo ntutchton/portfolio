@@ -20,6 +20,8 @@ import About from './About'
 const styles = theme => ({
   root: {
     flex: '1',
+    maxWidth: '1272px',
+    margin: 'auto'
   },
   link: {
     textDecoration: 'none',
