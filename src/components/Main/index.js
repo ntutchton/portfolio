@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom'
+import { HashLink as Link } from 'react-router-hash-link';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
@@ -91,7 +91,8 @@ const styles = theme => ({
       minHeight: '100vh',
   },
   skillsHeader: {
-    padding: '0 5% 0 5%',
+    // padding: '0 5% 0 5%',
+    width: '70%',
     textAlign: 'center',
   },
   projectHeader: {
@@ -100,9 +101,11 @@ const styles = theme => ({
   },
   blurbSection: {
     backgroundColor: '#ebebeb',
+    borderRadius: '5px',
   },
   blurbSectionDark: {
     backgroundColor: '#303030',
+    borderRadius: '5px',
   },
   aboutSection: {
     padding: '6em 0',
@@ -111,6 +114,7 @@ const styles = theme => ({
 
 function Main(props) {
   const { classes } = props;
+
   return (
     <div className={classes.root}>
       <div>
@@ -132,7 +136,7 @@ function Main(props) {
               full-stack applications.
             </Typography>
             <div style={{paddingBottom: '15em'}}>
-              <Link to="/contact" className={classes.link} onClick={()=>{props.updateActiveUrlHash('')}}>
+              <Link smooth to="/#contact" className={classes.link} onClick={()=>{props.updateActiveUrlHash('')}}>
                 <Button variant="contained" color="primary" className={classes.heroContactButton} >
                   Contact Me
                 </Button>
@@ -163,33 +167,33 @@ function Main(props) {
         <div className={classNames([classes.blurbSection, (props.currentTheme === 'dark' ? classes.blurbSectionDark : null)])}>
           <Blurb currentTheme={props.currentTheme}/>
         </div>
-
+{/* 
         <div id="work" className={classes.section}>
           <Typography variant="h3" className={classes.projectHeader}>
             My Work
           </Typography>
           <Projects theme={props.theme}/>
-        </div>
+        </div> */}
 
         <div id="skills" className={classNames([
             classes.skillSection
           ])}>
-          <Typography variant="h4" className={classes.skillsHeader}>
-            <span> I built those <span role="img" aria-label="point-down" >☝🏻</span> with these <span role="img" aria-label="point-down">👇🏻</span></span>
+          <Typography variant="h3" className={classes.skillsHeader}>
+            <span> My favorite tools are... </span>
           </Typography>
           <Skills theme={props.theme}/>
         </div>
 
-        <div id="about" className={classNames([
+        {/* <div id="about" className={classNames([
             classes.section,
             classes.aboutSection
           ])}>
           <About currentTheme={props.currentTheme}/>
-        </div>
+        </div> */}
 
-        <div className={classes.certsSection}>
+        {/* <div className={classes.certsSection}>
           <Certs currentTheme={props.currentTheme}/>
-        </div>
+        </div> */}
 
       </div>
 

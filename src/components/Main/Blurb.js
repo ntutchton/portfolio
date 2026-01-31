@@ -40,10 +40,10 @@ const Blurb = props => {
             My Passion
           </Typography>
           <Typography className={classes.blurbText} variant="body1">
-            Act like an artist... think like a scientist.
-          </Typography>
+            I enjoy solving complex problems and building mission-critical software that delivers reliable, maintainable, and effective results under real-world constraints.          </Typography>
           <Typography className={classes.blurbText} variant="body1">
-            Scaffolding applications from new ideas or restructuring aging systems allows for tremendous creative freedom.  I express myself through my designs, and bring them to life with my code.
+            Software development requires creative and collaborative practice. Whether building new applications or modernizing legacy systems, I translate stakeholder ideas into clear technical plans and maintainable full-stack implementations.
+            {/* I approach software development as both a creative and collaborative discipline. Building new applications or restructuring legacy systems provides the opportunity to balance thoughtful design with practical engineering. I enjoy shaping ideas with stakeholders, translating requirements into technical plans, and expressing those decisions through well-structured, maintainable code across the full stack. */}
           </Typography>
         </div>
 
@@ -52,7 +52,8 @@ const Blurb = props => {
             My Vision
           </Typography>
           <Typography className={classes.blurbText} variant="body1">
-            I believe that excellent UX and memorable interfaces are the most important part of any application.  I try to leverage my experiences to modernize legacy systems using modern frameworks.
+            Great products come from alignment between users and engineers. I focus on modernizing systems through clear workflows, resilient architectures, and flexible design and backend foundations that support long-term growth and reliability.
+            {/* I believe strong user experience emerges from close alignment between users, designers, and engineers. I focus on modernizing systems not only through contemporary frameworks, but through clearer workflows, resilient architectures, and repeatable development standards. Whether refining an existing product or starting from a blank slate, I aim to establish flexible design systems and backend foundations that support long-term evolution and operational reliability.           */}
           </Typography>
           <Typography className={classes.blurbText} variant="body1">
             With new ideas, I try to build a foundation of intelligent design standards and a flexible code base that will guide future development.
@@ -64,10 +65,11 @@ const Blurb = props => {
             My Impact
           </Typography>
           <Typography className={classes.blurbText} variant="body1">
-            I design from scratch when no design team exists, or translate UX decisions into working code.
+            I design and build from scratch when no design team exists, or help translate architectural and UX decisions into working code.
           </Typography>
           <Typography className={classes.blurbText} variant="body1">
-            I enjoy taking on multiple roles, acting as a liaison between either designers and engineers, or clients and products. I bring the desire to create lasting, enjoyable UX (and the technical ability to do it) to any team.
+            {/* I enjoy taking on multiple roles, acting as a liaison between designers and engineers, as well as between clients and products. I have designed and implemented interfaces end-to-end in environments without dedicated design teams, and have worked closely with customers, product owners, and engineers to translate UX decisions into production systems. By combining UX sensibility with backend, containerization, and deployment experience, I help teams deliver systems that are both intuitive to use and dependable to run. */}
+            I take on multiple roles, bridging designers, engineers, and customers to move products forward. I design and implement interfaces end-to-end and translate UX decisions into production systems, combining UX sensibility with backend and deployment experience to deliver reliable, intuitive software.
           </Typography>
         </div>
 

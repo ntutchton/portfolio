@@ -48,23 +48,23 @@ class Skills extends React.Component{
     return(
       <div className={classes.root}>
         <div className={classes.circleWrapper}>
+          <SkillCircle theme={this.props.theme} height={this.state.defaultHeight} name="Angular" logo="logos/ANGULAR.png"/>
           <SkillCircle theme={this.props.theme} height={this.state.defaultHeight} name="React" logo="logos/REACT.png"/>
-          <SkillCircle theme={this.props.theme} height={this.state.defaultHeight} name="Redux" logo="logos/REDUX.png"/>
-          <SkillCircle theme={this.props.theme} height={this.state.defaultHeight} name="NodeJS" logo="logos/NODE.png"/>
-          <SkillCircle theme={this.props.theme} height={this.state.defaultHeight} name="Webpack" logo="logos/WEBPACK.png"/>
+          <SkillCircle theme={this.props.theme} height={this.state.defaultHeight} name="Kubernetes" logo="logos/KUBERNETES.png"/>
+          <SkillCircle theme={this.props.theme} height={this.state.defaultHeight} name="NextJS" logo="logos/NEXTJS.png"/>
+          <SkillCircle theme={this.props.theme} height={this.state.defaultHeight} name="Linux" logo="logos/LINUX.png"/>
           <SkillCircle theme={this.props.theme} height={this.state.defaultHeight} name="Sketch" logo="logos/SKETCH.png"/>
           <SkillCircle theme={this.props.theme} height={this.state.defaultHeight} name="Docker" logo="logos/DOCKER.png"/>
-          <SkillCircle theme={this.props.theme} height={this.state.defaultHeight} name="Illustrator" logo="logos/ILLUSTRATOR.png"/>
           <SkillCircle theme={this.props.theme} height={this.state.defaultHeight} name="PostgreSQL" logo="logos/PSQL.png"/>
+          <SkillCircle theme={this.props.theme} height={this.state.defaultHeight} name="NodeJS" logo="logos/NODE.png"/>
           <SkillCircle theme={this.props.theme} height={this.state.defaultHeight} name="MongoDB" logo="logos/MONGO.png"/>
-          <SkillCircle theme={this.props.theme} height={this.state.defaultHeight} name="Angular" logo="logos/ANGULAR.png"/>
+          <SkillCircle theme={this.props.theme} height={this.state.defaultHeight} name="Typescript" logo="logos/TYPESCRIPT.png"/>
           <SkillCircle theme={this.props.theme} height={this.state.defaultHeight} name="Python" logo="logos/PYTHON.png"/>
-          <SkillCircle theme={this.props.theme} height={this.state.defaultHeight} name="Swift" logo="logos/SWIFT.png"/>
-          <SkillCircle theme={this.props.theme} height={this.state.defaultHeight} name="Photoshop" logo="logos/PHOTOSHOP.png"/>
+          <SkillCircle theme={this.props.theme} height={this.state.defaultHeight} name="Java" logo="logos/JAVA.png"/>
+          <SkillCircle theme={this.props.theme} height={this.state.defaultHeight} name="Figma" logo="logos/FIGMA.png"/>
           <SkillCircle theme={this.props.theme} height={this.state.defaultHeight} name="AWS" logo="logos/AWS.png"/>
-          <SkillCircle theme={this.props.theme} height={this.state.defaultHeight} name="Material Design" logo="logos/MATERIAL.png"/>
           <SkillCircle theme={this.props.theme} height={this.state.defaultHeight} name="Jenkins" logo="logos/JENKINS.png"/>
-          <SkillCircle theme={this.props.theme} height={this.state.defaultHeight} name="inVision" logo="logos/INVISION.png"/>
+          <SkillCircle theme={this.props.theme} height={this.state.defaultHeight} name="AI/ML" logo="logos/OPENAI.png"/>
           <SkillCircle theme={this.props.theme} height={this.state.defaultHeight} name="SCSS" logo="logos/SASS.png"/>
         </div>
       </div>

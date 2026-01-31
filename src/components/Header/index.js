@@ -173,7 +173,7 @@ class Header extends React.Component{
                 <ThemeToggle currentTheme={this.props.currentTheme} changeTheme={this.props.changeTheme}></ThemeToggle>
               </div>
               <div className={classes.contact}>
-                <Link to="/contact" className={classes.link}>
+                <Link to="/#contact" className={classes.link}>
                   <Button size="large" variant="outlined"  className={classes.contactButton} onClick={()=>{this.updateActiveUrlHash('')}}>
                     Contact Me
                   </Button>

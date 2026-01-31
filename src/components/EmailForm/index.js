@@ -3,9 +3,6 @@ import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import Typography from '@material-ui/core/Typography';
 import { red, green } from '@material-ui/core/colors/';
-import ReCAPTCHA from "react-google-recaptcha";
-import verifyReCaptcha from '../../http/reCaptcha'
-import sendEmail from '../../http/email'
 import Button from '@material-ui/core/Button';
 import SendIcon from '@material-ui/icons/SendTwoTone';
 import TextField from '@material-ui/core/TextField';
@@ -82,11 +79,11 @@ const styles = theme => ({
   },
 });
 
-const recaptchaRef = React.createRef();
+const RECAPTCHA_SITE_KEY = '6LdocVwsAAAAAMPPqRg1tXwWswSesGITdABcm3rZ';
 
 class EmailForm extends React.Component{
   state = {
-    validReCaptcha: false,
+    recaptchaReady: false,
     showConfirmation: false,
     errorText: '',
     name:'',
@@ -100,24 +97,46 @@ class EmailForm extends React.Component{
     }
   };
 
-  onCaptcha = (value) => {
-    verifyReCaptcha(value)
-      .then( res => {
-        if (res.data.success === true){
-          this.setState({
-            validReCaptcha: true
-          })
-        }
-        else {
-          //probably expired, although not necesarily
-          this.toggleErrorText()
-          this.setErrorText('The ReCaptcha has expired.  Please recomplete the ReCaptcha.')
-          recaptchaRef.current.reset();
-        }
+  componentDidMount() {
+    this.loadReCaptchaScript();
+  }
+
+  loadReCaptchaScript = () => {
+    if (window.grecaptcha) {
+      this.setState({ recaptchaReady: true })
+      return
+    }
+
+    const existingScript = document.querySelector('script[src^="https://www.google.com/recaptcha/api.js"]');
+    if (existingScript) {
+      existingScript.addEventListener('load', () => {
+        this.setState({ recaptchaReady: true })
       })
-      .catch(function (error) {
-        console.log(error);
+      return
+    }
+
+    const script = document.createElement('script');
+    script.src = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`;
+    script.async = true;
+    script.defer = true;
+    script.onload = () => {
+      this.setState({ recaptchaReady: true })
+    };
+    document.head.appendChild(script);
+  }
+
+  executeReCaptcha = () => {
+    return new Promise((resolve, reject) => {
+      if (!window.grecaptcha) {
+        reject(new Error('reCAPTCHA not loaded'))
+        return
+      }
+      window.grecaptcha.ready(() => {
+        window.grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'submit' })
+          .then(resolve)
+          .catch(reject)
       })
+    })
   }
 
   setErrorText = text => {
@@ -153,15 +172,25 @@ class EmailForm extends React.Component{
   });
 };
 
-  submit = () => {
+  submit = async () => {
     //clean errors
     this.clearFormErrors()
     //everything looks good, return
     if (this.validateEmail()
       && this.validateName()
-      && this.validateMessage()
-      && this.state.validReCaptcha) {
-      this.triggerSendEmail(this.state.name, this.state.email, this.state.message)
+      && this.validateMessage()) {
+      if (!this.state.recaptchaReady) {
+        this.setErrorText('reCAPTCHA is still loading. Please try again in a moment.')
+        this.toggleErrorText()
+        return
+      }
+      try {
+        const token = await this.executeReCaptcha()
+        this.submitToFormspree(token)
+      } catch (error) {
+        this.setErrorText('reCAPTCHA failed. Please try again.')
+        this.toggleErrorText()
+      }
       return
     }
     //build new error object and only make one call to setState at end
@@ -182,14 +211,6 @@ class EmailForm extends React.Component{
       errors.message= true
       errors.any= true
       numErrors += 1
-    }
-    // reCaptcha is highest priority error, and so will return if found
-    if (!this.state.validReCaptcha){
-      errors.any= true
-      recaptchaRef.current.reset();
-      this.setErrorText('Please complete the reCaptcha.')
-      return
-
     }
     //check all errors at once to set multipleErrors bool and decide if we should use and
     if ( numErrors > 1 ){}
@@ -217,10 +238,8 @@ class EmailForm extends React.Component{
     this.setState({
       name: '',
       message: '',
-      email: '',
-      validReCaptcha: false
+      email: ''
     })
-    recaptchaRef.current.reset();
   }
 
   displayConfirmation = () => {
@@ -229,18 +248,32 @@ class EmailForm extends React.Component{
     })
   }
 
-  triggerSendEmail = (name, email, message) => {
-    sendEmail(name, email, message)
-      .then( res => {
-        let data = JSON.parse(res.data.body)
-        if (res.status=== 200 && data.MessageId) {
+  submitToFormspree = (recaptchaToken) => {
+    fetch('https://formspree.io/f/xzdgnzby', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: this.state.name,
+        email: this.state.email,
+        message: this.state.message,
+        'g-recaptcha-response': recaptchaToken,
+      }),
+    })
+      .then((res) => {
+        if (res.ok) {
           this.displayConfirmation()
           this.resetForm()
+          return
         }
-        else {
-          console.log(res);
-          this.resetForm()
-        }
+        this.setErrorText('Something went wrong. Please try again later.')
+        this.toggleErrorText()
+      })
+      .catch(() => {
+        this.setErrorText('Something went wrong. Please try again later.')
+        this.toggleErrorText()
       })
   }
 
@@ -266,7 +299,7 @@ class EmailForm extends React.Component{
             :
             null
           }
-        <form>
+        <form onSubmit={(event) => { event.preventDefault(); this.submit(); }}>
           <TextField
             className={classes.input}
             label="Your Name"
@@ -274,6 +307,7 @@ class EmailForm extends React.Component{
             error={this.state.errors.name}
             onChange={this.handleChange('name')}
             variant="outlined"
+            name="name"
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
@@ -289,6 +323,7 @@ class EmailForm extends React.Component{
             error={this.state.errors.email}
             onChange={this.handleChange('email')}
             variant="outlined"
+            name="email"
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
@@ -306,6 +341,7 @@ class EmailForm extends React.Component{
             rows="12"
             onChange={this.handleChange('message')}
             variant="outlined"
+            name="message"
             InputProps={{
               startAdornment: (
                 <InputAdornment position="end" className={classes.messageIcon}>
@@ -315,14 +351,8 @@ class EmailForm extends React.Component{
             }}
           />
         </form>
-        <ReCAPTCHA
-          ref={recaptchaRef}
-          theme={this.props.currentTheme}
-          sitekey="6Ld4U3wUAAAAAEFAL9PY1L_z1zj9kix32_BppZaF"
-          onChange={this.onCaptcha}
-        />
         <div className={classes.sendButtonRow}>
-            <Button className={classes.sendButton} size="large" variant="contained" color="primary" disabled={!this.state.validReCaptcha} onClick={ ()=> {this.submit()} }>
+            <Button className={classes.sendButton} size="large" variant="contained" color="primary" disabled={!this.state.recaptchaReady} onClick={ ()=> {this.submit()} }>
               Send
               <SendIcon className={classes.sendIconPadding}></SendIcon>
             </Button>

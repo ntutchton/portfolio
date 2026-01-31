@@ -35,10 +35,11 @@ class App extends Component {
 
   //grab theme pref from local storage, if set. otherwise return light theme
   fetchThemePreference = () => {
-    let themePreference = localStorage.getItem('themePreference');
-    if (themePreference) {
-      return JSON.parse(themePreference)
-    } else return 'light'
+    return 'dark'
+    // let themePreference = localStorage.getItem('themePreference');
+    // if (themePreference) {
+    //   return JSON.parse(themePreference)
+    // } else return 'light'
   }
 
   state = {
@@ -76,17 +77,19 @@ class App extends Component {
   //returns valid MUI Theme Object based on state's currentTheme type
   //themes can be found in ./themes/*.theme.js
   getThemeObject = currentTheme => {
-    switch (currentTheme) {
-      case 'dark':
-        return darkTheme
-        // break;
-      case 'light':
-        return lightTheme
-        // break;
-      default:
-        console.error('failed to return a valid theme object')
-        break;
-    }
+    return darkTheme
+    // switch (currentTheme) {
+    //   return 'dark'
+    //   case 'dark':
+    //     return darkTheme
+    //     // break;
+    //   case 'light':
+    //     return lightTheme
+    //     // break;
+    //   default:
+    //     console.error('failed to return a valid theme object')
+    //     break;
+    // }
   }
 
   updateActiveUrlHash = newValue => {
@@ -105,8 +108,8 @@ class App extends Component {
                 <div className={
                   (this.state.currentTheme === 'dark')
                     ? 'App dark-app'
-                    : 'App light-app'}>
-                  <Header
+                    : 'App dark-app'}>
+                  {/* <Header
                     updateActiveUrlHash={this.updateActiveUrlHash}
                     activeUrlHash={this.state.activeUrlHash}
                     currentTheme={this.state.currentTheme}
@@ -120,7 +123,15 @@ class App extends Component {
                       )}/>
                     <Route component={ ()=>(<Redirect to="/" />) } />
                   </Switch>
-                  <Footer updateActiveUrlHash={this.updateActiveUrlHash}/>
+                  <Footer updateActiveUrlHash={this.updateActiveUrlHash}/> */}
+                  <Route exact path="/" render={(props) => 
+                  <React.Fragment>
+                    <Main {...props} currentTheme={this.state.currentTheme} theme={this.getThemeObject(this.state.currentTheme)} updateActiveUrlHash={this.updateActiveUrlHash} />
+                    <div id="contact" style={{ width: '100%' }}>
+                    <Contact currentTheme={this.state.currentTheme}/>
+                    </div> 
+                  </React.Fragment>
+                  } />
                 </div>
             </MuiThemeProvider>
           </ParallaxProvider>

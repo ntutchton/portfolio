@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 import Popover from '@material-ui/core/Popover';
 import Paper from '@material-ui/core/Paper';
 import ArrowForward from '@material-ui/icons/ArrowForward';
-import { Link } from 'react-router-dom'
+import { HashLink as Link } from 'react-router-hash-link';
 
 import TimelineSection from './TimelineSection'
 
@@ -68,8 +68,8 @@ const styles = theme => ({
       [theme.breakpoints.down('sm')]: {
         flexGrow: '2',
         justifyContent: 'space-evenly',
-        maxWidth: '70%',
-        marginTop: '1em',
+        maxWidth: '100%',
+        marginTop: '13em',
       },
   },
   paper: {
@@ -207,7 +207,7 @@ class Timeline extends React.Component {
             <div className={classes.textWrapper}>
               <Paper className={classes.paper} elevation={1}>
                 <Typography variant="body1">
-                  I worked as full stack developer at BIT Systems/CACI on the FADE and BODHI contracts.  I primarily worked as a fronotend lead on an application to manage DevOps pipelines and processes for NGA systems under FADE, but also provided assistance to developing and maintaining the frontend on BODHI.
+                  I worked as a full stack developer across both small and large teams at BIT Systems supporting the FADE and BODHI contracts for the NGA. I served primarily as a frontend lead on an internal FADE application used to manage DevOps pipelines and operational processes for NGA systems. In this role, I created wireframes, UX flows, interface designs, and built new Dockerized microservices to support the core application. I also contributed to BODHI by developing and maintaining frontend components and modernizing legacy AngularJS systems to contemporary Angular.                
                 </Typography>
               </Paper>
             </div>
@@ -221,13 +221,51 @@ class Timeline extends React.Component {
                 Software Engineer
               </Typography>
               <Typography variant="subtitle2" className={classes.date}>
-                2020 - Present
+                2020 - 2021
               </Typography>
             </div>
             <div className={classes.textWrapper}>
               <Paper className={classes.paper} elevation={1}>
                 <Typography variant="body1" >
-                  Since I joined ICR I've made contributions to many different projects, with the majority of my efforts supporting the ICEBREAKER.  Configuring, deploying, and hardening multiple applications across an operational kubernetes cluster has given me exposure to many different SIGINT processes.  Alongside DevSecOps work, I'm involved in rapid-prototyping and surge efforts for multiple javascript applications.
+                  During my time at ICR, I contributed to a range of projects, with the majority of my efforts supporting the ICEBREAKER/SMF initiatives. I configured, deployed, containerized, and hardened multiple applications using Docker across an operational Kubernetes cluster, gaining exposure to a variety of SIGINT-related workflows and processes. In parallel with DevSecOps responsibilities, I supported rapid prototyping and surge efforts for several JavaScript-based applications.                </Typography>
+              </Paper>
+            </div>
+          </div>
+        </TimelineSection>
+
+        <TimelineSection scroll={this.state.scroll} sectionHeight={this.state.defaultSectionHeight} type="left" order='top' logoSource="logos/PFI_logo.png" backgroundImageUrl={'images/media-room.jpg'} currentTheme={this.props.theme.palette.type}>
+          <div className={classes.wrapper}>
+            <div className={classes.headerWrapper}>
+              <Typography variant="h4" className={classes.header}>
+                Lead Frontend Engineer
+              </Typography>
+              <Typography variant="subtitle2" className={classes.date}>
+                2021 - 2026
+              </Typography>
+            </div>
+            <div className={classes.textWrapper}>
+              <Paper className={classes.paper} elevation={1}>
+                <Typography variant="body1" >
+                  At Pixel Forensics, I served as the technical lead for an Angular application developed in coordination with the National Media Exploitation Center (NMEC) and used to triage and analyze millions of media files daily. Operating in a highly autonomous capacity, I worked directly with customers and partner teams to shape requirements and drive new initiatives. I owned core architectural and design decisions and implemented solutions that maximized the practical impact of custom-trained AI models within a production system.                </Typography>
+              </Paper>
+            </div>
+          </div>
+        </TimelineSection>
+
+        <TimelineSection scroll={this.state.scroll} sectionHeight={this.state.defaultSectionHeight} type="right" order='top' logoSource="logos/CACI_logo.png" backgroundImageUrl={'images/server.jpg'} currentTheme={this.props.theme.palette.type}>
+          <div className={classes.wrapper}>
+            <div className={classes.headerWrapper}>
+              <Typography variant="h4" className={classes.header}>
+                Software Engineer
+              </Typography>
+              <Typography variant="subtitle2" className={classes.date}>
+                2026 - Present
+              </Typography>
+            </div>
+            <div className={classes.textWrapper}>
+              <Paper className={classes.paper} elevation={1}>
+                <Typography variant="body1" >
+                  CACI Blurb
                 </Typography>
               </Paper>
             </div>
@@ -248,7 +286,7 @@ class Timeline extends React.Component {
                 </Typography>
               </Paper>
 
-              <Link to="/contact" className={classes.link} onClick={()=>{this.props.updateActiveUrlHash('')}}>
+              <Link smooth to="/#contact" className={classes.link} onClick={()=>{this.props.updateActiveUrlHash('')}}>
                 <Button variant="contained" color="primary" className={classes.seeMoreButton} >
                   Get in touch
                 </Button>
