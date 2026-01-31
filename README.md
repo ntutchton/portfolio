@@ -1,3 +1,5 @@
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+A lot of the code for this is now commented out and can be revisited in the `old` branch.
 
-Pushes to the `master` branch trigger a webhook into the production site, which is statically hosted via AWS Route 53 + S3
+Latest updates are on ithub pages & `nathan.tutchton.com`
+
+I really need to throw this repo out rewrite this....
