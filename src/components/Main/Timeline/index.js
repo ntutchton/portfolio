@@ -252,7 +252,7 @@ class Timeline extends React.Component {
           </div>
         </TimelineSection>
 
-        <TimelineSection scroll={this.state.scroll} sectionHeight={this.state.defaultSectionHeight} type="right" order='top' logoSource="logos/CACI_logo.png" backgroundImageUrl={'images/server.jpg'} currentTheme={this.props.theme.palette.type}>
+        {/* <TimelineSection scroll={this.state.scroll} sectionHeight={this.state.defaultSectionHeight} type="right" order='top' logoSource="logos/CACI_logo.png" backgroundImageUrl={'images/server.jpg'} currentTheme={this.props.theme.palette.type}>
           <div className={classes.wrapper}>
             <div className={classes.headerWrapper}>
               <Typography variant="h4" className={classes.header}>
@@ -270,9 +270,9 @@ class Timeline extends React.Component {
               </Paper>
             </div>
           </div>
-        </TimelineSection>
+        </TimelineSection> */}
 
-        <TimelineSection scroll={this.state.scroll} sectionHeight={this.state.defaultSectionHeight} type="left" order='top' logoSource="logos/FUTURE.svg" backgroundImageUrl={'images/cliff.jpg'} currentTheme={this.props.theme.palette.type}>
+        <TimelineSection scroll={this.state.scroll} sectionHeight={this.state.defaultSectionHeight} type="right" order='top' logoSource="logos/FUTURE.svg" backgroundImageUrl={'images/cliff.jpg'} currentTheme={this.props.theme.palette.type}>
           <div className={classes.wrapper}>
             <div className={classes.headerWrapper}>
               <Typography variant="h4" className={classes.header}>

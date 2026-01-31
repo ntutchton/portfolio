@@ -35,7 +35,7 @@ class App extends Component {
 
   //grab theme pref from local storage, if set. otherwise return light theme
   fetchThemePreference = () => {
-    return 'dark'
+    return 'light'
     // let themePreference = localStorage.getItem('themePreference');
     // if (themePreference) {
     //   return JSON.parse(themePreference)
@@ -77,7 +77,7 @@ class App extends Component {
   //returns valid MUI Theme Object based on state's currentTheme type
   //themes can be found in ./themes/*.theme.js
   getThemeObject = currentTheme => {
-    return darkTheme
+    return lightTheme
     // switch (currentTheme) {
     //   return 'dark'
     //   case 'dark':
@@ -106,9 +106,9 @@ class App extends Component {
             <CssBaseline />
             <MuiThemeProvider theme={this.getThemeObject(this.state.currentTheme)}>
                 <div className={
-                  (this.state.currentTheme === 'dark')
-                    ? 'App dark-app'
-                    : 'App dark-app'}>
+                  (this.state.currentTheme === 'light')
+                    ? 'App light-app'
+                    : 'App light-app'}>
                   {/* <Header
                     updateActiveUrlHash={this.updateActiveUrlHash}
                     activeUrlHash={this.state.activeUrlHash}
